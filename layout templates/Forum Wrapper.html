@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+$[tag.html.open]
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>$[title] | $[forum.name]</title>
+    $[head]
+</head>
+<body>
+    {if $[maintenance_mode]}
+    <div class="maintenance-header">
+        {if $[can.disable_maintenance]}<p>Finished with maintenance? $[disable_maintenance_link].</p>{/if}
+    </div>
+    {/if}
+    
+    <a id="navigation-skip" href="#content" accesskey="s" class="aria-hidden" title="Skip Navigation">Skip Navigation</a>
+    <a href="#" accesskey="d" title="Open Menu" onclick="proboards.hotkeys.activate(Keys.d); return false;"></a>
+    <div id="navigation-menu" class="ui-helper-clearfix">
+        <ul role="navigation">
+            {foreach $[navigation.menu]}
+            <li>
+                <a{if $[navigation.menu.active]} class="state-active"{/if} href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                    $[navigation.menu.name]
+                    </a>
+                {if $[navigation.menu.notification.total]}
+                <div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
+                    <div class="tip-number">$[navigation.menu.notification.total]</div>
+                    <span class="tip"></span>
+                </div>
+                {/if}
+            </li>
+            {/foreach}
+            {if !$[current_user.is_member]}
+            {if $[login_link] || $[register_link]}
+            <li>
+                $[register_link]
+            </li>
+            <li>
+                $[login_link]
+            </li>
+            {/if}
+            {else}
+            <li>
+                $[logout_link]
+            </li>
+            {/if}
+        </ul>
+    </div>
+    
+    <header>
+        <div id="banner-container" role="banner">
+            <h2 id="banner">
+                $[forum.title]
+            </h2>
+        </div>
+    </header>
+    
+    $[header]
+    
+    <div id="welcome-table">
+        <div class="welcome-table-resources">
+            <h3>Resources</h3>
+            <ul class="welcome-table-resources-list">
+                <li><a href="#" target="_parent">guidebook</a></li>
+                <li><a href="#" target="_parent">announcements</a></li>
+                <li><a href="#" target="_parent">pack-joining board</a></li>
+                <li><a href="#" target="_parent">advertisements / affiliates</a></li>
+                <li><a href="#" target="_parent">more links</a></li>
+                <li><a href="#" target="_parent">another link</a></li>
+                <li><a href="#" target="_parent">somewhere good</a></li>
+                <li><a href="#" target="_parent">links to hell</a></li>
+            </ul>
+        </div>
+        <div class="welcome-table-updates">
+            <h3>Updates &amp; Weather</h3>
+            <div class="welcome-table-updates-container">
+                <div class="welcome-table-updates-scrolling">
+                    <p><strong>April 18</strong> Site changes underway!</p>
+                    <p><strong>April 14</strong> TRP guidelines and rules have been updated, please check them out! Raw denim heirloom umami leggings trust fund lumbersexual.</p>
+                    <p><strong>April 03</strong> Schlitz bicycle rights synth, chambray next level ugh Neutra. Pinterest fixie Blue Bottle, Carles four dollar toast tilde raw denim McSweeney's ennui.</p>
+                    <p><strong>April 18</strong> Site changes underway!</p>
+                    <p><strong>April 14</strong> TRP guidelines and rules have been updated, please check them out! Raw denim heirloom umami leggings trust fund lumbersexual.</p>
+                    <p><strong>April 03</strong> Schlitz bicycle rights synth, chambray next level ugh Neutra. Pinterest fixie Blue Bottle, Carles four dollar toast tilde raw denim McSweeney's ennui.</p>
+                </div>
+            </div>
+            <div class="welcome-table-weather">
+                <img src="http://storage.proboards.com/6250332/i/Wczlgcx7H8cz077sSxx5.png" width="49" height="49" alt="Winter" />
+                <p><strong>Season:</strong> Winter (January)</p>
+                <p>Mating  |  <span class="strike">Birthing</span></p>
+            </div>
+        </div>
+        <div class="welcome-table-right-side">
+            <div class="welcome-table-staff">
+                <h3>Staff</h3>
+                <div class="welcome-table-hover-image">
+                    <span>Admin</span>
+                    <img src="http://placehold.it/76x75/1d1d1d" alt="Admin" />
+                </div>
+                <div class="welcome-table-hover-image">
+                    <span>Admin</span>
+                    <img src="http://placehold.it/76x75/1d1d1d" alt="Admin" />
+                </div>
+                <div class="welcome-table-hover-image">
+                    <span>Admin</span>
+                    <img src="http://placehold.it/76x75/1d1d1d" alt="Admin" />
+                </div>
+            </div>
+            <div class="welcome-table-spotlight">
+                <h3>Spotlight</h3>
+                <div class="welcome-table-hover-image">
+                    <span>Moon Moon</span>
+                    <img src="http://placehold.it/238x75/1d1d1d" alt="Moon Moon" />
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="wrapper">        
+        $[participated_threads_link]
+        
+        {if $[navigation.tree]}
+        <div id="navigation-tree">
+            $[navigation.tree]
+        </div>
+        {/if}
+        
+        <div id="content" role="main">
+            {if $[notice]}
+            <div class="container">
+                <div class="title-bar"><h2>$[notice.title]</h2></div>
+                <div class="content pad-all cap-bottom">
+                    $[notice.message]
+                </div>
+            </div>
+            {/if}
+            
+            $[content]
+            
+            $[shoutbox]
+            
+            <div class="ui-helper-clearfix">
+                <div class="container affiliates">
+                    <div class="title-bar"><h2>Affiliates</h2></div>
+                    <div class="content affiliates-static">
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                        <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                    </div>
+                    <div class="content affiliates-scrolling-container">
+                        <div class="affiliates-scrolling">
+                            <span>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                                <a href="#" target="_blank"><img src="http://placehold.it/88x31/626361/a8a8a7" width="88" height="31" border="0" alt="Affiliate Name" /></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container cbox">
+                    <div class="title-bar"><h2>Chat</h2></div>
+                    <div class="content">
+                        cbox
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer">
+        $[footer]
+    </div>
+    
+    <div id="copyright">
+        Theme built exclusively for The Rainpack by <a href="http://ellimccale.com/" target="_blank">elli mccale</a>
+    </div>
+    
+    {if $[is_mobile_browser]}
+    <br><p class="center">Switch to the $[mobile_switch_link].</p>
+    {/if}
+</body>
+</html>
