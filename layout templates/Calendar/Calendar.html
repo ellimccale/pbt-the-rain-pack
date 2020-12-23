@@ -22,31 +22,31 @@
             <tr>
                 <td class="$[preview_container_class]">
                     {foreach $[month_preview]}
-                    <table class="cal-box">
-                        <tr class="header last">
-                            <th colspan="7">$[month_preview.link]</th>
-                        </tr>
-                        <tr class="weekdays">
-                            <td>S</td>
-                            <td>M</td>
-                            <td>T</td>
-                            <td>W</td>
-                            <td>T</td>
-                            <td>F</td>
-                            <td class="last">S</td>
-                        </tr>
-                        {foreach $[month_preview.week]}
-                        <tr class="week{if $[month_preview.week.index] == $[month_preview.week.lastIndex]} last{/if}">
-                            {foreach $[month_preview.week.day]}
-                            <td class="$[month_preview.week.day.class]{if $[month_preview.week.day.off]} off{/if}{if $[month_preview.week.day.current]} current-day{/if}{if $[month_preview.week.day.index] == $[month_preview.week.day.lastIndex]} last{/if}">
-                                <div class="head">
-                                    $[month_preview.week.day.preview_link]
-                                </div>
-                            </td>
+                        <table class="cal-box">
+                            <tr class="header last">
+                                <th colspan="7">$[month_preview.link]</th>
+                            </tr>
+                            <tr class="weekdays">
+                                <td>S</td>
+                                <td>M</td>
+                                <td>T</td>
+                                <td>W</td>
+                                <td>T</td>
+                                <td>F</td>
+                                <td class="last">S</td>
+                            </tr>
+                            {foreach $[month_preview.week]}
+                                <tr class="week{if $[month_preview.week.index] == $[month_preview.week.lastIndex]} last{/if}">
+                                    {foreach $[month_preview.week.day]}
+                                        <td class="$[month_preview.week.day.class]{if $[month_preview.week.day.off]} off{/if}{if $[month_preview.week.day.current]} current-day{/if}{if $[month_preview.week.day.index] == $[month_preview.week.day.lastIndex]} last{/if}">
+                                            <div class="head">
+                                                $[month_preview.week.day.preview_link]
+                                            </div>
+                                        </td>
+                                    {/foreach}
+                                </tr>
                             {/foreach}
-                        </tr>
-                        {/foreach}
-                    </table>
+                        </table>
                     {/foreach}
                 </td>
                 $[content]

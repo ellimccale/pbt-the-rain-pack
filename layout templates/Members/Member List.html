@@ -1,4 +1,6 @@
 {foreach $[user]}
+
+    <!-- Members -->
     <tr id="$[user.content_id]" class="$[user.content_class] clickable" {if $[user.ip]}data-ip="$[user.ip]"{/if}>
         <td class="checkbox clickable">$[user.checkbox]</td>
         <td class="name target">$[user]</td>
@@ -8,7 +10,16 @@
         <td class="date-registered">$[user.registered_on]</td>
         <td class="last-online last">{if $[user.is_online]}Member is Online{else}$[user.last_online]{/if}</td>
     </tr>
+    <!-- / Members -->
+
 {/foreach}
+
 {if !$[user]}
-    <tr><td colspan="7" class="last center">No members were found.</td></tr>
+
+    <!-- No Members -->
+    <tr>
+        <td colspan="7" class="last center">No members were found.</td>
+    </tr>
+    <!-- / No Members -->
+
 {/if}

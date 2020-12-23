@@ -1,4 +1,7 @@
+<!-- Groups -->
 {if $[group]}
+
+    <!-- Groups List -->
     <div class="content-box">
         <table class="groups list">
             <colgroup>
@@ -21,7 +24,7 @@
                         <td class="group_desc">
                             <a href="$[group.href]">$[group.name]</a>
                             <br />
-                            {if $[group.description]}$[group.description]<br />{/if}
+                            {if $[group.description]}$[group.description]<br>{/if}
                             <span class="small group-controls">
                                 {foreach $[group.control]}$[group.control]{/foreach}
                             </span>
@@ -34,16 +37,25 @@
             </tbody>
         </table>
     </div>
+    <!-- / Groups List -->
+
 {else}
-    <h4 id="$[no_groups_message_id]" class="pad-bottom-double">
+
+    <!-- No Groups -->
+    <p id="$[no_groups_message_id]" class="pad-bottom-double">
         {if $[user.id] == $[current_user.id]}
             You are not a member of any group.
         {else}
             This user is not a member of any group.
         {/if}
-    </h4>
+    </p>
+    <!-- / No Groups -->
+
 {/if}
+
 {if $[other_group]}
+
+    <!-- Available Groups List -->
     <div class="content-box">
         <table class="groups list">
             <colgroup>
@@ -65,8 +77,8 @@
                     <tr id="$[other_group.content_id]" class="$[other_group.content_class]">
                         <td class="group_desc">
                             <a href="$[other_group.href]">$[other_group.name]</a>
-                            <br />
-                            {if $[other_group.description]}$[other_group.description]<br />{/if}
+                            <br>
+                            {if $[other_group.description]}$[other_group.description]<br>{/if}
                             <span class="small group-controls">
                                 {foreach $[other_group.control]}$[other_group.control]{/foreach}
                             </span>
@@ -79,4 +91,7 @@
             </tbody>
         </table>
     </div>
+    <!-- / Available Groups List -->
+
 {/if}
+<!-- / Groups -->

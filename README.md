@@ -1,4 +1,4 @@
-# The Rainpack 1.0.0
+# The Rainpack 2.0.0
 *The Rainpack* is theme built with the free forum software [ProBoards](https://proboards.com/) and my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
 
 ## Acknowledgements

@@ -1,5 +1,8 @@
+<!-- Activity -->
 <div class="content-box">
     {if $[can.set_status]}
+
+        <!-- Status -->
         $[form.header]
             <table>
                 <tr id="status-bar" class="heading">
@@ -9,6 +12,8 @@
                 </tr>
             </table>
         $[form.footer]
+        <!-- / Status -->
+
     {else}
         <table>
             <tr id="status-bar" class="heading">
@@ -18,10 +23,15 @@
             </tr>
         </table>
     {/if}
+
+    <!-- Activity List -->
     <table class="activity list">
         <tbody class="$[activity_list_class]">
             $[activity_list]
         </tbody>
     </table>
+    <!-- / Activity List -->
+
     $[more_button]
 </div>
+<!-- / Activity -->

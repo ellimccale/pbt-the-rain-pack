@@ -1,40 +1,67 @@
 {if $[board.sub_board_list]}
-<div class="container boards">
-    <div class="title-bar"><h2>Sub-Boards</h2></div>
-    <div class="boards-content">
-        $[board.sub_board_list]
-    </div>
-</div>
-{/if}
-{if $[display_thread_list]}
-<div{if $[viewing_bookmarks]} id="bookmarks"{/if} class="container threads">
-    <div class="title-bar">
-        {if $[create_thread_button]}
-        <ul class="controls"><li>$[create_thread_button]</li></ul>
-        {/if}
-        <h1>$[board.display_name]</h1>
-    </div>
-    <div class="control-bar ui-helper-clearfix $[scroll_class]">
-        $[search]
-        <div class="controls">
-            $[selection_menu]
-            $[action_menu]
+
+    <!-- Sub-Board Container -->
+    <div class="container boards">
+
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <h2>Sub-Boards</h2>
         </div>
-        $[pagination]
+        <!-- / Title Bar -->
+
+        <!-- Sub-Board List -->
+        <div class="content">
+            $[board.sub_board_list]
+        </div>
+        <!-- / Sub-Board List -->
+
     </div>
-    <div class="content cap-bottom">
-        <table class="list">
-            <thead>
-                <tr class="head">
-                    <th class="main" colspan="3">Subject</th>
-                    <th class="views">Views</th>
-                    <th class="latest last">Last Post</th>
-                </tr>
-            </thead>
-            <tbody class="$[list_class]">
-                $[thread_list]
-            </tbody>
-        </table>
+    <!-- / Sub-Board Container -->
+
+{/if}
+
+{if $[display_thread_list]}
+
+    <!-- Thread List -->
+    <div{if $[viewing_bookmarks]} id="bookmarks"{/if} class="container threads">
+
+        <!-- Title Bar -->
+        <div class="title-bar">
+            {if $[create_thread_button]}
+                <ul class="controls"><li>$[create_thread_button]</li></ul>
+            {/if}
+
+            <h2>$[board.display_name]</h2>
+        </div>
+        <!-- / Title Bar -->
+
+        <!-- Control Bar -->
+        <div class="control-bar ui-helper-clearfix $[scroll_class]">
+            $[search]
+
+            <!-- Hide selection/action menus from guests since they are not usable -->
+            {if !$[current_user.is_guest]}
+                <div class="controls">
+                    $[selection_menu]
+                    $[action_menu]
+                </div>
+            {/if}
+
+            $[pagination]
+        </div>
+        <!-- / Control Bar -->
+
+        <!-- Thread List -->
+        <div class="content">
+            <table class="list">
+                <tbody class="$[list_class]">
+                    $[thread_list]
+                </tbody>
+            </table>
+        </div>
+        <!-- / Thread List -->
+
     </div>
-</div>
+    <!-- / Thread Container -->
+
 {/if}

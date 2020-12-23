@@ -1,3 +1,4 @@
+<!-- Summary -->
 $[form.header]
     <table>
         <tr>
@@ -29,10 +30,12 @@ $[form.header]
                 {/if}
                 <div class="content-box center-col">
                     <table>
-                        <tr>
-                            <td class="headings">Latest Status:</td>
-                            <td>$[user.personal_text]</td>
-                        </tr>
+                        {if $[user.personal_text.message]}
+                            <tr>
+                                <td class="headings">Latest Status:</td>
+                                <td>$[user.personal_text.message]</td>
+                            </tr>
+                        {/if}
                         {if $[user.custom_title]}
                             <tr>
                                 <td class="headings">Custom Title:</td>
@@ -101,7 +104,7 @@ $[form.header]
                             <div class="social networks">
                                 <h4>Social Networks</h4>
                                 {foreach $[user.social_network]}
-                                    $[user.social_network]<br />
+                                    $[user.social_network]<br>
                                 {/foreach}
                             </div>
                         {/if}
@@ -109,23 +112,55 @@ $[form.header]
                             <div class="social messengers">
                                 <h4>Instant Messengers</h4>
                                 {foreach $[user.instant_messenger]}
-                                    $[user.instant_messenger]<br />
+                                    $[user.instant_messenger]<br>
                                 {/foreach}
                             </div>
                         {/if}
                     </div>
                 {/if}
                 <div class="content-box center-col">
-                    $[recent_posts_link]<br />
+                    $[recent_posts_link]<br>
                     $[recent_threads_created_link]
                 </div>
                 {if $[user.signature]}
                     <div class="content-box center-col">
-                        Signature <hr />
                         $[user.signature]
+                    </div>
+                {/if}
+            </td>
+            <td id="right-column">
+                {if $[following]}
+                    <div id="following" class="content-box right-col">
+                        <h4>$[view_following_link]</h4>
+                        {foreach $[following]}
+                            <div class="mini-user">
+                                <div class="mini-avatar">
+                                    $[following.avatar_medium]
+                                </div>
+                                <span class="name">
+                                    $[following]
+                                </span>
+                            </div>
+                        {/foreach}
+                    </div>
+                {/if}
+                {if $[follower]}
+                    <div id="followers" class="content-box right-col">
+                        <h4>$[view_followers_link]</h4>
+                        {foreach $[follower]}
+                            <div class="mini-user">
+                                <div class="mini-avatar">
+                                    $[follower.avatar_medium]
+                                </div>
+                                <span class="name">
+                                    $[follower]
+                                </span>
+                            </div>
+                        {/foreach}
                     </div>
                 {/if}
             </td>
         </tr>
     </table>
 $[form.footer]
+<!-- / Summary -->

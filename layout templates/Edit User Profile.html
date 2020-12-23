@@ -1,23 +1,34 @@
+<!-- Edit User Container -->
 <div class="container edit-user confirm-ignore-changes">
+
+    <!-- Title Bar -->
     <div class="title-bar">
-        <h1>Edit Profile &amp; Settings</h1>
+        <h2>Edit Profile &amp; Settings</h2>
     </div>
-    <div class="content cap-bottom">
-        <div class="ui-tabMenu">
-            <ul class="ui-helper-clearfix">
-                {foreach $[menu]} <!-- replace href with class -->
-                    <li{if $[menu.active]} class="ui-active"{/if}><a class="js-tab" data-page="$[menu.href]">$[menu.text]</a></li>
-                {/foreach}
-            </ul>
-        </div>
+    <!-- / Title Bar -->
+
+    <!-- Tab Navigation -->
+    <div class="ui-tabMenu">
+        <ul class="ui-helper-clearfix">
+            {foreach $[menu]} <!-- replace href with class -->
+                <li{if $[menu.active]} class="ui-active"{/if}><a class="js-tab" data-page="$[menu.href]">$[menu.text]</a></li>
+            {/foreach}
+        </ul>
+    </div>
+    <!-- / Tab Navigation -->
+
+    <!-- Tab Content -->
+    <div class="content">
         <div class="pad info">
             <span class="username float-right">Username: <span class="description">$[user.username]</span></span>
-            <span class="big_username" style="color: $[user.color];">$[user.name]</span><br />
+            <span class="big_username" style="color: $[user.color];">$[user.name]</span><br>
         </div>
+
         <noscript>
             <div class="content-box">Please enable Javascript for your browser to edit member profiles.</div>
             <style> .js-enabled {display: none;} </style>
         </noscript>
+
         <div class="clear js-enabled">
             <div class="js-edit admin-edit              $[edit_area.display_admin]">
                 $[edit_admin]
@@ -45,4 +56,7 @@
             </div>
         </div>
     </div>
+    <!-- / Tab Content -->
+
 </div>
+<!-- / Edit User Container -->
