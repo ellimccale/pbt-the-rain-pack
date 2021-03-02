@@ -87,12 +87,12 @@ $[tag.html.open]
             <div id="navigation-menu" class="ui-helper-clearfix">
                 <ul>
                     {foreach $[navigation.menu]}
-                        <li{if $[navigation.menu.active]} class="state-active"{/if}>
-                            <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}>
+                        <li>
+                            <a href="$[navigation.menu.href]"{if $[navigation.menu.accesskey]} accesskey="$[navigation.menu.accesskey]"{/if}{if $[navigation.menu.active]} class="state-active"{/if}>
                                 $[navigation.menu.name]
                                 {if $[navigation.menu.notification.total]}
                                     <div class="tip-holder" onclick="window.location='$[navigation.menu.notification.href]'; return false;">
-                                        $[navigation.menu.notification.total]
+                                        <div class="tip-number">$[navigation.menu.notification.total]</div>
                                     </div>
                                 {/if}
                             </a>
@@ -123,19 +123,18 @@ $[tag.html.open]
         </nav>
         <!-- / Primary Navigation -->
 
+        <!-- Header -->
+        <header>
+            <a href="/" target="_parent" title="Home">
+                <h1 id="banner">
+                    <span class="visually-hidden">$[forum.name]</span>
+                </h1>
+            </div>
+        </header>
+        <!-- / Header -->
+
         <!-- Forum Wrapper -->
         <div id="wrapper">
-
-            <!-- Header -->
-            <header>
-                <div id="banner-container" role="banner">
-                    <h1 id="banner">
-                        $[forum.title]
-                    </h1>
-                </div>
-
-            </header>
-            <!-- / Header -->
 
             {if $[navigation.tree]}
 

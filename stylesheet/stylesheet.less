@@ -66,133 +66,6 @@
 
 
 /* ======================================================
- * Flexbox Mixins
- * ====================================================== */
-
-/**
- * Used for responsive behavior on non-tablular elements,
- * as well as alignment options that are otherwise
- * onerous with old-school CSS.
- *
- * https://gist.github.com/gyandeeps/c31f83e0eebf3a1c664cd5cc04cc9836
- */
-
-.flex-display(@display: flex) {
-    display: ~"-webkit-@{display}";
-    display: ~"-moz-@{display}";
-    display: ~"-ms-@{display}box"; // IE10 uses -ms-flexbox
-    display: ~"-ms-@{display}"; // IE11
-    display: @display;
-}
-
-.flex-direction(@direction: row) {
-    -webkit-flex-direction: @direction;
-    -moz-flex-direction: @direction;
-    -ms-flex-direction: @direction;
-    flex-direction: @direction;
-}
-
-.flex-wrap(@wrap: nowrap) {
-    -webkit-flex-wrap: @wrap;
-    -moz-flex-wrap: @wrap;
-    -ms-flex-wrap: @wrap;
-    flex-wrap: @wrap;
-}
-
-.flex-grow(@grow: 0) {
-    -webkit-flex-grow: @grow;
-    -moz-flex-grow: @grow;
-    -ms-flex-grow: @grow;
-    flex-grow: @grow;
-}
-
-.flex-shrink(@shrink: 1) {
-    -webkit-flex-shrink: @shrink;
-    -moz-flex-shrink: @shrink;
-    -ms-flex-shrink: @shrink;
-    flex-shrink: @shrink;
-}
-
-.flex-basis(@width: auto) {
-    -webkit-flex-basis: @width;
-    -moz-flex-basis: @width;
-    -ms-flex-basis: @width;
-    flex-basis: @width;
-}
-
-.justify-content(@justify: flex-start) {
-    .ms-flex-justify(@value) {
-        ._(@value);
-        ._(space-between) { -ms-flex-pack: justify;      }
-        ._(space-around)  { -ms-flex-pack: distribute;   }
-        ._(space-evenly)  { -ms-flex-pack: space-evenly; }
-        ._(flex-end)      { -ms-flex-pack: end;          }
-        ._(flex-start)    { -ms-flex-pack: start;        }
-        ._(center)        { -ms-flex-pack: center;       }
-    }
-
-    -webkit-justify-content: @justify;
-    -moz-justify-content: @justify;
-    -ms-justify-content: @justify;
-    justify-content: @justify;
-    .ms-flex-justify(@justify);
-}
-
-.align-items(@align: stretch) {
-    .ms-flex-align(@value) {
-        ._(@value);
-        ._(baseline)    { -ms-flex-align: baseline; }
-        ._(stretch)     { -ms-flex-align: stretch;  }
-        ._(flex-end)    { -ms-flex-align: end;      }
-        ._(flex-start)  { -ms-flex-align: start;    }
-        ._(center)      { -ms-flex-align: center;   }
-    }
-
-    -webkit-align-items: @align;
-    -moz-align-items: @align;
-    -ms-align-items: @align;
-    align-items: @align;
-    .ms-flex-align(@align);
-}
-
-.align-content(@align: normal) {
-    .ms-flex-line-pack(@value) {
-        ._(@value);
-        ._(flex-start)    { -ms-flex-line-pack: start;        }
-        ._(flex-end)      { -ms-flex-line-pack: end;          }
-        ._(baseline)      { -ms-flex-line-pack: baseline;     }
-        ._(space-between) { -ms-flex-line-pack: justify;      }
-        ._(space-around)  { -ms-flex-line-pack: distribute;   }
-        ._(space-evenly)  { -ms-flex-line-pack: space-evenly; }
-        ._(stretch)       { -ms-flex-line-pack: stretch;      }
-    }
-
-    align-content: @align;
-    .ms-flex-line-pack(@align);
-}
-
-.align-self(@align: auto) {
-    .ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = flex-end) {
-        -ms-flex-item-align: end;
-    }
-
-    .ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = flex-start) {
-        -ms-flex-item-align: start;
-    }
-
-    .ms-flex-align-self(@msSelfAlign) when (@msSelfAlign = auto), (@msSelfAlign = center),(@msSelfAlign = baseline), (@msSelfAlign = stretch) {
-        -ms-flex-item-align: @msSelfAlign;
-    }
-
-    -webkit-align-self: @align;
-    -moz-align-self: @align;
-    -ms-align-self: @align;
-    align-self: @align;
-    .ms-flex-align-self(@align);
-}
-
-
-/* ======================================================
  * Theme Customization
  * ====================================================== */
 
@@ -217,7 +90,8 @@
  * ====================================================== */
 
 @body_background_color: @dark_color_1;
-@body_background_image: @empty;
+@body_background_image: url('https://storage.proboards.com/6250332/images/MyRpaHEPSobKfhkQDLsT.jpg'),
+                        url('https://storage.proboards.com/6250332/images/exLKnaeUhfbBEPcrXTnF.jpg');
 
 @default_forum_text_color: @dark_color_1;
 @link_color: @accent_color_light;
@@ -225,8 +99,9 @@
 @banner_height: 750px;
 @banner_background_color: @empty;
 @banner_background_image: @empty;
-@banner_background_position: @empty;
 @banner_background_repeat: @empty;
+@banner_background_attachment: @empty;
+@banner_background_position: @empty;
 @banner_text_color: @empty;
 @banner_text_align: @empty;
 
@@ -248,7 +123,7 @@
 @container_text_color_2: @dark_color_1;
 @container_links_color: @link_color;
 @container_highlight_color: @container_background_color_1;
-@container_outer_border_color: @dark_color_2;
+@container_outer_border_color: mix(@dark_color_2, @light_color_1, 20%);
 @container_inner_border_color: @container_background_color_1;
 
 @pagination_background_color: @accent_color;
@@ -262,9 +137,10 @@
 
 @images_path: '//storage.proboards.com/forum/images';
 
-@body_background_attachment: @empty;
-@body_background_repeat: @empty;
-@body_background_position: @empty;
+@body_background_repeat: no-repeat, no-repeat;
+@body_background_attachment: scroll, scroll;
+@body_background_position: center top, center bottom;
+@body_background_size: auto, 100% auto;
 
 @default_forum_text_font_style: @empty;
 @default_forum_text_font_weight: @empty;
@@ -343,7 +219,7 @@ html {
     .box-sizing(); /* 1 */
 }
 
-body { background-color: @body_background_color; background-image: @body_background_image; background-attachment: @body_background_attachment; background-repeat: @body_background_repeat; background-position: @body_background_position; font-style: @default_forum_text_font_style; font-weight: @default_forum_text_font_weight; font-size: @default_forum_text_font_size; font-family: @default_forum_text_font_family; line-height: 1.4; text-decoration: @default_forum_text_decoration; text-transform: @default_forum_text_case; color: @default_forum_text_color; .flex-display(); .flex-direction(column); }
+body { background-color: @body_background_color; background-image: @body_background_image; background-attachment: @body_background_attachment; background-repeat: @body_background_repeat; background-position: @body_background_position; background-size: @body_background_size; font-style: @default_forum_text_font_style; font-weight: @default_forum_text_font_weight; font-size: @default_forum_text_font_size; font-family: @default_forum_text_font_family; line-height: 1.4; text-decoration: @default_forum_text_decoration; text-transform: @default_forum_text_case; color: @default_forum_text_color; display: flex; flex-direction: column; }
 
 
 /* Links
@@ -527,171 +403,99 @@ input.ui-error { background-color: @container_background_color_1; padding: 2px; 
  * Header
  * ====================================================== */
 
-header { margin-bottom: 10px; display: block; position: relative; }
+header { width: @wrapper_width; margin: 40px auto 0; display: block; position: relative; }
 
 
 /* Banner
  * ====================================================== */
 
-@banner_text_font: bold 3rem @default_forum_text_font_family;
-@banner_text_decoration: @empty;
-@banner_text_case: @empty;
-
-#banner-container { width: 100%; display: table; }
-
-#banner { background-color: @banner_background_color; background-image: @banner_background_image; background-position: @banner_background_position; background-repeat: @banner_background_repeat; height: @banner_height; padding: 0 20px; text-align: @banner_text_align; overflow: hidden; display: table-cell; vertical-align: middle; }
-
-a#logo { font: @banner_text_font; text-transform: @banner_text_case; text-decoration: @banner_text_decoration; color: @banner_text_color; white-space: normal; word-break: break-all; vertical-align: middle; }
-a#logo:hover { text-decoration: @banner_text_decoration !important; color: @banner_text_color !important; }
+#banner { background-color: @banner_background_color; background-image: @banner_background_image; background-repeat: @banner_background_repeat; background-attachment: @banner_background_attachment; background-position: @banner_background_position; height: @banner_height; }
 
 
 /* ======================================================
  * Navigation Menu
  * ====================================================== */
 
-@nav_bar_background: @title_bar_background_color @all_gradients left center repeat-x;
-@nav_bar_border: 0 solid @container_outer_border_color;
-@nav_bar_button_background: @empty;
-@nav_bar_button_font: 1.3rem @default_forum_text_font_family;
+@nav_bar_background: @dark_color_1;
+@nav_bar_button_font: 1rem @default_forum_text_font_family;
+@nav_bar_button_letter_spacing: 0.25em;
 @nav_bar_button_decoration: none;
-@nav_bar_button_color: @title_text_color;
-@nav_bar_button_hover_background: @nav_bar_button_background;
+@nav_bar_button_case: uppercase;
+@nav_bar_button_color: @light_color_1;
 @nav_bar_button_hover_font: @nav_bar_button_font;
 @nav_bar_button_hover_decoration: @nav_bar_button_decoration;
-@nav_bar_button_hover_color: @nav_bar_button_color;
-@nav_bar_button_current_background: @title_buttons_background_color @all_gradients center repeat-x;
+@nav_bar_button_hover_color: @accent_color_light;
 @nav_bar_button_current_font: @nav_bar_button_font;
 @nav_bar_button_current_decoration: @nav_bar_button_decoration;
-@nav_bar_button_current_color: @title_buttons_color;
+@nav_bar_button_current_color: @light_color_2;
 
-#navigation-menu { background: @nav_bar_background; border: @nav_bar_border; padding: 0 8px; }
+#navigation-menu { background: @nav_bar_background; width: 100%; position: fixed; z-index: 99; }
 
-#navigation-menu a { position: relative; }
-
-#navigation-menu > ul,
-#navigation-menu > ul li { float: left; }
-#navigation-menu > ul li a { background: @nav_bar_button_background; padding: 0 .75em; font: @nav_bar_button_font; line-height: 31px !important; text-decoration: @nav_bar_button_decoration; color: @nav_bar_button_color; display: inline-block; }
-#navigation-menu > ul li:hover a { background: @nav_bar_button_hover_background; font: @nav_bar_button_hover_font; line-height: 31px !important; text-decoration: @nav_bar_button_hover_decoration !important; color: @nav_bar_button_hover_color !important; }
-#navigation-menu > ul li.state-active a { background: @nav_bar_button_current_background; font: @nav_bar_button_current_font; line-height: 31px !important; text-decoration: @nav_bar_button_current_decoration !important; color: @nav_bar_button_current_color !important; }
+#navigation-menu > ul { width: @wrapper_width; margin: 0 auto; padding: 0 10px; text-align: center; }
+#navigation-menu > ul > li { display: inline-block; vertical-align: top; }
+#navigation-menu > ul > li > a { padding: 0 25px; font: @nav_bar_button_font; line-height: 40px !important; letter-spacing: @nav_bar_button_letter_spacing; text-decoration: @nav_bar_button_decoration; text-transform: @nav_bar_button_case; color: @nav_bar_button_color; display: block; position: relative; }
+#navigation-menu > ul > li > a:hover,
+#navigation-menu > ul > li > a:focus { font: @nav_bar_button_hover_font; text-decoration: @nav_bar_button_hover_decoration; color: @nav_bar_button_hover_color; }
+#navigation-menu > ul > li > a.state-active { font: @nav_bar_button_current_font; text-decoration: @nav_bar_button_current_decoration; color: @nav_bar_button_current_color; }
 
 /* --- Tip Holder --- */
 
-@nav_bar_bubble_background: #fff;
-@nav_bar_bubble_font: 0.9rem @default_forum_text_font_family;
-@nav_bar_bubble_color: #000;
+@nav_bar_bubble_background: @accent_color;
+@nav_bar_bubble_font: 1rem @default_forum_text_font_family;
+@nav_bar_bubble_color: @light_color_2;
 
-#navigation-menu div.tip-holder { cursor: pointer; display: inline-block; position: absolute; top: -0.9rem; right: 3px; }
-#navigation-menu div.tip-holder div.tip-number { background-color: @nav_bar_bubble_background; padding: 3px 6px; font: @nav_bar_bubble_font; line-height: 0.8em; color: @nav_bar_bubble_color; }
-#navigation-menu div.tip-holder span.tip { border-top: 4px solid @nav_bar_bubble_background; border-left: 4px solid transparent; border-right: 4px solid transparent; position: absolute; left: 6px; }
-
-
-/* Welcome Text
- * ====================================================== */
-
-@welcome_text_font: 1.3rem @default_forum_text_font_family;
-@welcome_text_color: @title_text_color;
-@welcome_links_font: @welcome_text_font;
-@welcome_links_decoration: underline;
-@welcome_links_color: @welcome_text_color;
-
-#welcome { font: @welcome_text_font; line-height: 31px !important; text-align: right; color: @welcome_text_color; float: right; vertical-align: middle; }
-#welcome a { font: @welcome_links_font; text-decoration: @welcome_links_decoration; color: @welcome_links_color; }
+#navigation-menu .tip-holder { margin-right: -8px; margin-left: 8px; cursor: pointer; display: inline-block; vertical-align: top; }
+#navigation-menu .tip-number { background-color: @nav_bar_bubble_background; padding: 0 5px; font: @nav_bar_bubble_font; line-height: 40px; letter-spacing: 0; color: @nav_bar_bubble_color; }
 
 
 /* ======================================================
  * Navigation Tree
  * ====================================================== */
 
-@nav_tree_background_color: @container_background_color_1;
-@nav_tree_height: 20px;
-@nav_tree_border_width: 1px;
-@nav_tree_border_style: solid;
-@nav_tree_border_color: @container_outer_border_color;
-@nav_tree_font: 1.1rem @default_forum_text_font_family;
+@nav_tree_border: 1px solid @container_outer_border_color;
+@nav_tree_font: 1rem @default_forum_text_font_family;
 @nav_tree_decoration: none;
-@nav_tree_color: @container_text_color_1;
-@nav_tree_hover_background_color: @container_highlight_color;
+@nav_tree_case: uppercase;
+@nav_tree_color: @dark_color_2;
 @nav_tree_hover_font: @nav_tree_font;
-@nav_tree_hover_decoration: none;
-@nav_tree_hover_color: @container_text_color_1;
+@nav_tree_hover_decoration: @nav_tree_decoration;
+@nav_tree_hover_color: @nav_tree_color;
 
-#navigation-tree { background: @nav_tree_background_color; height: @nav_tree_height; margin-bottom: 10px; color: @nav_tree_color; border-width: @nav_tree_border_width; border-style: @nav_tree_border_style; border-color: @nav_tree_border_color; overflow: hidden; .box-sizing(content-box); }
+#navigation-tree { background: transparent; margin-bottom: 20px; border: @nav_tree_border; overflow: hidden; }
 
 #nav-tree { white-space: nowrap; }
-#nav-tree ul { background-color: @nav_tree_background_color; border-width: @nav_tree_border_width; border-style: @nav_tree_border_style; border-color: @nav_tree_border_color; list-style-type: none; display: none; }
-#nav-tree > li { height: @nav_tree_height; display: inline-block; position: relative; }
-#nav-tree > li > div > a { margin: 0 1px 0 5px; padding: 2px 10px 4px 15px; font: @nav_tree_font; text-decoration: @nav_tree_decoration; color: @nav_tree_color; display: block; .box-sizing(content-box); }
-#nav-tree > li:first-child > div > a { margin-left: -2px; }
-#nav-tree .ui-menu { display: none; float: left; position: absolute; }
-#nav-tree .ui-menu li { padding: 2px 10px 2px 5px; white-space: nowrap; position: relative; }
-#nav-tree .ui-menu li ul { display: none; position: absolute; z-index: 9999; }
-#nav-tree .ui-menu li .arrow { width: 16px; height: 16px; margin-top: -8px; display: none; position: absolute; right: 2px; top: 50%; }
-#nav-tree .ui-menu li.ui-menu-has-sub-menu > .arrow { display: block; }
-#nav-tree .ui-menu li:hover { background-color: @nav_tree_hover_background_color; color: @nav_tree_hover_color; }
-#nav-tree .ui-menu li:hover > a { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-#nav-tree .menu_arrow { width: 0; height: 0; border-width: 10px @nav_tree_border_width 10px 10px; border-style: @nav_tree_border_style none @nav_tree_border_style @nav_tree_border_style; border-color: transparent transparent transparent @nav_tree_border_color; position: absolute; top: 0; right: -10px; z-index: 1001; }
-#nav-tree .menu_arrow span { width: 0; height: 0; border-width: 10px @nav_tree_border_width 10px 10px; border-style: @nav_tree_border_style none @nav_tree_border_style @nav_tree_border_style; border-color: transparent transparent transparent @nav_tree_background_color; position: absolute; top: -10px; left: -11px; z-index: 1002; }
-#nav-tree > li:hover { background-color: @nav_tree_hover_background_color; color: @nav_tree_hover_color; }
-#nav-tree > li:hover > div > a { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-#nav-tree > li:hover .menu_arrow { border-color: transparent transparent transparent @nav_tree_border_color; }
-#nav-tree > li:hover .menu_arrow span { border-color: transparent transparent transparent @nav_tree_hover_background_color; }
-#nav-tree li.new_span > a > .new-icon { float: none; display: inline-block; }
-#nav-tree li.state-selected > a { font-weight: bold !important; }
+#nav-tree > li { display: inline-block; vertical-align: top; }
+#nav-tree > li:not(:last-child) div::after { content: " \203A "; font: @nav_tree_font; color: @nav_tree_color; padding: 7px 0; display: inline-block; vertical-align: top; }
+#nav-tree > li a { padding: 7px 14px; font: @nav_tree_font; letter-spacing: 0.25em; text-decoration: @nav_tree_decoration; text-transform: @nav_tree_case; color: @nav_tree_color; display: inline-block; vertical-align: top; }
+#nav-tree > li a:hover,
+#nav-tree > li a:focus { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
 
-.popup_html { position: absolute; top: 0; left: 0; z-index: 999999; }
-.popup_html ul { background-color: @nav_tree_background_color; border: @nav_tree_border_width @nav_tree_border_style @nav_tree_border_color; list-style-type: none; display: none; }
-.popup_html li a { margin: 0 1px 0 -2px; padding: 4px 10px 4px 15px; font: @nav_tree_font; text-decoration: @nav_tree_decoration; color: @nav_tree_color; display: block; }
-.popup_html .ui-menu { display: none; float: left; position: absolute; z-index: 11; }
-.popup_html .ui-menu a { max-width: 550px; overflow: hidden; }
-.popup_html .ui-menu li { padding: 2px 15px 2px 5px; white-space: nowrap; position: relative; }
-.popup_html .ui-menu li ul { display: none; position: absolute; z-index: 9999; }
-.popup_html .ui-menu li .arrow { width: 16px; height: 16px; margin-top: -8px; display: none; position: absolute; right: 2px; top: 50%; }
-.popup_html .ui-menu li.ui-menu-has-sub-menu > .arrow { display: block; }
-.popup_html .ui-menu li:hover { background-color: @nav_tree_hover_background_color; color: @nav_tree_hover_color; }
-.popup_html .ui-menu li:hover > a { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-.popup_html .menu_arrow { width: 0; height: 0; border-width: 10px @nav_tree_border_width 10px 10px; border-style: @nav_tree_border_style none @nav_tree_border_style @nav_tree_border_style; border-color: transparent transparent transparent @nav_tree_border_color; position: absolute; top: 0; right: -10px; z-index: 1001; }
-.popup_html .menu_arrow span { width: 0; height: 0; border-width: 10px @nav_tree_border_width 10px 10px; border-style: @nav_tree_border_style none @nav_tree_border_style @nav_tree_border_style; border-color: transparent transparent transparent @nav_tree_background_color; position: absolute; top: -10px; left: -11px; z-index: 1002; }
-.popup_html li:hover { background-color: @nav_tree_hover_background_color; color: @nav_tree_hover_color; }
-.popup_html li:hover > div > a { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-.popup_html li:hover .menu_arrow { border-color: transparent transparent transparent @nav_tree_border_color; }
-.popup_html li:hover .menu_arrow span { border-color: transparent transparent transparent @nav_tree_hover_background_color; }
-.popup_html li.new_span > a > .new-icon { display: inline-block; float: none; }
-.popup_html li.state-selected > a { font-weight: bold !important; }
+/**
+ * Hiding the dropdown links because they're dumb and
+ * don't add any value.
+ */
+
+ .popup_html { display: none !important; }
 
 
 /* Participated Threads
  * ====================================================== */
 
-.recent-threads-button { background: @nav_tree_background_color; height: (@nav_tree_height + (@nav_tree_border_width * 2)); margin: 0 0 10px 10px; border-width: @nav_tree_border_width; border-style: @nav_tree_border_style; border-color: @nav_tree_border_color; padding: 2px 10px 4px 10px; font: @nav_tree_font; text-align: center; color: @nav_tree_color; cursor: pointer; float: right; }
-.recent-threads-button:hover { background-color: @nav_tree_hover_background_color; font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-.recent-threads-button .new-icon { margin: 0 5px 0 0; }
-.recent-threads-button.new .new-icon { margin-top: 2px; display: inline-block; }
-
-
-/* News Feed
- * ====================================================== */
-
-#news { background-color: @nav_tree_background_color; height: @nav_tree_height !important; margin: 0 auto 10px; border: @nav_tree_border_width @nav_tree_border_style @nav_tree_border_color; font: @nav_tree_font; text-decoration: @nav_tree_decoration; color: @nav_tree_color; overflow: hidden; z-index: 9; .box-sizing(content-box); }
-
-#news .items { height: @nav_tree_height !important; overflow: hidden; position: relative; }
-#news .items div img { vertical-align: text-bottom; }
-#news .items .itemSlide { padding: 0 10px; line-height: @nav_tree_height !important; }
-
-#news .nav { background-position: center; float: left; }
-#news .nav > span { height: @nav_tree_height !important; padding: 0 3px; border-width: 0 1px 0 0; border-style: solid; border-color: transparent; cursor: default; display: inline-block; float: left; }
-#news .nav > span.title { height: @nav_tree_height !important; padding: 0 6px; line-height: @nav_tree_height !important; text-align: center; display: inline-block; }
-#news .nav .arrow.left span { border-right-color: @nav_tree_border_color; }
-#news .nav .arrow.right span { border-left-color: @nav_tree_border_color; }
-#news .nav:hover { background-color: @nav_tree_hover_background_color; }
-#news .nav:hover > span { border: @nav_tree_border_width @nav_tree_border_style @nav_tree_border_color; border-width: 0 @nav_tree_border_width 0 0; }
-#news .nav:hover .arrow { background-color: @nav_tree_hover_background_color; }
+.recent-threads-button { background: transparent; margin-left: 10px; border: @nav_tree_border; padding: 7px 14px; font: @nav_tree_font; letter-spacing: 0.25em; text-align: center; text-decoration: @nav_tree_decoration; text-transform: @nav_tree_case; color: @nav_tree_color; cursor: pointer; float: right; }
+.recent-threads-button:hover,
+.recent-threads-button:focus,
+.recent-threads-button:active { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
+.recent-threads-button .new-icon { margin: 1px 8px 0 0; color: @nav_tree_color !important; }
+.recent-threads-button.new .new-icon { display: inline-block; }
 
 
 /* ======================================================
  * Main
  * ====================================================== */
 
-#wrapper { width: @wrapper_width; margin: 0 auto; overflow-x: hidden; }
+@wrapper_background_color: @light_color_1;
+
+#wrapper { background-color: @wrapper_background_color; width: @wrapper_width; margin: 0 auto; padding: 20px; overflow-x: hidden; }
 
 
 /* Containers
@@ -1119,16 +923,16 @@ table.list .last-edited { color: @timestamp_color; }
  * ====================================================== */
 
 .search .content { padding: 10px; }
-.search .row { .flex-display(); .flex-wrap(wrap); }
+.search .row { display: flex; flex-wrap: wrap; }
 .search .header,
 .search .footer { font-size: 1.4rem; }
 .search .header,
 .search .footer,
 .search .options-container { margin: 10px; padding: 10px; }
-.search .options-container:not(#how) { max-width: ~"calc(50% - 20px)"; overflow: hidden; .flex-basis(~"calc(50% - 20px)"); }
+.search .options-container:not(#how) { max-width: ~"calc(50% - 20px)"; overflow: hidden; flex-basis: ~"calc(50% - 20px)"; }
 .search .options-container th { padding-bottom: 5px; font-size: 1.4rem; text-align: left; }
 .search .options-container td { padding: 5px 10px 5px 0; }
-.search .footer { .flex-display(); .align-items(center); .justify-content(space-between); }
+.search .footer { display: flex; align-items: center; justify-content: center; }
 .search .disabled { background-color: #ddd; cursor: not-allowed; }
 .search #how { margin-bottom: 20px; font-size: 1.4rem; }
 .search #what input,
@@ -1503,7 +1307,7 @@ table.list .last-edited { color: @timestamp_color; }
 .wysiwyg-area .poll th { padding-bottom: 5px; text-align: left; }
 .wysiwyg-area .poll [name="poll_max_answers"] { width: 25px; }
 .wysiwyg-area .poll .poll-options { line-height: 30px !important; }
-.wysiwyg-area .submit { line-height: 28px !important; .flex-display(); .flex-direction(row-reverse); .align-items(center); .justify-content(space-between); }
+.wysiwyg-area .submit { line-height: 28px !important; display: flex; flex-direction: row-reverse; align-items: center; justify-content: space-between; }
 .wysiwyg-area .edit_reason > label { width: 180px; line-height: 28px; float: left; }
 .wysiwyg-area .edit_reason > div { margin-left: 180px; }
 .wysiwyg-area .edit_reason > div > input { width: 100%; }
@@ -1718,7 +1522,7 @@ table.list .last-edited { color: @timestamp_color; }
 .edit-user .avatar.content-box { padding: 10px 10px 0 0; }
 .edit-user .micro-profile .avatar { padding: 0; }
 
-.edit-user #avatar-options { .flex-display(); }
+.edit-user #avatar-options { display: flex; }
 .edit-user #avatar-options .content-box { width: 172px; min-height: 270px; border-width: 1px; padding: 10px; text-align: center; position: relative; }
 .edit-user #avatar-options .content-box.options { width: 100%; min-width: 279px; max-width: 350px; text-align: left; }
 
