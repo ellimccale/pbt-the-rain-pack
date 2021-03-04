@@ -90,8 +90,7 @@
  * ====================================================== */
 
 @body_background_color: @dark_color_1;
-@body_background_image: url('https://storage.proboards.com/6250332/images/MyRpaHEPSobKfhkQDLsT.jpg'),
-                        url('https://storage.proboards.com/6250332/images/exLKnaeUhfbBEPcrXTnF.jpg');
+@body_background_image: url('https://storage.proboards.com/6250332/images/MyRpaHEPSobKfhkQDLsT.jpg');
 
 @default_forum_text_color: @dark_color_1;
 @link_color: @accent_color_light;
@@ -137,10 +136,9 @@
 
 @images_path: '//storage.proboards.com/forum/images';
 
-@body_background_repeat: no-repeat, no-repeat;
-@body_background_attachment: scroll, scroll;
-@body_background_position: center top, center bottom;
-@body_background_size: auto, 100% auto;
+@body_background_repeat: no-repeat;
+@body_background_attachment: fixed;
+@body_background_position: center top;
 
 @default_forum_text_font_style: @empty;
 @default_forum_text_font_weight: @empty;
@@ -219,7 +217,7 @@ html {
     .box-sizing(); /* 1 */
 }
 
-body { background-color: @body_background_color; background-image: @body_background_image; background-attachment: @body_background_attachment; background-repeat: @body_background_repeat; background-position: @body_background_position; background-size: @body_background_size; font-style: @default_forum_text_font_style; font-weight: @default_forum_text_font_weight; font-size: @default_forum_text_font_size; font-family: @default_forum_text_font_family; line-height: 1.4; text-decoration: @default_forum_text_decoration; text-transform: @default_forum_text_case; color: @default_forum_text_color; display: flex; flex-direction: column; }
+body { background-color: @body_background_color; background-image: @body_background_image; background-attachment: @body_background_attachment; background-repeat: @body_background_repeat; background-position: @body_background_position; font-style: @default_forum_text_font_style; font-weight: @default_forum_text_font_weight; font-size: @default_forum_text_font_size; font-family: @default_forum_text_font_family; line-height: 1.4; text-decoration: @default_forum_text_decoration; text-transform: @default_forum_text_case; color: @default_forum_text_color; display: flex; flex-direction: column; }
 
 
 /* Links
@@ -313,7 +311,7 @@ hr { height: 0; border: 0; border-top: 1px solid @container_inner_border_color; 
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: @light_color_1;
-    z-index: 10;
+    z-index: 1001;
 }
 
 
@@ -416,59 +414,33 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
  * Navigation Menu
  * ====================================================== */
 
-@nav_bar_background: @dark_color_1;
-@nav_bar_button_font: 1rem @default_forum_text_font_family;
-@nav_bar_button_letter_spacing: 0.25em;
-@nav_bar_button_decoration: none;
-@nav_bar_button_case: uppercase;
-@nav_bar_button_color: @light_color_1;
-@nav_bar_button_hover_font: @nav_bar_button_font;
-@nav_bar_button_hover_decoration: @nav_bar_button_decoration;
-@nav_bar_button_hover_color: @accent_color_light;
-@nav_bar_button_current_font: @nav_bar_button_font;
-@nav_bar_button_current_decoration: @nav_bar_button_decoration;
-@nav_bar_button_current_color: @light_color_2;
-
-#navigation-menu { background: @nav_bar_background; width: 100%; position: fixed; z-index: 99; }
+#navigation-menu { background: @dark_color_1; width: 100%; position: fixed; z-index: 99; }
 
 #navigation-menu > ul { width: @wrapper_width; margin: 0 auto; padding: 0 10px; text-align: center; }
 #navigation-menu > ul > li { display: inline-block; vertical-align: top; }
-#navigation-menu > ul > li > a { padding: 0 25px; font: @nav_bar_button_font; line-height: 40px !important; letter-spacing: @nav_bar_button_letter_spacing; text-decoration: @nav_bar_button_decoration; text-transform: @nav_bar_button_case; color: @nav_bar_button_color; display: block; position: relative; }
+#navigation-menu > ul > li > a { padding: 0 25px; font: 1rem @default_forum_text_font_family; line-height: 40px !important; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @light_color_1; display: block; position: relative; }
 #navigation-menu > ul > li > a:hover,
-#navigation-menu > ul > li > a:focus { font: @nav_bar_button_hover_font; text-decoration: @nav_bar_button_hover_decoration; color: @nav_bar_button_hover_color; }
-#navigation-menu > ul > li > a.state-active { font: @nav_bar_button_current_font; text-decoration: @nav_bar_button_current_decoration; color: @nav_bar_button_current_color; }
+#navigation-menu > ul > li > a:focus { color: @light_color_2; }
+#navigation-menu > ul > li > a.state-active { color: @light_color_2; }
 
 /* --- Tip Holder --- */
 
-@nav_bar_bubble_background: @accent_color;
-@nav_bar_bubble_font: 1rem @default_forum_text_font_family;
-@nav_bar_bubble_color: @light_color_2;
-
 #navigation-menu .tip-holder { margin-right: -8px; margin-left: 8px; cursor: pointer; display: inline-block; vertical-align: top; }
-#navigation-menu .tip-number { background-color: @nav_bar_bubble_background; padding: 0 5px; font: @nav_bar_bubble_font; line-height: 40px; letter-spacing: 0; color: @nav_bar_bubble_color; }
+#navigation-menu .tip-number { background-color: @accent_color; padding: 0 5px; font: 1rem @default_forum_text_font_family; line-height: 40px; letter-spacing: 0; color: @light_color_2; }
 
 
 /* ======================================================
  * Navigation Tree
  * ====================================================== */
 
-@nav_tree_border: 1px solid @container_outer_border_color;
-@nav_tree_font: 1rem @default_forum_text_font_family;
-@nav_tree_decoration: none;
-@nav_tree_case: uppercase;
-@nav_tree_color: @dark_color_2;
-@nav_tree_hover_font: @nav_tree_font;
-@nav_tree_hover_decoration: @nav_tree_decoration;
-@nav_tree_hover_color: @nav_tree_color;
-
-#navigation-tree { background: transparent; margin-bottom: 20px; border: @nav_tree_border; overflow: hidden; }
+#navigation-tree { background: transparent; margin-bottom: 20px; border: 1px solid @container_outer_border_color; overflow: hidden; }
 
 #nav-tree { white-space: nowrap; }
 #nav-tree > li { display: inline-block; vertical-align: top; }
-#nav-tree > li:not(:last-child) div::after { content: " \203A "; font: @nav_tree_font; color: @nav_tree_color; padding: 7px 0; display: inline-block; vertical-align: top; }
-#nav-tree > li a { padding: 7px 14px; font: @nav_tree_font; letter-spacing: 0.25em; text-decoration: @nav_tree_decoration; text-transform: @nav_tree_case; color: @nav_tree_color; display: inline-block; vertical-align: top; }
+#nav-tree > li:not(:last-child) div::after { content: " \203A "; font: 1rem @default_forum_text_font_family; color: @dark_color_2; padding: 7px 0; display: inline-block; vertical-align: top; }
+#nav-tree > li a { padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; }
 #nav-tree > li a:hover,
-#nav-tree > li a:focus { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
+#nav-tree > li a:focus { color: @dark_color_2; }
 
 /**
  * Hiding the dropdown links because they're dumb and
@@ -481,11 +453,11 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 /* Participated Threads
  * ====================================================== */
 
-.recent-threads-button { background: transparent; margin-left: 10px; border: @nav_tree_border; padding: 7px 14px; font: @nav_tree_font; letter-spacing: 0.25em; text-align: center; text-decoration: @nav_tree_decoration; text-transform: @nav_tree_case; color: @nav_tree_color; cursor: pointer; float: right; }
+.recent-threads-button { background: transparent; margin-left: 10px; border: 1px solid @container_outer_border_color; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-align: center; text-decoration: none; text-transform: uppercase; color: @dark_color_2; cursor: pointer; float: right; }
 .recent-threads-button:hover,
 .recent-threads-button:focus,
-.recent-threads-button:active { font: @nav_tree_hover_font; text-decoration: @nav_tree_hover_decoration; color: @nav_tree_hover_color; }
-.recent-threads-button .new-icon { margin: 1px 8px 0 0; color: @nav_tree_color !important; }
+.recent-threads-button:active { color: @dark_color_2; }
+.recent-threads-button .new-icon { margin: 1px 8px 0 0; color: @dark_color_2 !important; }
 .recent-threads-button.new .new-icon { display: inline-block; }
 
 
@@ -493,74 +465,61 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
  * Main
  * ====================================================== */
 
-@wrapper_background_color: @light_color_1;
-
-#wrapper { background-color: @wrapper_background_color; width: @wrapper_width; margin: 0 auto; padding: 20px; overflow-x: hidden; }
+#wrapper { background-color: @light_color_1; width: @wrapper_width; margin: 0 auto; padding: 20px; overflow-x: hidden; }
 
 
 /* Containers
  * ====================================================== */
 
-@content_background: @container_background_color_1;
-@content_border_width: 1px;
-@content_border_style: solid;
-@content_area_background: @container_background_color_1;
-@content_area_border: 1px solid @container_inner_border_color;
+/**
+ * These variables have been left in place because they
+ * are also used for the dialog content boxes. This makes
+ * it easier to keep the two styles consistent.
+ */
+
+@content_area_background_color: #fff;
 @content_area_text_font: @empty;
 @content_area_text_color: @container_text_color_1;
-@content_area_links_font: @content_area_text_font;
-@content_area_links_decoration: @empty;
 
-.container { margin-bottom: 0; color: @container_text_color_1; }
-.container + .container { margin-top: 10px; }
+.container { margin-bottom: 0; }
+.container + .container { margin-top: 20px; }
 
-.container a { font: @content_area_links_font; text-decoration: @content_area_links_decoration; color: @container_links_color; }
 .container abbr.time { color: @timestamp_color; }
-.container .note { color: lighten(@container_text_color_1, 15%); }
+.container .note { color: @container_text_color_1; }
 
-.container > .content { background: @content_background; border-width: @content_border_width; border-style: @content_border_style; border-color: @container_outer_border_color; border-top-width: 0; padding: 0; color: @container_text_color_1; overflow: hidden; }
+.container > .content { background-color: @container_background_color_1; padding: 20px; color: @container_text_color_1; overflow: hidden; }
 
-.content-box { background: @content_area_background; border: @content_area_border; font: @content_area_text_font; color: @content_area_text_color; }
-.content-box a { font: @content_area_links_font; text-decoration: @content_area_links_decoration; color: @container_links_color; }
+.content-box { background-color: @content_area_background_color; padding: 20px; color: @content_area_text_color; }
 
 
 /* Title Bars
  * ====================================================== */
 
-@title_bar_background_image: @empty;
-@title_bar_background_attachment: @empty;
-@title_bar_background_repeat: @empty;
-@title_bar_background_position: @empty;
-@title_bar_border: @empty;
-@title_text_font_weight: bold;
-@title_text_font_size: 1.3rem;
-@title_text_font_family: @default_forum_text_font_family;
-@title_text_decoration: @empty;
-@title_text_transform: @empty;
-@title_text_align: @empty;
-@title_buttons_background_image: @empty;
-@title_buttons_background_attachment: @empty;
-@title_buttons_background_repeat: @empty;
-@title_buttons_background_position: @empty;
-@title_buttons_border: @empty;
-@title_buttons_font: 1.3rem @default_forum_text_font_family;
-@title_buttons_decoration: @empty;
-@title_buttons_hover_background: @empty;
+/**
+ * These variables have been left in place because they
+ * are also used for the dialog title bars. This makes it
+ * easier to keep the two styles consistent.
+ */
+
+@title_text_font: 1rem @default_forum_text_font_family;
+@title_text_case: uppercase;
+@title_text_spacing: 0.25em;
+@title_buttons_border: 1px solid mix(@container_inner_border_color, @accent_color, 25%);
+@title_buttons_font: 1rem @default_forum_text_font_family;
+@title_buttons_case: uppercase;
+@title_buttons_spacing: 0.25em;
+@title_buttons_hover_background_color: mix(@container_inner_border_color, @accent_color, 25%);
 @title_buttons_hover_border: @title_buttons_border;
-@title_buttons_hover_font: @title_buttons_font;
-@title_buttons_hover_decoration: @title_buttons_decoration;
 @title_buttons_hover_color: @title_buttons_color;
 
-.container > .title-bar { background-color: @title_bar_background_color; background-image: @title_bar_background_image; background-attachment: @title_bar_background_attachment; background-repeat: @title_bar_background_repeat; background-position: @title_bar_background_position; min-height: 30px; border: @title_bar_border; padding: 0 10px; text-align: @title_text_align; }
+.container > .title-bar { background-color: @title_bar_background_color; min-height: 50px; padding: 0 20px; overflow: hidden; position: relative; }
 .container > .title-bar h1,
 .container > .title-bar h2,
-.container > .title-bar h3 { font-weight: @title_text_font_weight; font-size: @title_text_font_size; font-family: @title_text_font_family; line-height: 30px !important; text-decoration: @title_text_decoration; text-transform: @title_text_transform; text-align: @title_text_align; color: @title_text_color; display: inline; }
+.container > .title-bar h3 { font: @title_text_font; line-height: 50px !important; letter-spacing: @title_text_spacing; text-transform: @title_text_case; color: @title_text_color; display: inline-block; vertical-align: top;; }
 
-.container > .title-bar > .controls { float: right; }
-.container > .title-bar > .controls li a,
-.container > .title-bar > .controls li div { background-color: @title_buttons_background_color; background-image: @title_buttons_background_image; background-attachment: @title_buttons_background_attachment; background-repeat: @title_buttons_background_repeat; background-position: @title_buttons_background_position; height: 30px; border: @title_buttons_border; padding: 0 10px; font: @title_buttons_font; line-height: 30px !important; text-decoration: @title_buttons_decoration; color: @title_buttons_color; .box-sizing(content-box); }
-.container > .title-bar > .controls:hover li a,
-.container > .title-bar > .controls:hover li div { background: @title_buttons_hover_background; border: @title_buttons_hover_border; font: @title_buttons_hover_font; text-decoration: @title_buttons_hover_decoration !important; color: @title_buttons_hover_color !important; }
+.container > .title-bar > .controls { position: absolute; right: 20px; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
+.container > .title-bar > .controls li a { background-color: @title_buttons_background_color; border: @title_buttons_border; padding: 8px 15px; font: @title_buttons_font; letter-spacing: @title_buttons_spacing; text-transform: @title_buttons_case; color: @title_buttons_color; .transition(all 0.2s ease); }
+.container > .title-bar > .controls:hover li a { background-color: @title_buttons_hover_background_color; border: @title_buttons_hover_border; color: @title_buttons_hover_color; }
 
 .title_wrapper { overflow: hidden; }
 .title_wrapper img { display: block; }
@@ -597,50 +556,41 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 /* Dialogs
  * ====================================================== */
 
-.ui-widget-overlay { opacity: 0.3; }
+.ui-widget-overlay { background-color: @dark_color_1; opacity: 0.5; }
 
-.ui-dialog { .box-sizing(content-box); .hsla-bgcolor-safe(@container_outer_border_color, .5); }
-.ui-dialog .ui-dialog-titlebar { background-color: @title_bar_background_color; background-image: @title_bar_background_image; background-attachment: @title_bar_background_attachment; background-repeat: @title_bar_background_repeat; background-position: @title_bar_background_position; min-height: 30px; border: @title_bar_border; padding: 0 10px; position: relative; }
+.ui-dialog { padding: 20px; .hsla-bgcolor-safe(@container_outer_border_color, .5); .box-sizing() !important; }
+.ui-dialog * { .box-sizing() !important; }
+
+.ui-dialog .ui-dialog-titlebar { background-color: @title_bar_background_color; min-height: 30px; padding: 0 10px; position: relative; }
 .ui-dialog .ui-dialog-titlebar-close { right: 10px; }
 .ui-dialog .ui-dialog-titlebar-close:hover span,
 .ui-dialog .ui-dialog-titlebar-close:focus span { background-image:url('@{images_path}/ui-icons.png'); background-position: -20px, 0; }
-.ui-dialog .ui-dialog-title { font-weight: @title_text_font_weight; font-size: @title_text_font_size; font-family: @title_text_font_family; line-height: 30px !important; text-decoration: @title_text_decoration; text-transform: @title_text_transform; text-align: @title_text_align; color: @title_text_color; float: left; }
-.ui-dialog .ui-dialog-content,
-.ui-dialog .ui-dialog-buttonpane { background: @content_background; border-width: @content_border_width; border-style: @content_border_style; border-color: @container_outer_border_color; border-top-width: 0; padding: 0; color: @container_text_color_1; }
+
+.ui-dialog .ui-dialog-title { font: @title_text_font; line-height: 30px !important; text-transform: @title_text_case; color: @title_text_color; float: left; }
+
+.ui-dialog div.ui-dialog-content,
+.ui-dialog div.ui-dialog-buttonpane { background-color: @container_background_color_1; padding: 0; color: @container_text_color_1; }
 .ui-dialog div.ui-dialog-buttonpane.ui-widget-content { margin-top: 10px; border-width: 1px; padding: 0 0 0 10px; text-align: right; }
 .ui-dialog div.section { background-color: @container_background_color_1; margin: 10px 0; border-width: 1px; border-style: solid; border-color: @container_inner_border_color; padding: 10px; text-align: center; }
 .ui-dialog .dialog-fixed > .control-bar > .controls { padding: 7px 0; float: right; }
+.ui-dialog .ui-search { margin: 10px 0 20px; }
+.ui-dialog .ui-search .search-input { width: 100%; max-width: none; margin: 0; }
 
 .event_icon { cursor: pointer; }
 
-.container.copy .clone { background: @content_background; border-width: @content_border_width; border-style: @content_border_style; border-color: @container_outer_border_color; border-bottom-width: 0; border-top-width: 0; border-collapse: inherit; padding: 0; color: @container_text_color_1; }
+.container.copy .clone { background: @container_background_color_1; border-collapse: inherit; padding: 0; }
 
 /* --- Participated Dialog --- */
 
-@participated_background: @container_background_color_1;
-@participated_inner_border: 1px solid @container_inner_border_color;
-@participated_text_font: @empty;
-@participated_text_color: @container_text_color_1;
-@participated_links_font: @empty;
-@participated_links_decoration: @empty;
-@participated_links_color: @empty;
-@participated_subject_align: left;
-@participated_last_post_align: right;
-@participated_hover_background: @container_highlight_color;
-@participated_hover_text_font: @empty;
-@participated_hover_text_color: @empty;
-@participated_hover_links_font: @empty;
-@participated_hover_links_decoration: @empty;
-@participated_hover_links_color: @empty;
-
-#recent-threads { background: @participated_background; font: @participated_text_font; color: @participated_text_color; }
-#recent-threads a { font: @participated_links_font; text-decoration: @participated_links_decoration; color: @participated_links_color; }
-#recent-threads th,
-#recent-threads td { border: @participated_inner_border; border-top-width: 0; border-left-width: 0; .box-sizing(); }
-#recent-threads tbody tr:hover { background: @participated_hover_background; font: @participated_hover_text_font; color: @participated_hover_text_color; }
-#recent-threads tbody tr:hover a { font: @participated_hover_links_font; text-decoration: @participated_hover_links_decoration; color: @participated_hover_links_color; }
-#recent-threads .subject { padding-left: 0; text-align: @participated_subject_align; }
-#recent-threads .latest { text-align: @participated_last_post_align; }
+#recent-threads { background-color: @content_area_background_color; border: 0; }
+#recent-threads th { padding: 8px 10px 0; }
+#recent-threads td { padding: 10px; }
+#recent-threads table.list .checkbox input[type="checkbox"] { width: 19px; height: 19px; }
+#recent-threads .subject { padding-left: 0; text-align: left; }
+#recent-threads .subject .thread-link { max-width: 85%; font: 1.4rem @default_forum_text_font_family; text-transform: none; color: @link_color; display: inline-block; vertical-align: middle; .text-overflow(); }
+#recent-threads .subject .thread-link:hover,
+#recent-threads .subject .thread-link:focus { color: @container_links_color; }
+#recent-threads .latest { width: 36%; text-align: right; }
 
 /* --- Selection Dialog --- */
 
@@ -649,9 +599,61 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 
 /* --- Guests Online Dialog --- */
 
-#guests-online table { width: 150px; margin: auto; }
+#guests-online table { width: 100%; }
 #guests-online th,
-#guests-online td { padding: 2px 0; text-align: @members_align_name; }
+#guests-online td { padding: 2px 0; text-align: left; }
+
+/* --- Poll Dialog --- */
+
+#poll-dialog table { width: 100%; table-layout: auto; }
+#poll-dialog td { padding: 5px 10px 5px 0; line-height: 230%; vertical-align: top; }
+#poll-dialog td:first-child { width: 26%; }
+#poll-dialog .poll-options { line-height: 30px !important; }
+#poll-dialog .poll-options input[name="poll_max_answers"] { max-width: 35px; }
+
+/* -- Captcha Dialog --- */
+
+#captcha-container { background-color: @container_background_color_1; }
+#gre-captcha-container > div { margin: 0 auto; }
+
+
+/* ======================================================
+ * Footer
+ * ====================================================== */
+
+.c-footer { width: @wrapper_width; margin: 40px auto; padding: 0 20px; font: 1rem @default_forum_text_font_family; line-height: 2.2; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
+
+.c-footer a { padding: 0 0.1em; font: @link_font; text-decoration: @link_decoration; color: @link_color; }
+.c-footer a:hover,
+.c-footer a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
+
+.c-footer .c-footer__link-wrapper { color: @light_color_1; }
+
+#js-switch-link { margin-top: 10px; }
+
+
+/* Copyright
+ * ====================================================== */
+
+.c-footer__copyright { background-color: @dark_color_2; padding: 18px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
+
+.c-footer__copyright a { font: @link_font; text-decoration: @link_decoration; color: @link_color; }
+.c-footer__copyright a:hover,
+.c-footer__copyright a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
+
+
+/* Ads
+ * ====================================================== */
+
+.ad-banner--top { position: relative !important; }
+.ad-banner--top-50 { height: 90px !important; }
+.ad-banner--top-60 { height: 100px !important; }
+.ad-banner--top-90 { height: 130px !important; }
+.ad-banner--top-250 { height: 290px !important; }
+.ad-banner--top iframe { margin: 0 auto 40px !important; }
+
+.ad-banner--bottom { margin: 40px auto 0 !important; }
+.ad-banner--bottom iframe { margin-bottom: 0 !important; }
 
 
 /* ======================================================
@@ -718,149 +720,83 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
  * Lists / Tables
  * ====================================================== */
 
-@lists_background: @empty;
-@lists_inner_border_width: 1px;
-@lists_inner_border_style: solid;
-@lists_text_font: @empty;
-@lists_text_color: @container_text_color_1;
-@lists_links_font: @empty;
-@lists_links_decoration: @link_decoration;
-@lists_links_color: @container_links_color;
-@lists_hover_background_image: @empty;
-@lists_hover_background_attachment: @empty;
-@lists_hover_background_repeat: @empty;
-@lists_hover_background_position: @empty;
-@lists_hover_text_font: @lists_text_font;
-@lists_hover_text_color: @lists_text_color;
-@lists_hover_links_font: @lists_links_font;
-@lists_hover_links_decoration: @link_hover_decoration;
-@lists_hover_links_color: @container_links_hover_color;
-@lists_selected_background: @container_highlight_color;
-@lists_selected_text_font: @lists_text_font;
-@lists_selected_text_color: @lists_text_color;
-@lists_selected_links_font: @lists_links_font;
-@lists_selected_links_decoration: @lists_links_decoration;
-@lists_selected_links_color: @lists_links_color;
+@lists_background_color: #fff;
+@lists_text_font: @content_area_text_font;
+@lists_text_color: @content_area_text_color;
+@lists_heading_text_font: 1rem @default_forum_text_font_family;
+@lists_heading_text_case: uppercase;
+@lists_heading_text_color: @content_area_text_color;
+@lists_selected_background_color: @container_highlight_color;
 
-table.list { background: @lists_background; width: 100%; font: @lists_text_font; color: @lists_text_color; table-layout: fixed; }
+table.list { width: 100%; table-layout: fixed; }
+table.list > tbody > tr { background-color: @lists_background_color; }
 table.list > thead > tr > th,
-table.list > tbody > tr > td { border-width: 0 @lists_inner_border_width @lists_inner_border_width 0; border-style: @lists_inner_border_style; border-color: @container_inner_border_color; padding: 10px; vertical-align: middle; }
-table.list > thead > tr > th { padding: 5px 10px; white-space: nowrap; }
-table.list > thead > tr.last > td,
-table.list > tbody > tr.last > td { border-bottom-width: 0; }
-table.list > thead > tr > .last,
-table.list > tbody > tr > .last { border-right-width: 0; }
-table.list th.icon,
-table.list td.icon { width: 55px; text-align: center; }
-table.list th.main,
-table.list td.main { padding: 10px 10px 10px 0; }
-table.list .checkbox { width: 40px; border-right: none; padding: 0; text-align: center; }
-table.list .checkbox-placeholder { border-right: none !important; }
-table.list abbr.time,
-table.list .last-edited { color: @timestamp_color; }
+table.list > tbody > tr > td { padding: 15px 10px; font: @lists_text_font; line-height: 1.6 !important; letter-spacing: 0.015em; color: @lists_text_color; vertical-align: middle; .box-sizing(content-box); }
+table.list > thead > tr > th { padding: 0 10px 8px; font: @lists_heading_text_font; letter-spacing: 0.15em; text-transform: @lists_heading_text_case; color: @lists_heading_text_color; white-space: nowrap; }
+table.list > thead > tr > th.last,
+table.list > tbody > tr > td.last { padding-right: 20px; }
+table.list > tbody > tr.spacer { background-color: transparent; height: 5px; }
+table.list > tbody > tr.spacer > td { height: 5px; padding: 0; }
+table.list > tbody > tr.spacer:last-of-type { display: none; }
+table.list .checkbox { width: 45px; padding: 0; line-height: 1 !important; text-align: center; }
+table.list .checkbox input[type="checkbox"] { background: none; background-color: @buttons_background_color; width: 17px; height: 17px; margin: 0; border: @buttons_border; border-radius: 2px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; }
+table.list .checkbox input[type="checkbox"]:checked { background-color: @buttons_hover_background_color; background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='10px' viewBox='0 0 14 10'%3E%3Cpath fill='%23ffffff' d='M5.085 9.875a.616.616 0 0 0 .914 0l7.49-7.465a.619.619 0 0 0 .178-.457.619.619 0 0 0-.178-.453L12.55.582a.566.566 0 0 0-.444-.2.645.645 0 0 0-.47.2L5.542 6.676 2.7 3.832a.645.645 0 0 0-.47-.2.566.566 0 0 0-.444.2l-.939.914a.676.676 0 0 0 0 .914z'/%3E%3C/svg%3E"); background-position: 3px center; background-repeat: no-repeat; background-size: 11px; border: @buttons_hover_border; }
 
-.list a { font: @lists_links_font; text-decoration: @lists_links_decoration; color: @lists_links_color; }
-.list a:hover,
-.list a:focus { font: @lists_hover_links_font; text-decoration: @lists_hover_links_decoration; color: @lists_hover_links_color; }
 .list .item > .main { cursor: pointer; overflow: hidden; }
-.list .item > .main.state-hover .link a,
-.list .item:hover > .main .link a { font: @lists_hover_links_font; text-decoration: @lists_hover_links_decoration; color: @lists_hover_links_color; }
-.list .item .list-item-checkbox { visibility: hidden; }
-.list .item.state-selected { background: @lists_selected_background; font: @lists_selected_text_font; color: @lists_selected_text_color; }
-.list .item.state-selected a { font: @lists_selected_links_font; text-decoration: @lists_selected_links_decoration; color: @lists_selected_links_color; }
+.list .item .list-item-checkbox { opacity: 0; .transition(opacity 0.3s ease); }
+.list .item.state-selected,
+.list .item.state-hover { background-color: @lists_selected_background_color; }
 .list .item.state-selected .list-item-checkbox,
-.list .item.state-hover .list-item-checkbox { visibility: visible; }
-.list .item.state-hover { background-color: @container_highlight_color; background-image: @lists_hover_background_image; background-attachment: @lists_hover_background_attachment; background-repeat: @lists_hover_background_repeat; background-position: @lists_hover_background_position; font: @lists_hover_text_font; color: @lists_hover_text_color; }
-
-.list .board.item:hover,
-#calendar-list .item:hover { background-color: @container_highlight_color; background-image: @lists_hover_background_image; background-attachment: @lists_hover_background_attachment; background-repeat: @lists_hover_background_repeat; background-position: @lists_hover_background_position; font: @lists_hover_text_font; color: @lists_hover_text_color; }
+.list .item.state-hover .list-item-checkbox { opacity: 1; }
 
 
 /* ======================================================
  * Icons
  * ====================================================== */
 
-@fa_board_icon_color: @buttons_text_color;
-@fa_board_new_icon_color: @buttons_text_color;
-@fa_board_redirect_icon_color: @buttons_text_color;
 @fa_shoutbox_refresh_icon_color: @buttons_text_color;
-@fa_info_stats_icon_color: @buttons_text_color;
-@fa_info_members_icon_color: @buttons_text_color;
-@fa_info_online_icon_color: @buttons_text_color;
-@fa_info_24hrs_icon_color: @buttons_text_color;
 @fa_settings_icon_color: @buttons_text_color;
 @fa_search_icon_color: @buttons_text_color;
 @fa_like_icon_color: @buttons_text_color;
 @fa_like_icon_liked_color: #e81c4f;
-@fa_thread_icon_color: @buttons_text_color;
-@fa_thread_announcement_icon_color: @buttons_text_color;
-@fa_thread_sticky_icon_color: @buttons_text_color;
 @fa_lock_icon_color: @buttons_text_color;
 @fa_poll_icon_color: @buttons_text_color;
 @fa_bookmark_icon_color: @buttons_text_color;
 @fa_falling_icon_color: @buttons_text_color;
-@fa_message_icon_color: @buttons_text_color;
-@fa_message_new_icon_color: @buttons_text_color;
 @fa_checkmark_icon_color: #19cf86;
-
-/* --- Board --- */
-
-.board .icon > .fas.fa-arrow-circle-right { font-size: 16px; color: @fa_board_redirect_icon_color; }
-.board .icon > .fas.fa-folder { font-size: 16px; color: @fa_board_new_icon_color; }
-.board .icon > .far.fa-folder { font-size: 16px; color: @fa_board_icon_color; }
 
 /* --- Shoutbox --- */
 
-.shoutbox_refresh_button .fas.fa-sync-alt { font-size: 14px; color: @fa_shoutbox_refresh_icon_color; }
-
-/* --- Info Center --- */
-
-.stats .icon > .fas.fa-info-circle { font-size: 16px; color: @fa_info_stats_icon_color; }
-.stats .icon > .fas.fa-users { font-size: 16px; color: @fa_info_members_icon_color; }
-.stats .icon > .fas.fa-user-circle { font-size: 16px; color: @fa_info_online_icon_color; }
-.stats .icon > .fas.fa-clock { font-size: 16px; color: @fa_info_24hrs_icon_color; }
-
-/* --- Posts/Messages --- */
-
-.button .status { padding: 0 7px; font-size: 14px; color: @fa_settings_icon_color; }
-.button .icon { padding: 3px 2px 1px; }
-.search-filters-button .icon > .fas.fa-search { padding: 1px 0; font-size: 14px; color: @fa_search_icon_color; }
-
-.posts .post .content-head .controls a.likes-button { padding: 2px 8px; font-size: 14px; color: @fa_like_icon_color; }
-.posts .post .content-head .controls a.likes-button.liked { color: @fa_like_icon_liked_color; }
-
-/* --- Threads/Conversations --- */
-
-.thread .icon > .far.fa-comments { font-size: 18px; color: @fa_thread_icon_color; }
-.thread.announcement .icon > .fas.fa-bullhorn { font-size: 16px; color: @fa_thread_announcement_icon_color; }
-.thread.sticky .icon > .far.fa-sticky-note { font-size: 17px; color: @fa_thread_sticky_icon_color; }
-
-.conversation .icon > .far.fa-envelope { font-size: 16px; color: @fa_message_icon_color; }
-.conversation.new .icon > .fas.fa-envelope { font-size: 16px; color: @fa_message_new_icon_color; }
+.shoutbox_refresh_button .fas.fa-sync-alt { font-size: 1.4rem; color: @fa_shoutbox_refresh_icon_color; }
 
 /* --- Status --- */
 
 .threads .control-icons i { padding-right: 5px; }
-.lock_icon { font-size: 15px; color: @fa_lock_icon_color; }
-.poll_icon { font-size: 16px; color: @fa_poll_icon_color; }
-.bookmark_icon { font-size: 14px; color: @fa_bookmark_icon_color; }
-.falling_icon { font-size: 14px; color: @fa_falling_icon_color; }
+.lock_icon { font-size: 1.5rem; color: @fa_lock_icon_color; }
+.poll_icon { font-size: 1.5rem; color: @fa_poll_icon_color; }
+.bookmark_icon { font-size: 1.4rem; color: @fa_bookmark_icon_color; }
+.falling_icon { font-size: 1.4rem; color: @fa_falling_icon_color; }
+
+/* --- Posts/Messages --- */
+
+.button .status { padding: 0 7px; font-size: 1.4rem; color: @fa_settings_icon_color; }
+.button .icon { padding: 3px 2px 1px; }
+.search-filters-button .icon > .fas.fa-search { padding: 1px 0; font-size: 1.4rem; color: @fa_search_icon_color; }
+
+.posts .post .content-head .controls a.likes-button { padding: 2px 8px; font-size: 1.4rem; color: @fa_like_icon_color; }
+.posts .post .content-head .controls a.likes-button.liked { color: @fa_like_icon_liked_color; }
 
 /* --- Checkmark --- */
 
-.ui-poll .results tr td .select-box i { padding: 2px; color: @fa_checkmark_icon_color; visibility: hidden; display: block; }
+.ui-poll .results tr td .select-box i { padding: 3px; font-size: 1.1rem; color: @fa_checkmark_icon_color; visibility: hidden; display: block; }
 .ui-poll .results tr.ui-selected td .select-box i { visibility: visible; }
 
 /* --- New Icon --- */
 
-@new_background: @title_buttons_background_color;
-@new_border: 1px solid darken(@title_buttons_background_color, 15%);
 @new_link_font: bold 0.7rem @default_forum_text_font_family;
 @new_link_decoration: none;
 @new_link_transform: uppercase;
-@new_link_color: @title_buttons_color;
-@new_hover_background: @new_background;
-@new_hover_border: @new_border;
+@new_link_color: @accent_color_light;
 @new_hover_link_font: @new_link_font;
 @new_hover_link_decoration: @new_link_decoration;
 @new_hover_link_transform: @new_link_transform;
@@ -868,51 +804,11 @@ table.list .last-edited { color: @timestamp_color; }
 
 .new-icon,
 .new-icon a { height: 11px; font: @new_link_font; line-height: 10px !important; letter-spacing: 0.06em; text-decoration: @new_link_decoration; text-transform: @new_link_transform; text-align: center; color: @new_link_color !important; }
-.new-icon { background: @new_background; margin: 4px 5px 4px 0; border: @new_border; padding: 0 3px; word-wrap: normal; display: none; float: left; }
+.new-icon { margin: 6px 8px 2px 0; padding: 0 3px; word-wrap: normal; display: none; float: left; }
 .new-icon a { position: relative; }
 .new-icon a::after { content: ""; padding: 16px; position: absolute; left: -8px; top: -8px; }
-.new-icon:hover { background: @new_hover_background; border: @new_hover_border; }
 .new-icon:hover,
 .new-icon:hover a { font: @new_hover_link_font; text-decoration: @new_hover_link_decoration; text-transform: @new_hover_link_transform; color: @new_hover_link_color !important; }
-
-
-/* ======================================================
- * Footer
- * ====================================================== */
-
-.c-footer { min-width: @wrapper_width; margin: 40px auto; padding-left: 20px; padding-right: 20px; font: 1rem @default_forum_text_font_family; line-height: 2.2; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
-
-.c-footer a { padding: 0 0.1em; font: @link_font; text-decoration: @link_decoration; color: @link_color; }
-.c-footer a:hover,
-.c-footer a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
-
-.c-footer .c-footer__link-wrapper { color: @light_color_1; }
-
-#js-switch-link { margin-top: 10px; }
-
-
-/* Copyright
- * ====================================================== */
-
-.c-footer__copyright { background-color: @dark_color_2; min-width: @wrapper_width; padding: 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
-
-.c-footer__copyright a { font: @link_font; text-decoration: @link_decoration; color: @link_color; }
-.c-footer__copyright a:hover,
-.c-footer__copyright a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
-
-
-/* Ads
- * ====================================================== */
-
-.ad-banner--top { position: relative !important; }
-.ad-banner--top-50 { height: 90px !important; }
-.ad-banner--top-60 { height: 100px !important; }
-.ad-banner--top-90 { height: 130px !important; }
-.ad-banner--top-250 { height: 290px !important; }
-.ad-banner--top iframe { margin: 0 auto 40px !important; }
-
-.ad-banner--bottom { margin: 60px auto 0 !important; }
-.ad-banner--bottom iframe { margin-bottom: 0 !important; }
 
 
 /* ======================================================
@@ -922,24 +818,37 @@ table.list .last-edited { color: @timestamp_color; }
 /* Search Page
  * ====================================================== */
 
-.search .content { padding: 10px; }
+.search .content { padding: 15px; }
+
 .search .row { display: flex; flex-wrap: wrap; }
+
 .search .header,
-.search .footer { font-size: 1.4rem; }
+.search .footer { padding: 15px 20px; font-size: 1.4rem; }
+.search .footer { display: flex; justify-content: space-between; align-items: center; }
+
 .search .header,
 .search .footer,
-.search .options-container { margin: 10px; padding: 10px; }
-.search .options-container:not(#how) { max-width: ~"calc(50% - 20px)"; overflow: hidden; flex-basis: ~"calc(50% - 20px)"; }
+.search .options-container { margin: 5px; letter-spacing: 0.015em; }
+
+.search .options-container { max-width: ~"calc(100% - 10px)"; overflow: hidden; flex-shrink: 0; flex-basis: ~"calc(100% - 10px)"; }
+.search .options-container:not(#how) { max-width: ~"calc(50% - 10px)"; padding: 15px 20px; flex-basis: ~"calc(50% - 10px)"; }
+.search .options-container table { width: 100%; table-layout: auto; }
 .search .options-container th { padding-bottom: 5px; font-size: 1.4rem; text-align: left; }
-.search .options-container td { padding: 5px 10px 5px 0; }
-.search .footer { display: flex; align-items: center; justify-content: center; }
+.search .options-container td { padding: 5px 0; font-size: 1.2rem; text-align: right; }
+.search .options-container td.option { width: 48%; padding-right: 15px; }
+.search #when.options-container td.input { text-align: left; }
+
+.search .input__space { padding-left: 8px; padding-right: 8px; }
+
 .search .disabled { background-color: #ddd; cursor: not-allowed; }
-.search #how { margin-bottom: 20px; font-size: 1.4rem; }
+
+.search #how { margin-bottom: 10px; padding: 15px 20px; font-size: 1.4rem; }
 .search #what input,
 .search #where input,
 .search #who input,
-.search #who select { width: 100%; max-width: 230px; }
+.search #who select { width: 100%; }
 .search #when input { max-width: 80px; }
+
 .search input[id*="-placeholder"] { cursor: pointer; }
 
 #where-board-subboard, #where-without, #where-category, #who-member-group { display: none; }
@@ -948,33 +857,26 @@ table.list .last-edited { color: @timestamp_color; }
 /* Members Page
  * ====================================================== */
 
-@members_background: @empty;
-@members_text_font: @empty;
-@members_text_align: left;
-@members_text_color: @empty;
-@members_align_name: left;
-@members_align_username: left;
-@members_align_rank: left;
-@members_align_group: left;
-@members_align_posts: left;
-@members_align_date_registered: left;
-@members_align_last_online: right;
-
-.members table.list { table-layout: fixed; }
-.members table.list thead { background: @members_background; font: @members_text_font; color: @members_text_color; }
 .members table.list th.sortable { cursor: pointer; overflow: hidden; }
-.members .list-content td { padding: 3px 10px; word-wrap: break-word; overflow: hidden; .box-sizing(content-box); }
-.members .list-content .checkbox { padding: 3px 0 3px 7px; }
+.members table.list tr:not(.spacer) td { padding-top: 12px; padding-bottom: 10px; word-wrap: break-word; overflow: hidden; }
+.members table.list tr:not(.spacer) .checkbox { padding: 4px 0 0; }
 
-.members .name { width: 19%; text-align: @members_align_name; }
-.members .username { width: 17%; text-align: @members_align_username; }
-.members .rank { width: 16%; text-align: @members_align_rank; }
-.members .group { width: 16%; text-align: @members_align_group; }
-.members .posts { width: 8%; text-align: @members_align_posts; }
-.members .date-registered { width: 18%; text-align: @members_align_date_registered; }
-.members .date-registered abbr.time { font-size: 100%; }
-.members .last-online { width: 18%; text-align: @members_align_last_online; }
-.members .last-online abbr.time { font-size: 100%; }
+.members .list .item.state-selected .user-link,
+.members .list .item.state-hover .user-link { color: @link_color; }
+
+.members .name { width: 20%; padding-left: 0 !important; text-align: left; }
+.members .name .user-link { color: @lists_text_color; }
+
+.members .username { width: 14%; text-align: left; }
+.members .rank { width: 16%; text-align: left; }
+.members .posts { width: 8%; text-align: center; }
+
+.members .date-registered { width: 20%; text-align: left; }
+
+.members .last-online { width: 20%; text-align: right; }
+.members .last-online span { font-weight: bold; color: @accent_color_light; }
+
+.members .item--no-members td { padding: 20px 30px !important; line-height: 1.8 !important; }
 
 .member { cursor: pointer; }
 
@@ -1008,9 +910,6 @@ table.list .last-edited { color: @timestamp_color; }
 .boards .threads { width: 8%; text-align: @board_align_count; white-space: nowrap; }
 .boards .posts { width: 8%; text-align: @board_align_count; white-space: nowrap; }
 .boards .latest { width: 20%; text-align: @board_align_last_post; }
-
-.board.item:hover { background-color: @container_highlight_color; background-image: @lists_hover_background_image; background-attachment: @lists_hover_background_attachment; background-repeat: @lists_hover_background_repeat; background-position: @lists_hover_background_position; font: @lists_hover_text_font; color: @lists_hover_text_color; }
-.board.item:hover .link a { font: @lists_hover_text_font; color: @lists_hover_text_color; }
 
 
 /* Password-protected Board
@@ -1364,7 +1263,7 @@ table.list .last-edited { color: @timestamp_color; }
 
 @ve_posts_odd_background_color: @bbcode_editor_background_color;
 @ve_posts_odd_text_color: @bbcode_editor_text_color;
-@ve_lists_links_color: @lists_links_color;
+@ve_lists_links_color: @link_color;
 @ve_default_forum_text_font_style: @default_forum_text_font_style;
 @ve_default_forum_text_font_weight: @default_forum_text_font_weight;
 @ve_default_forum_text_font_size: 13px;
@@ -1723,7 +1622,7 @@ div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decora
 @buttons_border: 1px solid darken(@buttons_background_color, 20%);
 @buttons_text_font: 1.3rem @default_forum_text_font_family;
 @buttons_text_decoration: none;
-@buttons_hover_background: @container_highlight_color;
+@buttons_hover_background_color: @container_highlight_color;
 @buttons_hover_border: 1px solid darken(@buttons_background_color, 20%);
 @buttons_hover_text_font: @buttons_text_font;
 @buttons_hover_text_decoration: @buttons_text_decoration;
@@ -1735,7 +1634,7 @@ div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decora
 @buttons_active_text_color: @link_color;
 
 button, .button, a.button, input[type="submit"], input[type="button"] { background-color: @buttons_background_color; background-image: @buttons_background_image; background-attachment: @buttons_background_attachment; background-repeat: @buttons_background_repeat; background-position: @buttons_background_position; min-height: 28px; margin-left: 5px; border: @buttons_border; border-radius: 0; padding: 2px 0; font: @buttons_text_font; line-height: 22px !important; text-decoration: @buttons_text_decoration; color: @buttons_text_color; white-space: nowrap; cursor: pointer; vertical-align: middle; display: inline-block; -webkit-appearance: none; -moz-appearance: none; }
-button:hover, .button:hover, a.button:hover, input[type="submit"]:hover, input[type="button"]:hover { background: @buttons_hover_background; border: @buttons_hover_border; font: @buttons_hover_text_font; text-decoration: @buttons_hover_text_decoration; color: @buttons_hover_text_color; }
+button:hover, .button:hover, a.button:hover, input[type="submit"]:hover, input[type="button"]:hover { background: @buttons_hover_background_color; border: @buttons_hover_border; font: @buttons_hover_text_font; text-decoration: @buttons_hover_text_decoration; color: @buttons_hover_text_color; }
 button:active, .button:active, a.button:active, input[type="submit"]:active, input[type="button"]:active,
 .shoutbox_refresh_button.active, .liked.likes-button, .button.state-selected { background: @buttons_active_background; border: @buttons_active_border; font: @buttons_active_text_font; text-decoration: @buttons_active_text_decoration; color: @buttons_active_text_color; }
 
