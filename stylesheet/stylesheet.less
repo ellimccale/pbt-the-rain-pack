@@ -18,6 +18,16 @@
 @empty: ~"";
 
 /**
+ * Used to create the border on certain elements,
+ * with prefixes
+ */
+
+.box-shadow(...) {
+    -webkit-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+/**
  * Useful for quickly resetting the box-model of an
  * element if `border-box` is not desired (not often).
  */
@@ -98,13 +108,6 @@
 @link_color: @accent_color_light;
 
 @banner_height: 750px;
-@banner_background_color: @empty;
-@banner_background_image: @empty;
-@banner_background_repeat: @empty;
-@banner_background_attachment: @empty;
-@banner_background_position: @empty;
-@banner_text_color: @empty;
-@banner_text_align: @empty;
 
 @wrapper_width: 1200px;
 
@@ -116,7 +119,7 @@
 @title_buttons_color: @light_color_2;
 
 @buttons_background_color: @accent_color;
-@buttons_text_color: @light_color_2;
+@buttons_text_color: @light_color_1;
 
 @container_background_color_1: @light_color_2;
 @container_text_color_1: @dark_color_1;
@@ -139,7 +142,7 @@
 @images_path: '//storage.proboards.com/forum/images';
 
 @body_background_repeat: no-repeat;
-@body_background_attachment: fixed;
+@body_background_attachment: @empty;
 @body_background_position: center top;
 
 @default_forum_text_font_style: @empty;
@@ -241,7 +244,7 @@ h2 { font: @h2_font; text-decoration: @h2_decoration; text-transform: @h2_case; 
 h3 { font: @h3_font; text-decoration: @h3_decoration; text-transform: @h3_case; color: @h3_color; }
 
 abbr.time, .last-edited, #event_range .time { font: @timestamp_font; color: @timestamp_color; }
-abbr.time.recent_time { font-style: normal; font-weight: bold; }
+abbr.time.recent_time { font-style: normal; font-weight: @bold_weight; }
 
 blockquote { margin: 15px 40px; display: block; }
 
@@ -383,7 +386,7 @@ hr { height: 0; border: 0; border-top: 1px solid @container_inner_border_color; 
 .saved { color: @status_text_success_color; }
 .error { color: @status_text_failure_color; }
 
-.status-box { margin-left: 5px; padding: 1px 5px; font-weight: bold; }
+.status-box { margin-left: 5px; padding: 1px 5px; font-weight: @bold_weight; }
 .status-box.saved { background-color: @container_background_color_1; }
 .status-box.error { background-color: @container_background_color_1; }
 
@@ -391,7 +394,7 @@ hr { height: 0; border: 0; border-top: 1px solid @container_inner_border_color; 
 
 .posting-errors { padding: 5px; color: @status_text_failure_color; }
 
-.noscript-form-error { background: @container_background_color_1; margin: 0 0 10px 0; padding: 5px; font-weight: bold; color: @status_text_failure_color; }
+.noscript-form-error { background: @container_background_color_1; margin: 0 0 10px 0; padding: 5px; font-weight: @bold_weight; color: @status_text_failure_color; }
 
 .ui-form-error { background-color: @container_background_color_1; border: 2px solid @status_text_failure_color; padding: 4px; font-size: 1.1rem; color: @container_text_color_1; display: none; position: absolute; z-index: 9000; }
 input.ui-error { background-color: @container_background_color_1; padding: 2px; color: @status_text_failure_color; }
@@ -403,13 +406,8 @@ input.ui-error { background-color: @container_background_color_1; padding: 2px; 
  * Header
  * ====================================================== */
 
-header { width: @wrapper_width; margin: 40px auto 0; display: block; position: relative; }
-
-
-/* Banner
- * ====================================================== */
-
-#banner { background-color: @banner_background_color; background-image: @banner_background_image; background-repeat: @banner_background_repeat; background-attachment: @banner_background_attachment; background-position: @banner_background_position; height: @banner_height; }
+header { width: @wrapper_width; height: @banner_height; margin: 40px auto 0; display: block; position: relative; }
+header > a { width: 100%; height: 100%; display: block; }
 
 
 /* ======================================================
@@ -440,7 +438,7 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 #nav-tree { white-space: nowrap; }
 #nav-tree > li { display: inline-block; vertical-align: top; }
 #nav-tree > li:not(:last-child) div::after { content: " \203A "; font: 1rem @default_forum_text_font_family; color: @dark_color_2; padding: 7px 0; display: inline-block; vertical-align: top; }
-#nav-tree > li a { padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; }
+#nav-tree > li a { max-width: 250px; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; .text-overflow(); }
 #nav-tree > li a:hover,
 #nav-tree > li a:focus { color: @dark_color_2; }
 
@@ -532,10 +530,10 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 
 @action_bar_background: @dark_color_2;
 
-.container > .control-bar { background-color: @action_bar_background; margin-bottom: 0; padding: 0 20px; top: 40px !important; .box-sizing(content-box); }
+.container > .control-bar { background-color: @action_bar_background; margin-bottom: 0; padding: 0 20px 0 15px; top: 40px !important; .box-sizing(content-box); }
 .container > .control-bar > .controls { padding: 7px 5px; color: #000; float: right; .box-sizing(); }
-.control-bar .control-icons { padding-top: 13px; display: block; }
-.control-bar .control-icons > span[class*="_icon"] { margin-right: 10px; }
+.control-bar .control-icons { padding-top: 9px; padding-left: 5px; display: block; }
+.control-bar .control-icons > span[class*="_icon"] { margin-right: 12px; }
 .control-bar .controls ul { z-index: 233; }
 .control-bar .controls .ui-selectMenu-box { margin-left: 10px; }
 .control-bar .ui-search { padding: 7px 0 7px 5px !important; }
@@ -637,56 +635,13 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 
 
 /* ======================================================
- * Footer
- * ====================================================== */
-
-.c-footer { width: @wrapper_width; margin: 40px auto; padding: 0 20px; font: 1rem @default_forum_text_font_family; line-height: 2.2; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
-
-.c-footer a { padding: 0 0.1em; font: @link_font; text-decoration: @link_decoration; color: @link_color; }
-.c-footer a:hover,
-.c-footer a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
-
-.c-footer .c-footer__link-wrapper { color: @light_color_1; }
-
-#js-switch-link { margin-top: 10px; }
-
-
-/* Copyright
- * ====================================================== */
-
-.c-footer__copyright { background-color: @dark_color_2; padding: 18px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
-
-.c-footer__copyright a { font: @link_font; text-decoration: @link_decoration; color: @link_color; }
-.c-footer__copyright a:hover,
-.c-footer__copyright a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
-
-
-/* Ads
- * ====================================================== */
-
-.ad-banner--top { position: relative !important; }
-.ad-banner--top-50 { height: 90px !important; }
-.ad-banner--top-60 { height: 100px !important; }
-.ad-banner--top-90 { height: 130px !important; }
-.ad-banner--top-250 { height: 290px !important; }
-.ad-banner--top iframe { margin: 0 auto 40px !important; }
-
-.ad-banner--bottom { margin: 40px auto 0 !important; }
-.ad-banner--bottom iframe { margin-bottom: 0 !important; }
-
-
-/* ======================================================
  * Pagination
  * ====================================================== */
-
-@pagination_micro_background_color: @pagination_background_color;
-@pagination_micro_text_color: @pagination_text_color;
-@pagination_micro_hover_color: @pagination_hover_color;
 
 .ui-pagination { overflow: hidden; display: inline-block; vertical-align: top; }
 .ui-pagination li { cursor: pointer; list-style: none; float: left; }
 .ui-pagination li + li { margin-left: 3px; }
-.ui-pagination li > a { background-color: @pagination_background_color; padding: 6px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @pagination_text_color; display: inline-block; opacity: 0.8; .transition(all 0.3s ease); }
+.ui-pagination li > a { background-color: @pagination_background_color; padding: 6px 5px 6px 6px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @pagination_text_color; display: inline-block; opacity: 0.8; .transition(all 0.3s ease); }
 .ui-pagination li > a:hover,
 .ui-pagination li > a:focus { background-color: @pagination_text_color; text-decoration: none; color: @pagination_background_color; opacity: 1; }
 .ui-pagination li.ui-pagination-prev { margin-right: 3px; }
@@ -701,9 +656,9 @@ header { width: @wrapper_width; margin: 40px auto 0; display: block; position: r
 .ui-micro-pagination { margin-left: 12px; overflow: hidden; display: inline-block; vertical-align: middle; }
 .ui-micro-pagination li { cursor: pointer; float: left; }
 .ui-micro-pagination li + li { margin-left: 2px; }
-.ui-micro-pagination li > a { background-color: @pagination_micro_background_color; border: 1px solid @pagination_micro_hover_color; padding: 5px 5px 3px; font: 1.2rem @default_forum_text_font_family; text-decoration: none; color: @pagination_micro_text_color; display: inline-block; .transition(all 0.3s ease); }
+.ui-micro-pagination li > a { background-color: transparent; border: 1px solid @container_outer_border_color; padding: 5px 4px 5px 5px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; color: @pagination_text_color; display: inline-block; .transition(all 0.3s ease); }
 .ui-micro-pagination li > a:hover,
-.ui-micro-pagination li > a:focus { background-color: @pagination_micro_text_color; border-color: @pagination_micro_text_color; color: @pagination_micro_background_color; }
+.ui-micro-pagination li > a:focus { background-color: @pagination_text_color; border-color: @pagination_text_color; color: @pagination_background_color; }
 
 
 /* ======================================================
@@ -771,12 +726,14 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @fa_settings_icon_color: @buttons_text_color;
 @fa_search_icon_color: @buttons_text_color;
 @fa_like_icon_color: @buttons_text_color;
-@fa_like_icon_liked_color: #e81c4f;
+@fa_like_icon_liked_color: @accent_color_light;
 @fa_lock_icon_color: @buttons_text_color;
 @fa_poll_icon_color: @buttons_text_color;
 @fa_bookmark_icon_color: @buttons_text_color;
 @fa_falling_icon_color: @buttons_text_color;
-@fa_checkmark_icon_color: #19cf86;
+@fa_message_icon_color: @container_text_color_1;
+@fa_message_new_icon_color: @accent_color_light;
+@fa_checkmark_icon_color: @accent_color_light;
 
 /* --- Shoutbox --- */
 
@@ -784,7 +741,6 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 /* --- Status --- */
 
-.threads .control-icons i { padding-right: 5px; }
 .lock_icon { font-size: 1.5rem; color: @fa_lock_icon_color; }
 .poll_icon { font-size: 1.5rem; color: @fa_poll_icon_color; }
 .bookmark_icon { font-size: 1.4rem; color: @fa_bookmark_icon_color; }
@@ -799,6 +755,11 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .posts .post .content-head .controls a.likes-button { padding: 2px 8px; font-size: 1.4rem; color: @fa_like_icon_color; }
 .posts .post .content-head .controls a.likes-button.liked { color: @fa_like_icon_liked_color; }
 
+/* --- Conversations --- */
+
+.conversation .icon > .far.fa-envelope { font-size: 1.6rem; color: @fa_message_icon_color; }
+.conversation.new .icon > .fas.fa-envelope { font-size: 1.6rem; color: @fa_message_new_icon_color; }
+
 /* --- Checkmark --- */
 
 .ui-poll .results tr td .select-box i { padding: 3px; font-size: 1.1rem; color: @fa_checkmark_icon_color; visibility: hidden; display: block; }
@@ -806,7 +767,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 /* --- New Icon --- */
 
-@new_link_font: bold 0.7rem @default_forum_text_font_family;
+@new_link_font: @bold_weight 0.7rem @default_forum_text_font_family;
 @new_link_decoration: none;
 @new_link_transform: uppercase;
 @new_link_color: @accent_color_light;
@@ -822,6 +783,45 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .new-icon a::after { content: ""; padding: 16px; position: absolute; left: -8px; top: -8px; }
 .new-icon:hover,
 .new-icon:hover a { font: @new_hover_link_font; text-decoration: @new_hover_link_decoration; text-transform: @new_hover_link_transform; color: @new_hover_link_color !important; }
+
+
+/* ======================================================
+ * Footer
+ * ====================================================== */
+
+.c-footer { width: @wrapper_width; margin: 40px auto; padding: 0 20px; font: 1rem @default_forum_text_font_family; line-height: 2.2; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
+
+.c-footer a { padding: 0 0.1em; font: @link_font; text-decoration: @link_decoration; color: @link_color; }
+.c-footer a:hover,
+.c-footer a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
+
+.c-footer .c-footer__link-wrapper { color: @light_color_1; }
+
+#js-switch-link { margin-top: 10px; }
+
+
+/* Copyright
+ * ====================================================== */
+
+.c-footer__copyright { background-color: @dark_color_2; padding: 18px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; color: @light_color_1; text-align: center; }
+
+.c-footer__copyright a { font: @link_font; text-decoration: @link_decoration; color: @link_color; }
+.c-footer__copyright a:hover,
+.c-footer__copyright a:focus { font: @link_font; text-decoration: @link_hover_decoration; color: @link_hover_color; }
+
+
+/* Ads
+ * ====================================================== */
+
+.ad-banner--top { position: relative !important; }
+.ad-banner--top-50 { height: 90px !important; }
+.ad-banner--top-60 { height: 100px !important; }
+.ad-banner--top-90 { height: 130px !important; }
+.ad-banner--top-250 { height: 290px !important; }
+.ad-banner--top iframe { margin: 0 auto 40px !important; }
+
+.ad-banner--bottom { margin: 40px auto 0 !important; }
+.ad-banner--bottom iframe { margin-bottom: 0 !important; }
 
 
 /* ======================================================
@@ -887,7 +887,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .members .date-registered { width: 20%; text-align: left; }
 
 .members .last-online { width: 20%; text-align: right; }
-.members .last-online span { font-weight: bold; color: @accent_color_light; }
+.members .last-online span { font-weight: @bold_weight; color: @accent_color_light; }
 
 .members .item--no-members td { padding: 20px 30px !important; line-height: 1.8 !important; }
 
@@ -937,28 +937,37 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Thread List
  * ====================================================== */
 
-@thread_align_subject: left;
-@thread_align_created_by: center;
-@thread_align_replies: center;
-@thread_align_views: center;
-@thread_align_last_post: right;
-
 .threads table.list { table-layout: auto; }
+.threads table.list .checkbox { padding: 4px 0 0; }
 
-.threads .checkbox { width: 2%; }
-.threads .checkbox-placeholder { width: 5px; }
-.threads .main { width: auto; text-align: @thread_align_subject; }
-.threads .main table { table-layout: auto; }
-.threads .created-by { width: 14%; text-align: @thread_align_created_by; }
-.threads .replies { width: 8%; text-align: @thread_align_replies; }
-.threads .views { width: 8%; text-align: @thread_align_views; }
-.threads .latest { width: 20%; text-align: @thread_align_last_post; cursor: pointer; }
-.threads .icons { white-space: nowrap; }
-.threads .control-icons > span[class$="icon"] { margin-right: 7px; }
+.threads td.main { padding-left: 25px; text-align: left; }
+.threads td.main .labels { margin-bottom: 1px; display: block; }
+.threads td.main .link { width: 0; min-width: 100%; font: 1.4rem @default_forum_text_font_family; letter-spacing: 0.025em; text-transform: lowercase; color: @container_links_color; display: inline-block; vertical-align: middle; .text-overflow(); }
+.threads td.main .link a { font: inherit; color: inherit; }
+.threads td.main .link a:hover,
+.threads td.main .link a:focus { color: @container_links_hover_color; }
+.threads td.main .author { margin-top: 4px; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; }
+.threads td.main .author a,
+.threads td.main .author abbr.time { font: inherit; }
+.threads td.main .author abbr.time.recent_time { font-weight: @bold_weight; }
+
+.threads td.icon { line-height: 1 !important; text-align: right; white-space: nowrap; }
+.threads td.icon .control-icons { margin-left: -4px; display: inline-block; vertical-align: middle; }
+.threads td.icon .control-icons > span[class*="_icon"] { margin-right: 7px; }
+
+.threads td.replies-views { width: 12%; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; }
+
+.threads td.latest { width: 24%; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; text-align: right; }
+.threads td.latest a,
+.threads td.latest abbr.time { font: inherit; }
+.threads td.latest abbr.time.recent_time { font-weight: @bold_weight; }
+
+.threads span.labels { margin-left: -8px; }
+
+.threads .item.announcement { .box-shadow(inset 5px 0 0 0 @accent_color_light); }
+.threads .item.locked { opacity: 0.7; }
 .threads .item.new .new-icon { display: inline-block; }
-.threads .item.announcement.last > td { border-width: 0 1px 10px 0; border-style: solid; }
-.threads .item.announcement.last > td.checkbox,
-.threads .item.announcement.last > td.last { border-right: none; }
+.threads .item--no-threads td { padding: 20px !important; line-height: 1.8 !important; }
 
 
 /* ======================================================
@@ -1080,7 +1089,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .ui-poll .poll-vote-bar { min-width: 10px; float: left; overflow: hidden; }
 .ui-poll .poll-vote-bar .bar { background: @polls_rank_default_background; min-width: 5px; height: 17px; border: @polls_rank_default_border; border-right-width: 0; border-radius: 0; float: left; }
 .ui-poll .poll-vote-bar .rank { background: @polls_rank_default_background; height: 17px; border: @polls_rank_default_border; border-left-width: 0; border-radius: 0; padding-left: 2px; float: left; }
-.ui-poll .poll-vote-bar .rank div { background: none; margin-right: 1px; margin-top: 1px; padding: 1px 2px; font-weight: bold; font-size: 1rem; color: @polls_rank_default_rank_color; opacity: 1; }
+.ui-poll .poll-vote-bar .rank div { background: none; margin-right: 1px; margin-top: 1px; padding: 1px 2px; font-weight: @bold_weight; font-size: 1rem; color: @polls_rank_default_rank_color; opacity: 1; }
 .ui-poll .poll-vote-bar.rank-1 .rank, .ui-poll .poll-vote-bar.rank-1 .bar { background-color: @polls_rank_first_background_color; }
 .ui-poll .poll-vote-bar.rank-2 .rank, .ui-poll .poll-vote-bar.rank-2 .bar { background-color: @polls_rank_second_background_color; }
 .ui-poll .poll-vote-bar.rank-3 .rank, .ui-poll .poll-vote-bar.rank-3 .bar { background-color: @polls_rank_third_background_color; }
@@ -1119,20 +1128,39 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Conversation List
  * ====================================================== */
 
-@conversation_align_subject: left;
-@conversation_align_created_by: center;
-@conversation_align_replies: center;
-@conversation_align_last_reply: right;
-
 .conversations table.list { table-layout: auto; }
+.conversations table.list .checkbox { padding: 4px 0 0; }
 
-.conversations .checkbox { width: 24px; }
-.conversations .main { width: auto; text-align: @conversation_align_subject; }
-.conversations .created-by,
-.conversations .recipients { width: 17%; text-align: @conversation_align_created_by; }
-.conversations .replies { width: 8%; text-align: @conversation_align_replies; }
-.conversations .latest { width: 20%; text-align: @conversation_align_last_reply; border-right-width: 0; padding-right: 10px; cursor: pointer; }
+.conversations td.icon { width: 20px; padding: 18px 10px 12px 20px; text-align: center; }
+
+.conversations td.main { text-align: left; }
+.conversations td.main .labels { margin-bottom: 1px; display: block; }
+.conversations td.main .link { width: 0; min-width: 100%; font: 1.4rem @default_forum_text_font_family; letter-spacing: 0.025em; text-transform: lowercase; color: @container_links_color; display: inline-block; vertical-align: middle; .text-overflow(); }
+.conversations td.main .link a { font: inherit; color: inherit; }
+.conversations td.main .link a:hover,
+.conversations td.main .link a:focus { color: @container_links_hover_color; }
+.conversations td.main .author { margin-top: 4px; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; }
+.conversations td.main .author a,
+.conversations td.main .author abbr.time { font: inherit; }
+.conversations td.main .author abbr.time.recent_time { font-weight: @bold_weight; }
+
+.conversations td.pagination { line-height: 1 !important; text-align: right; white-space: nowrap; }
+
+.conversations td.replies { width: 12%; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; }
+.conversations td.replies a,
+.conversations td.replies a:hover,
+.conversations td.replies a:focus { font: inherit; color: inherit; }
+
+.conversations td.latest { width: 28%; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; text-align: right; }
+.conversations td.latest a,
+.conversations td.latest abbr.time { font: inherit; }
+.conversations td.latest abbr.time.recent_time { font-weight: @bold_weight; }
+
+.conversations span.labels { margin-left: -8px; }
+
+.conversations .item.new { .box-shadow(inset 5px 0 0 0 @accent_color_light); }
 .conversations .item.new .new-icon { display: inline-block; }
+.conversations .item--no-messages td { padding: 20px !important; line-height: 1.8 !important; }
 
 
 /* ======================================================
@@ -1202,7 +1230,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @smiles_menu_width: 280px;
 @smile_padding: 5px;
 
-.wysiwyg-area label { font-weight: bold; }
+.wysiwyg-area label { font-weight: @bold_weight; }
 .wysiwyg-area .outline { border-width: 1px; border-style: solid; border-color: @container_inner_border_color; padding: 10px; }
 .wysiwyg-area .content { padding: 10px; }
 .wysiwyg-area .content > form > div + div { margin-top: 10px; }
@@ -1307,7 +1335,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .show-user table.list td.time-container { width: 22%; border-width: 1px 0 0 0; padding: 5px 20px 5px 0; text-align: right; }
 
 .show-user .heading th,
-.show-user .heading td { border: 0; padding: 10px 20px; font-weight: bold; text-align: center; }
+.show-user .heading td { border: 0; padding: 10px 20px; font-weight: @bold_weight; text-align: center; }
 
 .show-user .mini-user { width: 75px; max-width: 75px; min-height: 90px; padding: 4px 0; text-align: center; vertical-align: top; overflow: hidden; display: inline-block; }
 
@@ -1316,7 +1344,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .show-user .delete { width: 60px; border-width: 1px 0 0 0; padding: 5px 10px 5px 5px; text-align: right; vertical-align: middle; }
 .show-user .delete a { display: none; }
 
-.show-user a.show-more { border-top: 1px solid @container_inner_border_color; padding: 8px 0; font-weight: bold; text-align: center; display: block; }
+.show-user a.show-more { border-top: 1px solid @container_inner_border_color; padding: 8px 0; font-weight: @bold_weight; text-align: center; display: block; }
 
 /* --- Summary --- */
 
@@ -1403,13 +1431,13 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .edit-user input,
 .edit-user select,
 .edit-user textarea { margin-top: 5px; display: inline-block; }
-.edit-user label { font-weight: bold; display: block; }
+.edit-user label { font-weight: @bold_weight; display: block; }
 .edit-user button,
 .edit-user .button,
 .edit-user a.button,
 .edit-user input[type="submit"],
 .edit-user input[type="button"] { margin-left: 0; }
-.edit-user .title { font-weight: bold; margin-bottom: 4px; }
+.edit-user .title { font-weight: @bold_weight; margin-bottom: 4px; }
 .edit-user .content-box { border-width: 0; padding: 10px 20px 20px; }
 .edit-user .content-box + .content-box { margin-left: 10px; }
 .edit-user .content-box.options { position: relative; }
@@ -1419,7 +1447,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .edit-user .pad { padding: 20px; }
 .edit-user .pad .username { margin-top: 14px; font-weight: normal; font-size: 1em; }
 .edit-user .pad.info { padding-bottom: 0; clear: both; }
-.edit-user .note { font-style: italic; font-size: 1.1rem; }
+.edit-user .note { font-style: @italic_style; font-size: 1.1rem; }
 .edit-user .radio label,
 .edit-user .checkbox label { font-weight: normal; display: inline; }
 .edit-user .user-search { padding-top: 3px; }
@@ -1483,7 +1511,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @micro_link_color: @empty;
 @micro_remove_background: @container_background_color_1;
 @micro_remove_border: 1px solid @container_inner_border_color;
-@micro_remove_text_font: bold 80% @default_forum_text_font_family;
+@micro_remove_text_font: @bold_weight 80% @default_forum_text_font_family;
 @micro_remove_text_color: @container_text_color_1;
 
 .micro-profile { background: @micro_background; width: 200px; height: 50px; margin-bottom: 3px; border: @micro_border; padding: 5px; font: @micro_text_font; color: @micro_text_color; overflow: hidden; display: inline-block; position: relative; .box-sizing(content-box); }
@@ -1563,7 +1591,7 @@ div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decora
 .even div.mini-profile a { font: @mini_even_links_font; text-decoration: @mini_even_links_decoration; color: @mini_even_links_color; }
 
 .warning-bar { background: @mini_warning_background; min-width: 40px !important; height: 14px; border: @mini_warning_border; padding-bottom: 2px; line-height: 100%; text-align: @mini_warning_text_align; }
-.warning-bar .number { background: none; margin-right: 1px; margin-top: 1px; padding: 2px; font: @mini_warning_number_text_font; font-weight: bold; font-size: 1rem; text-decoration: @mini_warning_number_text_decoration; color: @mini_warning_number_text_color; opacity: 1; display: block; }
+.warning-bar .number { background: none; margin-right: 1px; margin-top: 1px; padding: 2px; font: @mini_warning_number_text_font; font-weight: @bold_weight; font-size: 1rem; text-decoration: @mini_warning_number_text_decoration; color: @mini_warning_number_text_color; opacity: 1; display: block; }
 .warning-low { background-color: @mini_warning_low_background_color; }
 .warning-medium { background-color: @mini_warning_medium_background_color; }
 .warning-high { background-color: @mini_warning_high_background_color; }
@@ -1705,7 +1733,7 @@ select { background-color: @forms_select_background; height: 28px; border: @form
  * Labels
  * ====================================================== */
 
-@labels_weight: bold;
+@labels_weight: @bold_weight;
 @labels_size: 1rem;
 @labels_case: none;
 
@@ -1773,7 +1801,7 @@ select { background-color: @forms_select_background; height: 28px; border: @form
 @shoutbox_shouts_edit_color: @empty;
 @shoutbox_shouts_delete_background: @empty;
 @shoutbox_shouts_delete_border: 1px solid @container_inner_border_color;
-@shoutbox_shouts_delete_text_font: bold 1.2rem @default_forum_text_font_family;
+@shoutbox_shouts_delete_text_font: @bold_weight 1.2rem @default_forum_text_font_family;
 @shoutbox_shouts_delete_text_decoration: none;
 @shoutbox_shouts_delete_text_color: @container_text_color_1;
 @shoutbox_shouts_selected_background: @container_highlight_color;
@@ -1823,3 +1851,35 @@ select { background-color: @forms_select_background; height: 28px; border: @form
 .shoutbox_form ul.tools li img { padding: 0; }
 .shoutbox_form.reply-box-bottom { margin-top: 10px; }
 .shoutbox_form.reply-box-top { margin-bottom: 10px; }
+
+
+/* ======================================================
+ * Required ProBoards Variables
+ * ====================================================== */
+
+/**
+ * These variables are required by the theme creator,
+ * but aren't used by this particular theme. They've been
+ * moved here to avoid confusion.
+ */
+
+@banner_background_color: @empty;
+@banner_background_image: @empty;
+@banner_background_repeat: @empty;
+@banner_background_attachment: @empty;
+@banner_background_position: @empty;
+@banner_text_color: @empty;
+@banner_text_align: @empty;
+
+/**
+ * Removing these variables from the stylesheet will
+ * generate an error, which doesn't seem to prevent the
+ * stylesheet from saving, but is very annoying.
+ */
+
+@posts_even_background_color: @empty;
+@posts_even_text_color: @empty;
+@messages_odd_background: @empty;
+@messages_odd_text_color: @empty;
+@messages_even_background: @empty;
+@messages_even_text_color: @empty;
