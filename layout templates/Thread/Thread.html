@@ -31,15 +31,13 @@
             Descriptions plugin requires it.
       -->
     <div class="content cap-bottom">
-        $[thread.labels]
-
         {if $[poll]}
             <div class="ui-poll-container">
                 $[poll]
             </div>
         {/if}
 
-        <table class="list" role="presentation">
+        <table role="presentation">
             <tbody class="$[list_class]">
                 $[post_list]
             </tbody>
@@ -64,7 +62,6 @@ $(function() {
     (function addIconPadding() {
         $('.control-icons').each(function() {
             var $icons = $(this).children('span[class$="_icon"]:visible:last');
-
             $icons.css('margin-right', '15px');
         });
     })();

@@ -155,7 +155,7 @@
 @bold_weight: 700;
 @italic_style: italic;
 
-@link_font: 700 1em @default_forum_text_font_family;
+@link_font: inherit;
 @link_decoration: none;
 @link_active_decoration: @link_decoration;
 @link_active_color: @link_color;
@@ -477,7 +477,7 @@ header > a { width: 100%; height: 100%; display: block; }
  * it easier to keep the two styles consistent.
  */
 
-@content_area_background_color: #fff;
+@content_area_background_color: @white;
 @content_area_text_font: @empty;
 @content_area_text_color: @container_text_color_1;
 
@@ -878,7 +878,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .members .list .item.state-hover .user-link { color: @link_color; }
 
 .members .name { width: 20%; padding-left: 0 !important; text-align: left; }
-.members .name .user-link { color: @content_area_text_color; }
+.members .name .user-link { font-weight: @bold_weight; color: @content_area_text_color; }
 
 .members .username { width: 14%; text-align: left; }
 .members .rank { width: 16%; text-align: left; }
@@ -947,7 +947,6 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .threads td.main .link a:hover,
 .threads td.main .link a:focus { color: @container_links_hover_color; }
 .threads td.main .author { margin-top: 4px; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; }
-.threads td.main .author a,
 .threads td.main .author abbr.time { font: inherit; }
 .threads td.main .author abbr.time.recent_time { font-weight: @bold_weight; }
 
@@ -958,7 +957,6 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .threads td.replies-views { width: 12%; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; }
 
 .threads td.latest { width: 24%; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; text-align: right; }
-.threads td.latest a,
 .threads td.latest abbr.time { font: inherit; }
 .threads td.latest abbr.time.recent_time { font-weight: @bold_weight; }
 
@@ -974,154 +972,134 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Post List
  * ====================================================== */
 
-@posts_odd_background_color: @container_background_color_1;
-@posts_odd_background_image: @empty;
-@posts_odd_background_attachment: @empty;
-@posts_odd_background_repeat: @empty;
-@posts_odd_background_position: @empty;
-@posts_odd_text_color: @container_text_color_1;
-@posts_even_background_color: @container_background_color_2;
-@posts_even_background_image: @empty;
-@posts_even_background_attachment: @empty;
-@posts_even_background_repeat: @empty;
-@posts_even_background_position: @empty;
-@posts_even_text_color: @container_text_color_2;
-@posts_separator_border: 1px solid @container_inner_border_color;
-@posts_header_border: 1px solid @container_inner_border_color;
-@posts_likes_font: 1.1rem @default_forum_text_font_family;
-@posts_likes_color: @empty;
-@posts_code_background: @container_background_color_1;
-@posts_code_border: 1px solid @container_inner_border_color;
-@posts_code_text_font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-@posts_code_text_color: @container_text_color_1;
-@posts_edited_text_font: 1.1rem @default_forum_text_font_family;
-@posts_edited_text_color: @empty;
-@posts_signatures_border: 1px solid @container_inner_border_color;
-@posts_signatures_text_font: 1.1rem @default_forum_text_font_family;
-@posts_signatures_text_color: @empty;
+.posts.container > .content { padding: 0; }
 
 .posts table { width: 100%; }
-.posts table.list > tbody > tr > td { border: @posts_separator_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; }
+.posts tr.spacer { background-color: transparent; height: 0; border-top: 1px solid @light_color_1; }
+.posts tr.spacer > td { height: 0; padding: 0; }
+.posts tr.spacer:last-of-type { display: none; }
 
-.posts .thread_description_page { border-bottom: @posts_separator_border; padding: 5px 10px; }
-.posts span.labels { border: @posts_separator_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; padding: 0 6px 4px 6px; display: block; }
-.posts span.labels .ui-label { padding: 5px 0 0 5px; display: inline-block; }
-.posts .poll { border-bottom: @posts_separator_border; border-bottom-width: 10px; }
+.posts .item .content-row { height: 100%; }
 
-.posts .item,
-.posts .item .quote div.quote div.quote_body,
-.posts .item.even .quote div.quote_body { background-color: @posts_odd_background_color; background-image: @posts_odd_background_image; background-attachment: @posts_odd_background_attachment; background-repeat: @posts_odd_background_repeat; background-position: @posts_odd_background_position; color: @posts_odd_text_color; }
-.posts .item.even,
-.posts .item .quote div.quote_body,
-.posts .item.even .quote div.quote div.quote_body { background-color: @posts_even_background_color; background-image: @posts_even_background_image; background-attachment: @posts_even_background_attachment; background-repeat: @posts_even_background_repeat; background-position: @posts_even_background_position; color: @posts_even_text_color; }
-
-.posts .item .left-panel { width: 172px; vertical-align: top; }
-.posts .item .content { padding-left: 10px; vertical-align: top; }
-.posts .item .content-head { margin-bottom: 10px; border: @posts_header_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; padding-bottom: 5px; }
-.posts .item .content-head .info { margin-top: 3px; line-height: 20px !important; float: left; }
-.posts .item .content-head .info .thread-link { max-width: 450px; overflow: hidden; display: none; }
-.posts .item .content-head .info .date { margin-right: 7px; font-size: 1.1rem; vertical-align: -7px; }
-.posts .item .content-head .info .post-method { font-size: 1.1rem; vertical-align: -7px; }
-.posts .item .content-head .info .likes { vertical-align: -7px; }
-.posts .item .content-head .info .likes,
-.posts .item .content-head .info .likes:hover { font: @posts_likes_font; color: @posts_likes_color; }
+.posts .item .left-panel { width: 220px; padding: 20px 10px 20px 20px; vertical-align: top; }
+.posts .item .content { height: 1px; padding: 20px 20px 20px 0; vertical-align: top; }
+.posts .item .content article { background-color: @content_area_background_color; height: 100%; padding: 0 20px 25px; display: flex; flex-direction: column; justify-content: flex-start; }
+.posts .item .content-head { margin-bottom: 25px; border-bottom: 1px solid @container_inner_border_color; padding: 20px 0 15px; }
+.posts .item .content-head .info { margin-top: 18px; font: italic 1.2rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); float: left; }
+.posts .item .content-head .info .thread-link { max-width: 450px; margin-bottom: 3px; font-size: 1.5rem; line-height: 1.4; display: none; .text-overflow(); }
+.posts .item .content-head .info .likes { margin-left: 15px; }
 .posts .item .content-head .controls { float: right; }
-.posts .item .content-head .controls > a { margin-left: 5px; float: left; }
-.posts .item .content-head .controls > a.likes-button { padding: 2px 7px 0 7px; }
-.posts .item .message { margin-bottom: 1.3em; word-wrap: break-word; overflow-x: auto; overflow-y: hidden; }
+.posts .item .content-head .controls > .button { margin-left: 2px; }
+
+.posts .item .message { margin-bottom: 10px; font: 1.4rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; color: @content_area_text_color; word-wrap: break-word; overflow-x: auto; overflow-y: hidden; flex-grow: 1; }
 .posts .item .message table { width: inherit; }
 .posts .item .message table td { padding: 3px; }
-.posts .item .message ul { margin-left: 31px; list-style-type: disc; }
-.posts .item .message ol { margin-left: 31px; list-style-type: decimal; }
-.posts .item .message code { background: @posts_code_background; margin-left: 10px; margin-right: 10px; border: @posts_code_border; padding: 5px; font: @posts_code_text_font; color: @posts_code_text_color; white-space: pre-wrap; display: block; }
-.posts .item .foot { height: 1px; padding-left: 10px; vertical-align: bottom; }
-.posts .item .foot .edited_by { margin-top: 10px; font: @posts_edited_text_font; text-align: right; color: @posts_edited_text_color; }
-.posts .item .foot .signature { margin-top: 10px; border: @posts_signatures_border; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 10px; font: @posts_signatures_text_font; text-align: left; color: @posts_signatures_text_color; vertical-align: bottom; }
-.posts .item.blocked .unblocked { display: none; }
-.posts .item.recent .content-head .info { line-height: 13px !important; }
-.posts .item.recent .content-head .info .thread-link { display: block; }
-.posts .item.recent .content-head .info .post-method,
-.posts .item.recent .content-head .info .date,
-.posts .item.recent .content-head .info .likes { vertical-align: 0; }
-.posts.summary .item .content-head .info { width: 100%; float: none; }
+.posts .item .message ul { margin-left: 30px; list-style-type: disc; }
+.posts .item .message ol { margin-left: 30px; list-style-type: decimal; }
+.posts .item .message code { background-color: transparent; max-height: 175px; margin-bottom: 14px; border: 1px solid @light_color_1; padding: 14px 20px; font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; line-height: 1.6; color: mix(@content_area_text_color, @light_color_1, 75%); white-space: pre-wrap; overflow-y: auto; overflow-x: hidden; display: block; }
 
-.post.item abbr.time,
-.post.item.even .quote abbr.time,
-.post.item .quote .quote abbr.time { color: @posts_odd_text_color; }
-.post.item.even abbr.time,
-.post.item .quote abbr.time,
-.post.item.even .quote .quote abbr.time { color: @posts_even_text_color; }
+.posts .item .foot { margin-top: 30px; }
+.posts .item .foot .edited_by { font: italic 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; text-align: right; color: mix(@content_area_text_color, @light_color_1, 25%); }
+.posts .item .foot .signature { border-top: 1px solid @container_inner_border_color; padding-top: 12px; font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); }
+.posts .item .foot .edited_by + .signature { margin-top: 12px; }
 
 .quote_clear { clear: both; }
+
+/**
+ * Firefox-only
+ *
+ * Fix height of content td
+ */
+
+@-moz-document url-prefix() {
+  .posts .item .content { height: 100%; }
+}
+
+
+/* Post Types
+ * ====================================================== */
+
+.posts .item--no-posts .content { padding: 20px; }
+.posts .item--no-posts .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+
+.posts .item.blocked .content { padding: 20px; }
+.posts .item.blocked .content .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+.posts .item.blocked .content .button { margin-left: 0; margin-top: 12px; }
+.posts .item.blocked .unblocked { display: none; }
+
+.posts .item.recent .content-head .info { margin-top: 0; }
+.posts .item.recent .content-head .info .thread-link { display: block; }
+
+.posts.summary .item .content { padding: 0 20px 20px; }
+.posts.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 15px 20px 0; }
+.posts.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @container_inner_border_color; padding-bottom: 15px; float: none; }
+.posts.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px; font-size: 1.2rem; line-height: 1.8; }
+.posts.summary .item.first .content { padding-top: 20px; }
 
 
 /* Polls
  * ====================================================== */
 
-@polls_selection_border: 1px solid @container_inner_border_color;
-@polls_rank_default_background: #aaa;
-@polls_rank_default_border: 0;
-@polls_rank_default_rank_color: #000;
-@polls_rank_first_background_color: #fc2;
-@polls_rank_second_background_color: #6de;
-@polls_rank_third_background_color: #f00;
+.ui-poll-container { padding: 20px 20px 0; }
 
-.ui-poll { padding: 10px; }
+.ui-poll { background-color: @content_area_background_color; padding: 20px; font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; color: @content_area_text_color; }
 
 .ui-poll table { width: auto; table-layout: fixed; }
+.ui-poll h3 { margin-bottom: 4px; }
 
 .ui-poll .icon-poll { display: none; }
 
-.ui-poll .results { margin-top: 5px; margin-bottom: 5px; }
-.ui-poll .results td { padding: 5px 8px; }
+.ui-poll .results { margin-top: 16px; margin-bottom: 16px; }
+.ui-poll .results td { padding: 6px 12px; }
 .ui-poll .results td:first-child { padding-left: 0; padding-right: 0; }
-.ui-poll .results td .select-box { min-width: 15px; min-height: 15px; border: @polls_selection_border; cursor: pointer; }
+.ui-poll .results td .select-box { background-color: @buttons_background_color; width: 19px; height: 19px; border: @buttons_border; border-radius: 2px; cursor: pointer; }
 .ui-poll .results td .select-box i { padding: 3px; visibility: hidden; display: block; }
 .ui-poll .results tr.ui-hover { background-color: transparent; cursor: pointer; }
 .ui-poll .results tr.ui-selected { background-color: transparent; }
+.ui-poll .results tr.ui-selected td .select-box { background-color: @buttons_hover_background_color; border: @buttons_hover_border; }
 .ui-poll .results tr.ui-selected td .select-box i { visibility: visible; }
-.ui-poll .results .stats { margin-left: 5px; line-height: 18px !important; float: left; }
+.ui-poll .results .stats { margin-left: 8px; line-height: 18px !important; float: left; }
 
 .ui-poll .voted ul { padding-left: 20px; list-style: disc; }
 .ui-poll .vote-input { margin-top: 5px; }
 .ui-poll .vote-input-cooldown { margin-left: 5px; margin-top: 2px; }
 
 .ui-poll .poll-vote-bar { min-width: 10px; float: left; overflow: hidden; }
-.ui-poll .poll-vote-bar .bar { background: @polls_rank_default_background; min-width: 5px; height: 17px; border: @polls_rank_default_border; border-right-width: 0; border-radius: 0; float: left; }
-.ui-poll .poll-vote-bar .rank { background: @polls_rank_default_background; height: 17px; border: @polls_rank_default_border; border-left-width: 0; border-radius: 0; padding-left: 2px; float: left; }
-.ui-poll .poll-vote-bar .rank div { background: none; margin-right: 1px; margin-top: 1px; padding: 1px 2px; font-weight: @bold_weight; font-size: 1rem; color: @polls_rank_default_rank_color; opacity: 1; }
-.ui-poll .poll-vote-bar.rank-1 .rank, .ui-poll .poll-vote-bar.rank-1 .bar { background-color: @polls_rank_first_background_color; }
-.ui-poll .poll-vote-bar.rank-2 .rank, .ui-poll .poll-vote-bar.rank-2 .bar { background-color: @polls_rank_second_background_color; }
-.ui-poll .poll-vote-bar.rank-3 .rank, .ui-poll .poll-vote-bar.rank-3 .bar { background-color: @polls_rank_third_background_color; }
+.ui-poll .poll-vote-bar .bar { background: none; background-color: @light_color_2; min-width: 5px; height: 19px; border: 0; border-radius: 0; float: left; }
+.ui-poll .poll-vote-bar .rank { background: none; background-color: @light_color_2; height: 19px; border: 0; border-radius: 0; padding-left: 2px; float: left; }
+.ui-poll .poll-vote-bar .rank div { background: none; padding: 3px 4px; font-weight: bold; font-size: 1rem; color: @dark_color_2; opacity: 1; }
+.ui-poll .poll-vote-bar.rank-1 .rank div { color: @white; }
+.ui-poll .poll-vote-bar.rank-1 .rank, .ui-poll .poll-vote-bar.rank-1 .bar { background-color: @accent_color_light; }
+.ui-poll .poll-vote-bar.rank-2 .rank, .ui-poll .poll-vote-bar.rank-2 .bar,
+.ui-poll .poll-vote-bar.rank-3 .rank, .ui-poll .poll-vote-bar.rank-3 .bar { background-color: @light_color_2; }
 
 
 /* Quotes
  * ====================================================== */
 
-@quotes_background: @empty;
-@quotes_border: 2px solid @container_inner_border_color;
-@quotes_sub_background: @quotes_background;
-@quotes_sub_border: @quotes_border;
-
-#content .content .quote div.quote_body { background: @quotes_background; margin-top: 7px; border: @quotes_border; padding: 10px 10px; }
-#content .content .quote div.quote div.quote_body { background: @quotes_sub_background; border: @quotes_sub_border; }
-
-.quote { margin: 0 10px; padding-bottom: 10px; position: relative; top: 0; }
-.quote div.quote_avatar_container { float: left; }
-.quote div.no_avatar_placeholder { width: 30px; height: 30px; display: inline-block; position: absolute; top: 14px; left: 4px; }
-.quote div.quote_header { margin: 7px 0 16px 35px; display: block; }
-.quote.no_header { padding-top: 10px; }
+.quote { background-color: @content_area_background_color; margin-bottom: 14px; border: 1px solid @light_color_1; padding: 20px; position: relative; }
+.quote .quote_body { font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 75%); }
+.quote .quote_avatar_container { float: left; }
+.quote .quote_avatar_container .avatar-wrapper { width: 20px; height: 38px; }
+.quote .no_avatar_placeholder { width: 20px; height: 30px; display: inline-block; position: absolute; top: 14px; left: 4px; }
+.quote .quote_header { margin: 0 0 26px 36px; padding-top: 12px; font: italic normal 1.2rem @default_forum_text_font_family; letter-spacing: 0.015em; color: mix(@content_area_text_color, @light_color_1, 25%); display: block; }
+.quote .quote_header abbr.time,
+.quote .quote_header a:not(.user-link) { font: inherit; color: inherit; }
 
 
 /* Quick Reply
  * ====================================================== */
 
+.quick-reply .content-box { padding: 20px; }
+
+.quick-reply .guest_name { padding-bottom: 15px; vertical-align: middle; }
+.quick-reply .guest_name input { max-width: ~"calc(100% - 93px)"; }
+.quick-reply .guest_name label { width: 75px; margin-right: 15px; font-size: 1rem; letter-spacing: 0.025em; text-transform: uppercase; color: @container_text_color_1; display: inline-block; }
+
+.quick-reply .message { margin-bottom: 15px; }
+.quick-reply .message textarea { width: 100%; height: 150px; }
+
 .quick-reply input[type="submit"] { margin-left: 0; }
-.quick-reply textarea { width: 100%; height: 150px; border-width: 1px; border-style: solid; border-color: @container_inner_border_color; padding: 10px; resize: none; }
-.quick-reply .content { padding: 10px; }
-.quick-reply .message { margin-bottom: 10px; }
-.quick-reply .guest_name { padding: 0 10px 10px 0; vertical-align: middle; }
-.quick-reply .guest_name label { font-weight: 800; display: inline; }
 
 
 /* ======================================================
@@ -1140,7 +1118,6 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .conversations td.main .link a:hover,
 .conversations td.main .link a:focus { color: @container_links_hover_color; }
 .conversations td.main .author { margin-top: 4px; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; }
-.conversations td.main .author a,
 .conversations td.main .author abbr.time { font: inherit; }
 .conversations td.main .author abbr.time.recent_time { font-weight: @bold_weight; }
 
@@ -1152,7 +1129,6 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .conversations td.replies a:focus { font: inherit; color: inherit; }
 
 .conversations td.latest { width: 28%; font: @italic_style 1.2rem @default_forum_text_font_family; text-transform: lowercase; text-align: right; }
-.conversations td.latest a,
 .conversations td.latest abbr.time { font: inherit; }
 .conversations td.latest abbr.time.recent_time { font-weight: @bold_weight; }
 
@@ -1167,60 +1143,61 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Message List
  * ====================================================== */
 
-@messages_odd_background: @container_background_color_1;
-@messages_odd_text_color: @container_text_color_1;
-@messages_even_background: @container_background_color_2;
-@messages_even_text_color: @container_text_color_2;
-@messages_separator_border: 1px solid @container_inner_border_color;
-@messages_header_border: 1px solid @container_inner_border_color;
-@messages_code_background: @container_background_color_1;
-@messages_code_border: 1px solid @container_inner_border_color;
-@messages_code_text_font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-@messages_code_text_color: @container_text_color_1;
-@messages_signatures_border: 1px solid @container_inner_border_color;
-@messages_signatures_text_font: 80% @default_forum_text_font_family;
-@messages_signatures_text_color: @empty;
+.messages.container > .content { padding: 0; }
 
 .messages table { width: 100%; }
-.messages table.list > tbody > tr > td { border: @messages_separator_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; }
+.messages tr.spacer { background-color: transparent; height: 0; border-top: 1px solid @light_color_1; }
+.messages tr.spacer > td { height: 0; padding: 0; }
+.messages tr.spacer:last-of-type { display: none; }
 
-.messages .conversation-labels { margin-right: 5px; margin-top: 5px; float: right; }
-.messages .participants { border-bottom: @messages_separator_border; padding: 5px 10px; }
+.messages .participants { background-color: @content_area_background_color; padding: 10px 20px; font: italic 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); }
+.messages .conversation-labels { margin: -1px 25px 0 -10px; float: left; }
 
-.messages .item,
-.messages .item .quote div.quote div.quote_body,
-.messages .item.even .quote div.quote_body { background: @messages_odd_background; color: @messages_odd_text_color; }
-.messages .item.even,
-.messages .item .quote div.quote_body,
-.messages .item.even .quote div.quote div.quote_body { background: @messages_even_background; color: @messages_even_text_color; }
+.messages .item .content-row { height: 100%; }
 
-.messages .item .left-panel { width: 172px; vertical-align: top; }
-.messages .item .content { padding-left: 10px; vertical-align: top; }
-.messages .item .content-head { margin-bottom: 10px; border: @messages_header_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; padding-bottom: 5px; }
-.messages .item .content-head .info { margin-top: 3px; line-height: 20px !important; float: left; }
-.messages .item .content-head .info .date { margin-right: 7px; font-size: 1.1rem; vertical-align: -7px; }
-.messages .item .content-head .info .post-method { font-size: 1.1rem; vertical-align: -7px; }
+.messages .item .left-panel { width: 220px; padding: 20px 10px 20px 20px; vertical-align: top; }
+.messages .item .content { height: 1px; padding: 20px 20px 20px 0; vertical-align: top; }
+.messages .item .content .article { background-color: @content_area_background_color; height: 100%; padding: 0 20px 25px; display: flex; flex-direction: column; justify-content: flex-start; }
+.messages .item .content-head { margin-bottom: 25px; border-bottom: 1px solid @container_inner_border_color; padding: 20px 0 15px; }
+.messages .item .content-head .info { margin-top: 18px; font: italic 1.2rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); float: left; }
 .messages .item .content-head .controls { float: right; }
-.messages .item .content-head .controls > a { margin-left: 5px; float: left; }
-.messages .item .message { margin-bottom: 1.3em; word-wrap: break-word; overflow-x: auto; overflow-y: hidden; }
+.messages .item .content-head .controls > .button { margin-left: 2px; }
+
+.messages .item .message { margin-bottom: 10px; font: 1.4rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; color: @content_area_text_color; word-wrap: break-word; overflow-x: auto; overflow-y: hidden; flex-grow: 1; }
 .messages .item .message table { width: inherit; }
 .messages .item .message table td { padding: 3px; }
-.messages .item .message ul { margin-left: 31px; list-style-type: disc; }
-.messages .item .message ol { margin-left: 31px; list-style-type: decimal; }
-.messages .item .message code { background: @messages_code_background; margin-left: 10px; margin-right: 10px; border: @messages_code_border; padding: 5px; font: @messages_code_text_font; color: @messages_code_text_color; white-space: pre-wrap; display: block; }
-.messages .item .foot { height: 1px; padding-left: 10px; vertical-align: bottom; }
-.messages .item .foot .signature { margin-top: 10px; border: @messages_signatures_border; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; padding-top: 10px; font: @messages_signatures_text_font; text-align: left; color: @messages_signatures_text_color; vertical-align: bottom; }
-.messages.summary .item .content-head .info { width: 100%; float: none; }
+.messages .item .message ul { margin-left: 30px; list-style-type: disc; }
+.messages .item .message ol { margin-left: 30px; list-style-type: decimal; }
+.messages .item .message code { background-color: transparent; max-height: 175px; margin-bottom: 14px; border: 1px solid @light_color_1; padding: 14px 20px; font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; line-height: 1.6; color: mix(@content_area_text_color, @light_color_1, 75%); white-space: pre-wrap; overflow-y: auto; overflow-x: hidden; display: block; }
 
-.message.item abbr.time,
-.message.item.even .quote abbr.time,
-.message.item .quote .quote abbr.time { color: @messages_odd_text_color; }
-.message.item.even abbr.time,
-.message.item .quote abbr.time,
-.message.item.even .quote .quote abbr.time { color: @messages_even_text_color; }
+.messages .item .foot { margin-top: 30px; }
+.messages .item .foot .signature { border-top: 1px solid @container_inner_border_color; padding-top: 12px; font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); }
 
 .posting-options-list,
 .messaging-options-list { display: none; }
+
+/**
+ * Firefox-only
+ *
+ * Fix height of content td
+ */
+
+@-moz-document url-prefix() {
+  .messages .item .content { height: 100%; }
+}
+
+
+/* Message Types
+ * ====================================================== */
+
+.messages .item--no-messages .content { padding: 20px; }
+.messages .item--no-messages .message { background-color: @content_area_background_color; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+
+.messages.summary .item .content { padding: 0 20px 20px; }
+.messages.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 15px 20px 0; }
+.messages.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @light_color_1; padding-bottom: 15px; float: none; }
+.messages.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px; font-size: 1.2rem; line-height: 1.8; }
+.messages.summary .item.first .content { padding-top: 20px; }
 
 
 /* ======================================================
@@ -1266,7 +1243,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .wysiwyg-tabs li { background: @tabs_unselected_background; margin: 1px 2px 0 0; border: 1px solid @container_inner_border_color; border-top-width: 0; list-style: none; float: left; position: relative; bottom: 1px; }
 .wysiwyg-tabs li a { padding: 5px 15px; font: @tabs_unselected_text_font; text-decoration: @tabs_unselected_text_decoration; color: @tabs_unselected_text_color; float: left; }
 .wysiwyg-tabs li:hover { background: @tabs_hover_background; border: @tabs_hover_border; border-top-width: 0; }
-.wysiwyg-tabs li.ui-active { background-color: @posts_odd_background_color; background-image: @posts_odd_background_image; background-attachment: @posts_odd_background_attachment; background-repeat: @posts_odd_background_repeat; background-position: @posts_odd_background_position; margin-top: 0; border: 1px solid @container_inner_border_color; border-top-width: 0; padding-top: 1px; }
+.wysiwyg-tabs li.ui-active { background-color: @container_background_color_1; margin-top: 0; border: 1px solid @container_inner_border_color; border-top-width: 0; padding-top: 1px; }
 .wysiwyg-tabs li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; color: @tabs_selected_text_color; }
 
 .new-area .user-search .content { padding: 0 15px 0 0; }
@@ -1292,9 +1269,9 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 /* BBCode Editor
  * ====================================================== */
 
-@bbcode_editor_background_color: @posts_odd_background_color;
+@bbcode_editor_background_color: @content_area_background_color;
 @bbcode_editor_text_font_family: @empty;
-@bbcode_editor_text_color: @posts_odd_text_color;
+@bbcode_editor_text_color: @content_area_text_color;
 
 .ui-wysiwyg .editors .bbcode-editor textarea { background-color: @bbcode_editor_background_color; padding: 10px !important; font-family: @bbcode_editor_text_font_family; color: @bbcode_editor_text_color; }
 
@@ -1309,14 +1286,14 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @ve_default_forum_text_font_weight: @default_forum_text_font_weight;
 @ve_default_forum_text_font_size: 13px;
 @ve_default_forum_text_font_family: @default_forum_text_font_family;
-@ve_quotes_background: @quotes_background;
-@ve_quotes_border: @quotes_border;
-@ve_quotes_sub_background: @quotes_sub_background;
-@ve_quotes_sub_border: @quotes_sub_border;
-@ve_posts_code_background: @posts_code_background;
-@ve_posts_code_border: @posts_code_border;
-@ve_posts_code_text_font: @posts_code_text_font;
-@ve_posts_code_text_color: @posts_code_text_color;
+@ve_quotes_background: @content_area_background_color;
+@ve_quotes_border: 1px solid @light_color_2;
+@ve_quotes_sub_background: @content_area_background_color;
+@ve_quotes_sub_border: 1px solid @light_color_2;
+@ve_posts_code_background: @empty;
+@ve_posts_code_border: @container_outer_border_color;
+@ve_posts_code_text_font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+@ve_posts_code_text_color: @content_area_text_color;
 
 .editor.visual-editor { padding: 5px; }
 
