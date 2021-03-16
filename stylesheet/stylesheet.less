@@ -981,7 +981,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 .posts .item .content-row { height: 100%; }
 
-.posts .item .left-panel { width: 220px; padding: 20px 10px 20px 20px; vertical-align: top; }
+.posts .item .left-panel { width: 240px; padding: 20px 10px 20px 20px; vertical-align: top; }
 .posts .item .content { height: 1px; padding: 20px 20px 20px 0; vertical-align: top; }
 .posts .item .content article { background-color: @content_area_background_color; height: 100%; padding: 0 20px 25px; display: flex; flex-direction: column; justify-content: flex-start; }
 .posts .item .content-head { margin-bottom: 25px; border-bottom: 1px solid @container_inner_border_color; padding: 20px 0 15px; }
@@ -1155,7 +1155,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 .messages .item .content-row { height: 100%; }
 
-.messages .item .left-panel { width: 220px; padding: 20px 10px 20px 20px; vertical-align: top; }
+.messages .item .left-panel { width: 240px; padding: 20px 10px 20px 20px; vertical-align: top; }
 .messages .item .content { height: 1px; padding: 20px 20px 20px 0; vertical-align: top; }
 .messages .item .content .article { background-color: @content_area_background_color; height: 100%; padding: 0 20px 25px; display: flex; flex-direction: column; justify-content: flex-start; }
 .messages .item .content-head { margin-bottom: 25px; border-bottom: 1px solid @container_inner_border_color; padding: 20px 0 15px; }
@@ -1518,66 +1518,44 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 /* Mini Profiles
  * ====================================================== */
 
-@mini_background: transparent;
-@mini_border: 1px solid @container_inner_border_color;
-@mini_text_font: @empty;
-@mini_text_align: left;
-@mini_text_color: @container_text_color_1;
-@mini_links_font: @empty;
-@mini_links_decoration: @empty;
-@mini_links_color: @container_links_color;
-@mini_avatar_align: center;
-@mini_personal_text_font: 1rem @default_forum_text_font_family;
-@mini_personal_text_align: left;
-@mini_personal_text_color: @container_text_color_1;
-@mini_info_text_font: 1rem @default_forum_text_font_family;
-@mini_info_text_align: left;
-@mini_info_text_color: @container_text_color_1;
-@mini_even_background: @mini_background;
-@mini_even_border: @mini_border;
-@mini_even_text_align: @mini_text_align;
-@mini_even_text_color: @container_text_color_2;
-@mini_even_text_font: @mini_text_font;
-@mini_even_links_font: @mini_links_font;
-@mini_even_links_decoration: @mini_links_decoration;
-@mini_even_links_color: @container_links_color;
-@mini_even_personal_text_font: @mini_personal_text_font;
-@mini_even_personal_text_align: @mini_personal_text_align;
-@mini_even_personal_text_color: @container_text_color_2;
-@mini_even_info_text_font: @mini_info_text_font;
-@mini_even_info_text_align: @mini_info_text_align;
-@mini_even_info_text_color: @container_text_color_2;
-@mini_warning_background: #aaa;
-@mini_warning_border: 0;
-@mini_warning_text_align: right;
-@mini_warning_number_text_font: @empty;
-@mini_warning_number_text_decoration: @empty;
-@mini_warning_number_text_color: #000;
-@mini_warning_low_background_color: #fc2;
-@mini_warning_medium_background_color: #fc1;
-@mini_warning_high_background_color: #f00;
+.mini-profile { width: 210px; overflow: hidden; position: relative; z-index: 98; }
 
-.mini-profile { background: @mini_background; width: 150px; border: @mini_border; padding: 13px 10px; font: @mini_text_font; text-align: @mini_text_align; color: @mini_text_color; overflow: hidden; .box-sizing(content-box); }
-.mini-profile .personal-text { font: @mini_personal_text_font; text-align: @mini_personal_text_align; color: @mini_personal_text_color; display: block; }
-.mini-profile .info { font: @mini_info_text_font; text-align: @mini_info_text_align; color: @mini_info_text_color; }
-div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decoration; color: @mini_links_color; }
+.mini-profile__hover { background-color: fade(@dark_color_2, 60%); width: 100%; height: 320px; padding: 25px 10px 10px; text-align: center; opacity: 0; display: flex; flex-direction: column; position: absolute; top: -10px; right: 0; z-index: 101; .transition(all 0.3s linear); }
+.mini-profile:hover .mini-profile__hover { opacity: 1; top: 0; }
 
-.even .mini-profile { background: @mini_even_background; border: @mini_even_border; font: @mini_even_text_font; text-align: @mini_even_text_align; color: @mini_even_text_color; }
-.even .mini-profile .personal-text { font: @mini_even_personal_text_font; text-align: @mini_even_personal_text_align; color: @mini_even_personal_text_color; }
-.even .mini-profile .info { font: @mini_even_info_text_font; text-align: @mini_even_info_text_align; color: @mini_even_info_text_color; }
-.even div.mini-profile a { font: @mini_even_links_font; text-decoration: @mini_even_links_decoration; color: @mini_even_links_color; }
+.mini-profile__avatar,
+.mini-profile__avatar .avatar-wrapper,
+.mini-profile__avatar .avatar-wrapper embed,
+.mini-profile__avatar .avatar-wrapper object,
+.mini-profile__avatar .avatar-wrapper > div,
+.mini-profile__avatar .avatar-wrapper > div > div { width: 210px; height: 320px; }
+.mini-profile__avatar { position: relative; z-index: 99; .transition(all 0.3s linear); }
+.mini-profile__avatar .avatar-wrapper img,
+.mini-profile__avatar .avatar-wrapper default { max-width: 210px; max-height: 320px; }
 
-.warning-bar { background: @mini_warning_background; min-width: 40px !important; height: 14px; border: @mini_warning_border; padding-bottom: 2px; line-height: 100%; text-align: @mini_warning_text_align; }
-.warning-bar .number { background: none; margin-right: 1px; margin-top: 1px; padding: 2px; font: @mini_warning_number_text_font; font-weight: @bold_weight; font-size: 1rem; text-decoration: @mini_warning_number_text_decoration; color: @mini_warning_number_text_color; opacity: 1; display: block; }
-.warning-low { background-color: @mini_warning_low_background_color; }
-.warning-medium { background-color: @mini_warning_medium_background_color; }
-.warning-high { background-color: @mini_warning_high_background_color; }
+.mini-profile__user-group { padding-bottom: 2px; font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.25em; text-transform: uppercase; color: @light_color_2; }
+.mini-profile__user-title { font: italic 1.2rem @default_forum_text_font_family; letter-spacing: 0.05em; text-transform: lowercase; color: @light_color_1; }
 
-.mini-profile .badges img { width: 24px; height: 24px; }
+.mini-profile__fields { height: 64px; display: flex; justify-content: center; }
+.mini-profile__fields-icon { padding: 0 14px; font-size: 1.8rem; line-height: 1; color: @light_color_2; display: flex; align-items: center; }
+.mini-profile__fields-icon a { font: inherit; color: inherit; }
+.mini-profile__fields-icon a:hover,
+.mini-profile__fields-icon a:focus { color: @white; }
+
+.mini-profile__personal-text { background-color: @container_background_color_1; max-height: 70px; margin-top: auto; padding: 10px 15px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; color: @container_text_color_1; position: relative; z-index: 105; }
+.mini-profile__personal-text::after { content: ''; width: 0; height: 0; margin-left: -7px; border: 7px solid transparent; border-top-color: @container_background_color_1; position: absolute; top: 100%; left: 50%; }
+
+.mini-profile__gif { background: url('https://placehold.it/190x100/1d1d1d') left top no-repeat; width: 190px; height: 100px; overflow: hidden; }
+.mini-profile__gif > img { width: 100%; height: 100%; object-fit: cover; }
+
+.mini-profile__user-name { background-color: @title_bar_background_color; margin-top: 5px; padding: 22px 25px; font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 0 fade(@dark_color_2, 50%); color: @title_text_color; }
+.mini-profile__user-name--small { font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-transform: uppercase; color: @title_text_color; text-shadow: none; }
+.mini-profile__user-name a { font: inherit; color: inherit; }
+.mini-profile__user-name a:hover,
+.mini-profile__user-name a:focus { color: @title_text_color; }
 
 /* --- Avatars --- */
 
-.mini-profile .avatar { max-width: 150px; max-height: 150px; margin: auto; border-width: 0; overflow-x: hidden; overflow-y: hidden; vertical-align: middle; }
 .avatar_size_placeholder { width: 150px; height: 150px; }
 
 #flash-avatar-preview .flash-avatar object { position: relative; }
@@ -1585,7 +1563,7 @@ div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decora
 #avatar-preview.flash_present > div { position: inherit; }
 #avatar-preview .hide { display: none; }
 
-.avatar-wrapper { text-align: @mini_avatar_align; vertical-align: middle; display: table-cell; }
+.avatar-wrapper { text-align: center; vertical-align: middle; display: table-cell; }
 .avatar-wrapper * { vertical-align: middle; }
 .avatar-wrapper > div > img { position: absolute; top: 0; left: 0; }
 .avatar-wrapper > div > div { vertical-align: middle; display: table-cell; }
@@ -1594,15 +1572,15 @@ div.mini-profile a { font: @mini_links_font; text-decoration: @mini_links_decora
 #avatar-preview.flash_present.image_present > div { position: relative; }
 .flash-avatar object,
 .avatar-wrapper div object,
-#avatar-preview.flash_present.image_present div object { width: 150px; height: 150px; }
+#avatar-preview.flash_present.image_present div object { width: 210px; height: 320px; }
 
 .avatar_size_default,
 .avatar_size_default embed,
 .avatar_size_default object,
 .avatar_size_default > div,
-.avatar-wrapper.avatar_size_default > div > div { width: 150px; height: 150px; }
+.avatar-wrapper.avatar_size_default > div > div { width: 210px; height: 320px; }
 .avatar_size_default img,
-.avatar_size_default default { max-width: 150px; max-height: 150px; }
+.avatar_size_default default { max-width: 210px; max-height: 320px; }
 
 .avatar_size_medium,
 .avatar_size_medium embed,
