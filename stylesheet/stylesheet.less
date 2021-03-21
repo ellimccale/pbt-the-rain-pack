@@ -1713,8 +1713,44 @@ select { background-color: @forms_select_background; height: 28px; border: @form
 
 .stats .info { margin: 5px; font-size: 1.2rem; line-height: 1.6; letter-spacing: 0.025em; }
 .stats .info--full { max-width: 100%; flex-basis: 100%; }
-.stats .info--two-third { max-width: ~"calc(((100% / 3) * 2) - 10px)"; flex-basis: ~"calc(((100% / 3) * 2) - 10px)"; }
-.stats .info--one-third { max-width: ~"calc((100% / 3) - 10px)"; flex-basis: ~"calc((100% / 3) - 10px)"; }
+.stats .info--two-third { max-width: ~"calc(((100% / 12) * 7) - 10px)"; flex-basis: ~"calc(((100% / 12) * 7) - 10px)"; }
+.stats .info--one-third { max-width: ~"calc(((100% / 12) * 5) - 10px)"; flex-basis: ~"calc(((100% / 12) * 5) - 10px)"; }
+
+
+/* Social
+ * ====================================================== */
+
+.social.container { margin: 15px -5px 0; display: flex; }
+.social.container .content { margin: 5px; }
+
+/* --- Affiliates --- */
+
+@-webkit-keyframes marquee {
+    0%   { -webkit-transform: translate(0, 0); transform: translate(0, 0); }
+    100% { -webkit-transform: translate(-100%, 0); transform: translate(-100%, 0); }
+}
+
+@keyframes marquee {
+    0%   { -webkit-transform: translate(0, 0); transform: translate(0, 0); }
+    100% { -webkit-transform: translate(-100%, 0); transform: translate(-100%, 0); }
+}
+
+.social .affiliates { max-width: 50%; display: flex; flex-direction: column; flex-basis: 50%; }
+.social .affiliates a { margin: 5px; display: inline-block; vertical-align: top; }
+.social .affiliates a img { width: 88px; height: 31px; display: block; opacity: 0.75; mix-blend-mode: luminosity; .transition(all 0.3s ease);  }
+.social .affiliates a:hover > img,
+.social .affiliates a:focus > img { opacity: 1; mix-blend-mode: normal; }
+
+.social .affiliates__static { padding: 15px; display: flex; flex-wrap: wrap; justify-content: space-between; }
+
+.social .affiliates__scrolling { padding: 15px 20px; overflow: hidden; }
+.social .affiliates__scrolling-container { white-space: nowrap; overflow: hidden; }
+.social .affiliates__scrolling-container div { padding-left: 100%; display: inline-block; -webkit-animation: marquee 30s linear infinite; animation: marquee 30s linear infinite; }
+.social .affiliates__scrolling-container div:hover { -webkit-animation-play-state: paused; animation-play-state: paused; }
+
+/* --- Chatbox --- */
+
+.social .chatbox { max-width: 50%; padding: 25px 20px 20px; flex-basis: 50%; }
 
 
 /* ======================================================
