@@ -118,17 +118,17 @@
 @title_buttons_background_color: @accent_color;
 @title_buttons_color: @light_color_2;
 
-@buttons_background_color: @accent_color;
-@buttons_text_color: @light_color_1;
+@buttons_background_color: @white;
+@buttons_text_color: mix(@content_area_text_color, @light_color_1, 75%);
 
 @container_background_color_1: @light_color_2;
 @container_text_color_1: @default_forum_text_color;
 @container_background_color_2: @light_color_2;
 @container_text_color_2: @default_forum_text_color;
 @container_links_color: @link_color;
-@container_highlight_color: @container_background_color_1;
+@container_highlight_color: @light_color_2;
 @container_outer_border_color: mix(@dark_color_2, @light_color_1, 20%);
-@container_inner_border_color: @container_background_color_1;
+@container_inner_border_color: @light_color_2;
 
 @pagination_background_color: @light_color_2;
 @pagination_text_color: @accent_color;
@@ -439,7 +439,7 @@ header > a { width: 100%; height: 100%; display: block; }
 #nav-tree { white-space: nowrap; }
 #nav-tree > li { display: inline-block; vertical-align: top; }
 #nav-tree > li:not(:last-child) div::after { content: " \203A "; font: 1rem @default_forum_text_font_family; color: @dark_color_2; padding: 7px 0; display: inline-block; vertical-align: top; }
-#nav-tree > li a { max-width: 250px; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; .text-overflow(); }
+#nav-tree > li a { max-width: 250px; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; .text-overflow(); }
 #nav-tree > li a:hover,
 #nav-tree > li a:focus { color: @dark_color_2; }
 
@@ -454,7 +454,7 @@ header > a { width: 100%; height: 100%; display: block; }
 /* Participated Threads
  * ====================================================== */
 
-.recent-threads-button { background: transparent; margin-left: 10px; border: 1px solid @container_outer_border_color; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-align: center; text-decoration: none; text-transform: uppercase; color: @dark_color_2; cursor: pointer; float: right; }
+.recent-threads-button { background: transparent; margin-left: 10px; border: 1px solid @container_outer_border_color; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-align: center; text-decoration: none; text-transform: uppercase; color: @dark_color_2; cursor: pointer; float: right; }
 .recent-threads-button:hover,
 .recent-threads-button:focus,
 .recent-threads-button:active { color: @dark_color_2; }
@@ -508,7 +508,7 @@ header > a { width: 100%; height: 100%; display: block; }
 @title_buttons_border: 1px solid mix(@container_inner_border_color, @accent_color, 25%);
 @title_buttons_font: 1rem @default_forum_text_font_family;
 @title_buttons_case: uppercase;
-@title_buttons_spacing: 0.25em;
+@title_buttons_spacing: 0.15em;
 @title_buttons_hover_background_color: mix(@container_inner_border_color, @accent_color, 25%);
 @title_buttons_hover_border: @title_buttons_border;
 @title_buttons_hover_color: @title_buttons_color;
@@ -516,7 +516,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .container .title-bar { background-color: @title_bar_background_color; min-height: 50px; padding: 0 20px; overflow: hidden; position: relative; }
 .container .title-bar h1,
 .container .title-bar h2,
-.container .title-bar h3 { font: @title_text_font; line-height: 50px !important; letter-spacing: @title_text_spacing; text-transform: @title_text_case; color: @title_text_color; display: inline-block; vertical-align: top;; }
+.container .title-bar h3 { font: @title_text_font; line-height: 50px !important; letter-spacing: @title_text_spacing; text-transform: @title_text_case; color: @title_text_color; display: inline-block; vertical-align: top; }
 
 .container .title-bar > .controls { position: absolute; right: 20px; top: 50%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); }
 .container .title-bar > .controls li a { background-color: @title_buttons_background_color; border: @title_buttons_border; padding: 8px 15px; font: @title_buttons_font; letter-spacing: @title_buttons_spacing; text-transform: @title_buttons_case; color: @title_buttons_color; .transition(all 0.3s ease); }
@@ -529,9 +529,7 @@ header > a { width: 100%; height: 100%; display: block; }
 /* Control Bars
  * ====================================================== */
 
-@action_bar_background: @dark_color_2;
-
-.container > .control-bar { background-color: @action_bar_background; margin-bottom: 0; padding: 0 20px 0 15px; top: 40px !important; .box-sizing(content-box); }
+.container > .control-bar { background-color: @dark_color_2; margin-bottom: 0; padding: 0 20px 0 15px; top: 40px !important; .box-sizing(content-box); }
 .container > .control-bar > .controls { padding: 7px 5px; color: #000; float: right; .box-sizing(); }
 .control-bar .control-icons { padding-top: 9px; padding-left: 5px; display: block; }
 .control-bar .control-icons > span[class*="_icon"] { margin-right: 12px; }
@@ -539,7 +537,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .control-bar .controls .ui-selectMenu-box { margin-left: 10px; }
 .control-bar .ui-search { padding: 7px 0 7px 5px !important; }
 .control-bar .ui-search .search-input { border-right: 0; }
-.control-bar .ui-pagination { padding: 7px 0; display: block !important; float: left; .box-sizing(); }
+.control-bar .ui-pagination { margin-left: -5px; padding: 7px 0; display: block !important; float: left; .box-sizing(); }
 
 .controls > li a { display: inline-block; }
 
@@ -727,7 +725,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @fa_settings_icon_color: @buttons_text_color;
 @fa_search_icon_color: @buttons_text_color;
 @fa_like_icon_color: @buttons_text_color;
-@fa_like_icon_liked_color: @accent_color_light;
+@fa_like_icon_liked_color: @white;
 @fa_lock_icon_color: @buttons_text_color;
 @fa_poll_icon_color: @buttons_text_color;
 @fa_bookmark_icon_color: @buttons_text_color;
@@ -749,12 +747,12 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 /* --- Posts/Messages --- */
 
-.button .status { padding: 0 7px; font-size: 1.4rem; color: @fa_settings_icon_color; }
-.button .icon { padding: 3px 2px 1px; }
 .search-filters-button .icon > .fas.fa-search { padding: 1px 0; font-size: 1.4rem; color: @fa_search_icon_color; }
 
-.posts .post .content-head .controls a.likes-button { padding: 2px 8px; font-size: 1.4rem; color: @fa_like_icon_color; }
+.posts .post .content-head .controls a.likes-button { padding: 1px 10px 0; font-size: 1.4rem; line-height: 1; letter-spacing: 0; color: @fa_like_icon_color; }
 .posts .post .content-head .controls a.likes-button.liked { color: @fa_like_icon_liked_color; }
+.posts .post .content-head .controls a.likes-button.liked:hover,
+.posts .post .content-head .controls a.likes-button.liked:focus { background-color: @buttons_hover_background_color; color: @fa_like_icon_color; }
 
 /* --- Conversations --- */
 
@@ -1097,7 +1095,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .quick-reply .guest_name input { max-width: ~"calc(100% - 93px)"; }
 .quick-reply .guest_name label { width: 75px; margin-right: 15px; font-size: 1rem; letter-spacing: 0.025em; text-transform: uppercase; color: @container_text_color_1; display: inline-block; }
 
-.quick-reply .message { margin-bottom: 15px; }
+.quick-reply .message { margin-bottom: 6px; }
 .quick-reply .message textarea { width: 100%; height: 150px; }
 
 .quick-reply input[type="submit"] { margin-left: 0; }
@@ -1612,42 +1610,48 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Buttons
  * ====================================================== */
 
-@buttons_background_image: none;
-@buttons_background_attachment: @empty;
-@buttons_background_repeat: @empty;
-@buttons_background_position: @empty;
-@buttons_border: 1px solid darken(@buttons_background_color, 20%);
-@buttons_text_font: 1.3rem @default_forum_text_font_family;
+/**
+ * These variables have been left in place because they
+ * are also used for form elements and tabs. This makes
+ * it easier to keep multiple styles consistent.
+ */
+
+@buttons_border: 1px solid @light_color_1;
+@buttons_text_font: 1rem @default_forum_text_font_family;
 @buttons_text_decoration: none;
-@buttons_hover_background_color: @container_highlight_color;
-@buttons_hover_border: 1px solid darken(@buttons_background_color, 20%);
+@buttons_text_case: uppercase;
+@buttons_hover_background_color: @light_color_2;
+@buttons_hover_border: @buttons_border;
 @buttons_hover_text_font: @buttons_text_font;
 @buttons_hover_text_decoration: @buttons_text_decoration;
-@buttons_hover_text_color: @buttons_text_color;
-@buttons_active_background: @container_highlight_color;
-@buttons_active_border: 1px solid darken(@buttons_background_color, 20%);
+@buttons_hover_text_case: @buttons_text_case;
+@buttons_hover_text_color: @content_area_text_color;
+@buttons_active_background_color: @accent_color_light;
+@buttons_active_border: 1px solid @accent_color_light;
 @buttons_active_text_font: @buttons_text_font;
 @buttons_active_text_decoration: @buttons_text_decoration;
-@buttons_active_text_color: @link_color;
+@buttons_active_text_case: @buttons_text_case;
+@buttons_active_text_color: @white;
 
-button, .button, a.button, input[type="submit"], input[type="button"] { background-color: @buttons_background_color; background-image: @buttons_background_image; background-attachment: @buttons_background_attachment; background-repeat: @buttons_background_repeat; background-position: @buttons_background_position; min-height: 28px; margin-left: 5px; border: @buttons_border; border-radius: 0; padding: 2px 0; font: @buttons_text_font; line-height: 22px !important; text-decoration: @buttons_text_decoration; color: @buttons_text_color; white-space: nowrap; cursor: pointer; vertical-align: middle; display: inline-block; -webkit-appearance: none; -moz-appearance: none; }
-button:hover, .button:hover, a.button:hover, input[type="submit"]:hover, input[type="button"]:hover { background: @buttons_hover_background_color; border: @buttons_hover_border; font: @buttons_hover_text_font; text-decoration: @buttons_hover_text_decoration; color: @buttons_hover_text_color; }
+button, .button, a.button, input[type="submit"], input[type="button"] { background: none; background-color: @buttons_background_color; height: 32px; margin-left: 5px; border: @buttons_border; border-radius: 0; padding: 0; font: @buttons_text_font; line-height: 30px !important; letter-spacing: 0.15em; text-decoration: @buttons_text_decoration; text-transform: uppercase; color: @buttons_text_color; white-space: nowrap; cursor: pointer; vertical-align: middle; display: inline-block; -webkit-appearance: none; -moz-appearance: none; .transition(all 0.3s ease); }
+button:hover, .button:hover, a.button:hover, input[type="submit"]:hover, input[type="button"]:hover,
+button:focus, .button:focus, a.button:focus, input[type="submit"]:focus, input[type="button"]:focus { background: none; background-color: @buttons_hover_background_color; border: @buttons_hover_border; font: @buttons_hover_text_font; text-decoration: @buttons_hover_text_decoration; text-transform: @buttons_hover_text_case; color: @buttons_hover_text_color; }
 button:active, .button:active, a.button:active, input[type="submit"]:active, input[type="button"]:active,
-.shoutbox_refresh_button.active, .liked.likes-button, .button.state-selected { background: @buttons_active_background; border: @buttons_active_border; font: @buttons_active_text_font; text-decoration: @buttons_active_text_decoration; color: @buttons_active_text_color; }
+.shoutbox_refresh_button.active, .liked.likes-button, .button.state-selected { background: none; background-color: @buttons_active_background_color; border: @buttons_active_border; font: @buttons_active_text_font; text-decoration: @buttons_active_text_decoration; text-transform: @buttons_active_text_case; color: @buttons_active_text_color; }
 
-a.button { padding: 2px 6px; }
+a.button { padding: 0 14px; }
 
-input[type="submit"], input[type="button"], button { padding: 2px 6px; }
+input[type="submit"], input[type="button"], button { height: 40px; padding: 0 22px; font-weight: @bold_weight; line-height: 38px !important; }
+input[type="submit"]:hover, input[type="button"]:hover, button:hover,
+input[type="submit"]:focus, input[type="button"]:focus, button:focus { font-weight: @bold_weight; }
+input[type="submit"]:active, input[type="button"]:active, button:active { font-weight: @bold_weight; }
 
-.button .status { border: @buttons_border; border-width: 0 1px 0 0; padding: 2px 7px; word-wrap: break-word; white-space: nowrap; float: left; overflow: hidden; }
-.button .icon { border: 0; padding: 5px 3px 3px 2px; line-height: normal !important; float: left; }
+.button.post-options .status, .button.message-options .status { border: 0; padding: 0 6px 0 10px; font-size: 1.5rem; word-wrap: break-word; white-space: nowrap; float: left; overflow: hidden; }
+.button.post-options .icon, .button.message-options .icon { border: 0; padding: 11px 8px 8px 0; line-height: 1 !important; float: left; }
 
 .button-x { background: url('@{images_path}/icons-default.png') -16px -32px no-repeat; width: 16px; height: 16px; margin-top: -8px; text-indent: -9999px; cursor: pointer; display: block; position: absolute; top: 50%; right: 3px; }
-.button-x:hover { background: url('@{images_path}/icons-default.png') 0 -32px no-repeat; }
-
-.button.post-options,
-.button.message-options,
-#options-container.button { padding: 0; }
+.button-x:hover,
+.button-x:focus { background: url('@{images_path}/icons-default.png') 0 -32px no-repeat; }
 
 .reply_button { float: right; }
 
