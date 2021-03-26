@@ -40,7 +40,7 @@
 /**
  * A more intuitive method of defining color using hue,
  * saturation, lightness, and alpha (opacity) rather
- * than RGBA - red, green, blue, and alpha.
+ * than RGBA -- red, green, blue, and alpha.
  */
 
 .hsla-bgcolor-safe(transparent, @alpha) {
@@ -541,7 +541,7 @@ header > a { width: 100%; height: 100%; display: block; }
 
 .controls > li a { display: inline-block; }
 
-.ui-selectMenu-box { background-color: @forms_field_background; height: 26px; border: 0; border-radius: 0; font: @forms_field_text_font; letter-spacing: 0.025em; text-transform: none; color: @forms_field_text_color; }
+.ui-selectMenu-box { background-color: @forms_field_background_color; height: 26px; border: 0; border-radius: 0; font: @forms_field_text_font; letter-spacing: 0.025em; text-transform: none; color: @forms_field_text_color; }
 .ui-selectMenu-box .status { margin-left: 10px; margin-right: 12px; line-height: 26px; }
 .ui-selectMenu-box .arrow { background-color: @light_color_1; width: 22px; height: 26px; border: 0; border-radius: 0; .transition(background-color 0.3s ease); }
 .ui-selectMenu-box .arrow.down > span { border-top-color: @dark_color_2; .transition(border-color 0.3s ease); }
@@ -1203,19 +1203,30 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Editor
  * ====================================================== */
 
-@smiles_menu_width: 280px;
-@smile_padding: 5px;
+.wysiwyg-area label { margin-right: 15px; font-weight: @bold_weight; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; display: inline-block; }
+.wysiwyg-area .outline { border: 1px solid @container_inner_border_color; padding: 10px; }
 
-.wysiwyg-area label { font-weight: @bold_weight; }
-.wysiwyg-area .outline { border-width: 1px; border-style: solid; border-color: @container_inner_border_color; padding: 10px; }
-.wysiwyg-area .content { padding: 10px; }
-.wysiwyg-area .content > form > div + div { margin-top: 10px; }
+.wysiwyg-area .content-box.guest_name { padding-bottom: 0; }
+.wysiwyg-area .content-box.guest_name + .subject_line { padding: 15px 20px 0; }
+.wysiwyg-area .content-box.subject_line { padding-bottom: 0; }
+.wysiwyg-area .content-box.subject_line + .recipients,
+.wysiwyg-area .content-box.subject_line + .participants { padding: 15px 20px 0; }
+.wysiwyg-area .content-box.editor { padding-top: 0; }
+.wysiwyg-area .content-box.edit_reason { margin-top: 10px; padding: 20px; }
+
 .wysiwyg-area .subject_line .controls { float: right; }
-.wysiwyg-area .subject_line .subject_input { padding-right: 13px; overflow: hidden; }
-.wysiwyg-area .subject_line input { width: 100%; }
+.wysiwyg-area .subject_line label { padding-bottom: 0; }
+.wysiwyg-area .subject_line .subject_input { padding-right: 3px; line-height: 32px; letter-spacing: 0.025em; color: @forms_field_text_color; overflow: hidden; }
+.wysiwyg-area .subject_line input { max-width: none; }
 .wysiwyg-area .subject_line table { width: 100%; table-layout: auto; }
-.wysiwyg-area .subject_line table .subject { width: 70px; }
-.wysiwyg-area .subject_line .subject_input { line-height: 28px !important; }
+.wysiwyg-area .subject_line table td.subject { width: 70px; }
+.wysiwyg-area .end-date,
+.wysiwyg-area .attachment { display: none; }
+.wysiwyg-area .submit { margin-top: 10px; padding: 20px; display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; }
+.wysiwyg-area .edit_reason > label { width: 180px; line-height: 34px; float: left; }
+.wysiwyg-area .edit_reason > div { margin-left: 195px; }
+.wysiwyg-area .edit_reason > div > input { max-width: none; }
+
 .wysiwyg-area .end-date,
 .wysiwyg-area .attachment { display: none; }
 .wysiwyg-area .poll table { width: 100%; table-layout: auto; }
@@ -1228,58 +1239,81 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .wysiwyg-area .edit_reason > div { margin-left: 180px; }
 .wysiwyg-area .edit_reason > div > input { width: 100%; }
 
-.ui-wysiwyg .editors { border-width: 1px; border-style: solid; border-color: @container_inner_border_color; }
-.ui-wysiwyg .button { background: none; margin: 0; border: none; padding: 0; color: #000; }
-.ui-wysiwyg .button:hover { border: 0; color: inherit; }
-.ui-wysiwyg .button-fontName,
-.ui-wysiwyg .button-fontSize { background-color: transparent; }
+.ui-wysiwyg .editors { border: 1px solid @container_inner_border_color; }
+.ui-wysiwyg .controls { padding: 17px 0 15px 0; }
+.ui-wysiwyg .controls .group > ul > li.button { background: transparent; margin: 0 0 0 2px; border: 0; padding: 0; line-height: 1 !important; }
+.ui-wysiwyg .controls .group > ul > li.button:hover,
+.ui-wysiwyg .controls .group > ul > li.button:focus { background: transparent; }
+.ui-wysiwyg .controls .group > ul > li.button.selectMenuButton:first-child { margin-right: 6px; margin-left: 0 !important; }
 .ui-wysiwyg .ui-selectMenu { line-height: normal; }
-.ui-wysiwyg .ui-selectMenu-box { height: 20px; margin-top: 3px; }
+.ui-wysiwyg .ui-selectMenu-box { height: 20px; margin-top: 1px; border: @forms_field_border; }
 .ui-wysiwyg .ui-selectMenu-box .status { width: auto; border: none; padding: 0; line-height: 18px !important; }
 .ui-wysiwyg .ui-selectMenu-box .icon { border: none; }
-.ui-wysiwyg .ui-selectMenu-box .arrow { height: 20px; }
+.ui-wysiwyg .ui-selectMenu-box .arrow { height: 18px; }
 
-.wysiwyg-tabs li { background: @tabs_unselected_background; margin: 1px 2px 0 0; border: 1px solid @container_inner_border_color; border-top-width: 0; list-style: none; float: left; position: relative; bottom: 1px; }
-.wysiwyg-tabs li a { padding: 5px 15px; font: @tabs_unselected_text_font; text-decoration: @tabs_unselected_text_decoration; color: @tabs_unselected_text_color; float: left; }
-.wysiwyg-tabs li:hover { background: @tabs_hover_background; border: @tabs_hover_border; border-top-width: 0; }
-.wysiwyg-tabs li.ui-active { background-color: @container_background_color_1; margin-top: 0; border: 1px solid @container_inner_border_color; border-top-width: 0; padding-top: 1px; }
+.wysiwyg-tabs li { background-color: @tabs_selected_background; border: @tabs_selected_border; border-top-width: 0; list-style: none; float: left; position: relative; top: -1px; .transition(all 0.3s ease); }
+.wysiwyg-tabs li + li { margin-left: 4px; }
+.wysiwyg-tabs li a { padding: 8px 18px; font: @tabs_unselected_text_font; letter-spacing: 0.015em; text-decoration: @tabs_unselected_text_decoration; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
+.wysiwyg-tabs li:hover,
+.wysiwyg-tabs li:focus { background-color: @tabs_hover_background; border: @tabs_hover_border; border-top-width: 0; }
+.wysiwyg-tabs li:hover a,
+.wysiwyg-tabs li:focus a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; color: @tabs_hover_text_color; }
+.wysiwyg-tabs li.ui-active { background-color: @tabs_unselected_background; border: @tabs_unselected_border; border-top-width: 0; }
 .wysiwyg-tabs li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; color: @tabs_selected_text_color; }
 
 .new-area .user-search .content { padding: 0 15px 0 0; }
 .new-area .recipients h4 { margin-bottom: 3px; display: block; }
-.new-area .guest_name input { width: 485px; }
+.new-area .guest_name label { width: 85px; display: inline-block; }
+.new-area .guest_name input { max-width: ~"calc(100% - 88px)"; }
 .new-area .captcha { display: none; }
 
 .loadingOverlay { background-image: url('@{images_path}/loader/processing.gif'); background-position: center center; background-repeat: no-repeat; position: absolute; }
 
 #announcement-options { width: 500px; display: none; }
 
+#fileupload { padding-top: 0; }
+.fileupload-content { padding: 0; }
+.fileupload-buttonbar { padding: 0; padding-bottom: 15px; float: none; display: block; }
+.fileupload-buttonbar + span { padding-left: 0 !important; }
+.fileupload-buttonbar .ui-button { margin-left: 0; padding-top: 3px; }
+.attachment-button-image { width: 23px; height: 16px; padding: 2px 0 0 8px; }
+.attachment-button-text { padding: 0 10px 0 12px; line-height: 24px; }
+.files .preview img { max-width: 40px; max-height: 40px; }
+.files .name { width: 250px; padding-left: 15px; }
+.files .size { width: 90px; text-align: center; }
+.files .delete, .files .insert { padding: 0; }
+.files .ui-progressbar { width: 250px; }
+.files .ui-progressbar-complete { width: 250px; }
+
 .wysiwyg-smiley-menu .state-disabled { display: none; }
-.smiley-menu { width: @smiles_menu_width; }
-.smiley-menu > li > a { padding: @smile_padding; }
-.smiley-menu > li:hover > a { padding: @smile_padding; }
+.smiley-menu { width: 280px; }
+.smiley-menu > li > a { padding: 5px; }
+.smiley-menu > li > a > img { width: 18px; height: 18px; }
+.smiley-menu > li:hover > a,
+.smiley-menu > li:focus > a { padding: 5px; }
+img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align: -0.1em; }
 
 .grp_recipients_div { display: none; }
 .grp_recipients_div a { padding-top: 10px; display: block; clear: both; }
-.grp_recipients_div li { background: @micro_background; width: 240px; margin: 3px; border: @micro_border; padding: 3px 22px 3px 5px; font: @micro_text_font; color: @micro_text_color; overflow: hidden; float: left; display: inline-block; position: relative; }
-.grp_recipients_div li a { font: @micro_link_font; text-decoration: @micro_link_decoration; color: @micro_link_color; }
+.grp_recipients_div li { background-color: @buttons_background_color; width: 240px; margin: 3px; border: @buttons_border; padding: 3px 22px 3px 5px; overflow: hidden; display: block; float: left; position: relative; }
 
 
 /* BBCode Editor
  * ====================================================== */
 
-@bbcode_editor_background_color: @content_area_background_color;
-@bbcode_editor_text_font_family: @empty;
-@bbcode_editor_text_color: @content_area_text_color;
-
-.ui-wysiwyg .editors .bbcode-editor textarea { background-color: @bbcode_editor_background_color; padding: 10px !important; font-family: @bbcode_editor_text_font_family; color: @bbcode_editor_text_color; }
+.ui-wysiwyg .editors .bbcode-editor textarea { background-color: @forms_area_background_color; padding: 14px 20px !important; font: 13px monospace; line-height: 1.8; color: @forms_area_text_color; }
 
 
 /* Preview Editor
  * ====================================================== */
 
-@ve_posts_odd_background_color: @bbcode_editor_background_color;
-@ve_posts_odd_text_color: @bbcode_editor_text_color;
+/**
+ * These variables have been left in place because this
+ * is the most direct way to style the Preview Editor.
+ */
+
+@ve_posts_odd_background_color: @forms_area_background_color;
+@ve_posts_odd_text_color: @forms_area_text_color;
 @ve_lists_links_color: @link_color;
 @ve_default_forum_text_font_style: @default_forum_text_font_style;
 @ve_default_forum_text_font_weight: @default_forum_text_font_weight;
@@ -1289,12 +1323,12 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 @ve_quotes_border: 1px solid @light_color_2;
 @ve_quotes_sub_background: @content_area_background_color;
 @ve_quotes_sub_border: 1px solid @light_color_2;
-@ve_posts_code_background: @empty;
-@ve_posts_code_border: @container_outer_border_color;
-@ve_posts_code_text_font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+@ve_posts_code_background: @content_area_background_color;
+@ve_posts_code_border: 1px solid @container_outer_border_color;
+@ve_posts_code_text_font: 1rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 @ve_posts_code_text_color: @content_area_text_color;
 
-.editor.visual-editor { padding: 5px; }
+.editor.visual-editor { background-color: @forms_area_background_color; padding: 11px 15px; }
 
 
 /* ======================================================
@@ -1660,30 +1694,36 @@ input[type="submit"]:active, input[type="button"]:active, button:active { font-w
  * Form Elements
  * ====================================================== */
 
-@forms_field_background: @white;
+/**
+ * These variables have been left in place because they
+ * are also used by form elements not declared here.
+ * This makes it easier to keep styles consistent.
+ */
+
+@forms_field_background_color: @white;
 @forms_field_border: @buttons_border;
-@forms_field_text_font: @empty;
-@forms_field_text_color: @empty;
-@forms_area_background: @empty;
-@forms_area_border: @buttons_border;
-@forms_area_text_font: @empty;
-@forms_area_text_color: @empty;
-@forms_select_background: @empty;
-@forms_select_border: @buttons_border;
-@forms_select_text_font: @empty;
-@forms_select_text_color: @empty;
+@forms_field_text_font: 1.2rem @default_forum_text_font_family;
+@forms_field_text_color: @buttons_text_color;
+@forms_area_background_color: @forms_field_background_color;
+@forms_area_border: @forms_field_border;
+@forms_area_text_font: 1.6rem monospace;
+@forms_area_text_color: @forms_field_text_color;
+@forms_select_background_color: @forms_field_background_color;
+@forms_select_border: @forms_field_border;
+@forms_select_text_font: @forms_field_text_font;
+@forms_select_text_color: @forms_field_text_color;
 
 input[type="text"],
 input[type="email"],
-input[type="password"] { background: @forms_field_background; width: 300px; height: 28px; border: @forms_field_border; padding: 2px 6px; font: @forms_field_text_font; color: @forms_field_text_color; }
+input[type="password"] { background: none; background-color: @forms_field_background_color; width: 100%; max-width: 400px; height: 32px; border: @forms_field_border; padding: 0 12px; font: @forms_field_text_font; letter-spacing: 0.025em; color: @forms_field_text_color; }
 input[type="text"].short { width: 50px; }
 input[type="text"].search-input { width: inherit; }
-input.date { width: 77px; }
-input.time { width: 55px; }
+input.date { width: 100px; }
+input.time { width: 85px; }
 
-textarea { background: @forms_area_background; border: @forms_area_border; font: @forms_area_text_font; color: @forms_area_text_color; resize: none; }
+textarea { background: none; background-color: @forms_area_background_color; border: @forms_area_border; padding: 14px 20px; font: @forms_area_text_font; line-height: 1.8; letter-spacing: 0.025em; color: @forms_area_text_color; resize: none; }
 
-select { background-color: @forms_select_background; height: 28px; border: @forms_select_border; padding: 2px; font: @forms_select_text_font; color: @forms_select_text_color; }
+select { background-color: @forms_select_background_color; height: 30px; border: @forms_select_border; padding: 1px 8px 0; font: @forms_select_text_font; letter-spacing: 0.025em; color: @forms_select_text_color; }
 
 .setting-wrapper + .setting-wrapper { margin-top: 4px; }
 .setting-wrapper input { vertical-align: middle; }
