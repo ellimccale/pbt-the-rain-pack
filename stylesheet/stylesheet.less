@@ -897,39 +897,52 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Board List
  * ====================================================== */
 
-@board_names_font: 1.2rem @default_forum_text_font_family;
-@board_names_color: @empty;
-@board_desc_font: 1.1rem @default_forum_text_font_family;
-@board_desc_color: @empty;
-@board_mod_font: 1.1rem @default_forum_text_font_family;
-@board_mod_color: @empty;
-@board_sub_font: 1.1rem @default_forum_text_font_family;
-@board_sub_color: @empty;
-@board_align_main: left;
-@board_align_count: center;
-@board_align_last_post: right;
+.boards.container .content { background: none; margin-left: -5px; margin-right: -5px; padding: 0; display: flex; flex-wrap: wrap; }
 
-.boards table.list { table-layout: auto; }
-.boards table.list th.main { padding-left: 10px; }
-.boards table.list > tbody > tr > td { padding: 5px 10px; }
+.boards .item { max-width: ~"calc(50% - 10px)"; margin: 10px 5px 0; display: flex; flex-wrap: wrap; flex-basis: ~"calc(50% - 10px)"; }
 
-.boards .main { width: auto; text-align: @board_align_main; }
-.boards .main .link a { font: @board_names_font; color: @board_names_color; }
-.boards .main .description { margin-top: 3px; font: @board_desc_font; color: @board_desc_color; }
-.boards .main .moderators { margin-top: 5px; font: @board_mod_font; color: @board_mod_color; }
-.boards .main .sub-boards { margin-top: 5px; font: @board_sub_font; color: @board_sub_color; }
-.boards .main.redirect { border-right: 0; }
-.boards .threads { width: 8%; text-align: @board_align_count; white-space: nowrap; }
-.boards .posts { width: 8%; text-align: @board_align_count; white-space: nowrap; }
-.boards .latest { width: 20%; text-align: @board_align_last_post; }
+.boards .main,
+.boards .threads,
+.boards .posts { background-color: @container_background_color_1; text-align: center; }
+
+.boards .main { max-width: 100%; min-height: ~"calc(100% - 39px)"; padding: 35px 40px 30px; flex-grow: 1; flex-basis: 100%; }
+.boards .main .link { font: @bold_weight 1rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.15em; text-transform: uppercase; color: @container_text_color_1; }
+.boards .main .link a { font: inherit; color: inherit; }
+.boards .main .link a:hover,
+.boards .main .link a:focus { color: @container_links_color; }
+.boards .main .link + .description { margin-top: 13px; }
+.boards .main .description { font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; text-align: justify; text-align-last: center; color: @container_text_color_1; }
+.boards .main .description + .sub-boards { margin-top: 10px; }
+.boards .main .sub-boards { font: @italic_style 1.1rem @default_forum_text_font_family; line-height: 1.4; letter-spacing: 0.025em; color: @container_text_color_1; }
+
+.boards .threads,
+.boards .posts { max-width: ~"calc(50% - 1.5px)"; padding: 0 20px; font: 1rem @default_forum_text_font_family; line-height: 36px; letter-spacing: 0.15em; text-transform: uppercase; flex-basis: ~"calc(50% - 1.5px)"; }
+.boards .threads { margin: 3px 1.5px 0 0; }
+.boards .posts { margin: 3px 0 0 1.5px; }
 
 
-/* Password-protected Board
+/* Image Boards
  * ====================================================== */
 
-#password-wrapper { margin: 10px 0; }
-#password-wrapper div { margin-right: 5px; display: inline-block; }
-#password-wrapper input { padding: 1px 6px 3px 6px; }
+
+
+
+/* No Boards
+ * ====================================================== */
+
+.boards .item--no-boards { max-width: 100%; flex-basis: 100%; }
+.boards .item--no-boards .main { padding: 20px; line-height: 1.8; }
+
+
+/* Password Protected Board
+ * ====================================================== */
+
+.password__wrapper { display: flex; align-items: flex-end; }
+
+.password p { margin-bottom: 20px; font: @content_area_text_font; line-height: 1.8 !important; letter-spacing: 0.025em; color: @content_area_text_color; }
+.password label { font-weight: @bold_weight; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: @content_area_text_color; display: block; }
+.password input[type="password"] { margin-top: 5px; }
+.password input[type="submit"] { height: 32px; line-height: 30px !important; }
 
 
 /* ======================================================
