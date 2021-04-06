@@ -31,19 +31,21 @@
                         </p>
                     {/if}
                 </div>
-                <div class="threads">
-                    {if $[board.threads] == -1}
-                        N/A
-                    {else}
-                        $[board.threads] thread{if $[board.threads] != 1}s{/if}
-                    {/if}
-                </div>
-                <div class="posts">
-                    {if $[board.posts] == -1}
-                        N/A
-                    {else}
-                        $[board.posts] post{if $[board.posts] != 1}s{/if}
-                    {/if}
+                <div class="stats">
+                    <div class="threads">
+                        {if $[board.threads] == -1}
+                            N/A
+                        {else}
+                            $[board.threads] thread{if $[board.threads] != 1}s{/if}
+                        {/if}
+                    </div>
+                    <div class="posts">
+                        {if $[board.posts] == -1}
+                            N/A
+                        {else}
+                            $[board.posts] post{if $[board.posts] != 1}s{/if}
+                        {/if}
+                    </div>
                 </div>
             </div>
             <!-- / Default Boards -->

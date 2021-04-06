@@ -52,6 +52,31 @@ $[tag.html.open]
                     open_ref.apply(this, arguments);
                 }
             })();
+
+            /**
+             * Update the dimensions of some dialogs on open.
+             * Has to be in `<head>` to load in the right order.
+             */
+            (function updateDialogDimensions() {
+                function onDialogOpen(selector, options) {
+                    $(document).on('dialogopen', selector, function() {
+                        $(this).dialog(options);
+                    });
+                }
+
+                onDialogOpen('#guests-online', { width: 320 });
+                onDialogOpen('#board-notifications', { width: 550 });
+                onDialogOpen('#copy-link-container', { height: 350 });
+                onDialogOpen('#announcement-options', { width: 420, height: 400 });
+                onDialogOpen('#poll-dialog', { width: 655 });
+                onDialogOpen('#report-post-container', { width: 662 });
+                onDialogOpen('#forward-container', { width: 410 });
+                onDialogOpen('#change-users-container', { width: 390 });
+                onDialogOpen('#confirmation', { width: 350 });
+                onDialogOpen('#board_listing', { height: 500 });
+                onDialogOpen('#captcha-container', { width: 475 });
+                //onDialogOpen('#edit_money', { width: 500, height: 375, draggable: true });
+            })();
         });
         </script>
 
@@ -172,39 +197,39 @@ $[tag.html.open]
 
                             <!-- Row 1 -->
                             <!-- Repeat this block to add a new row of affiliates -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                             <!-- Row 2 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                             <!-- Row 3 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                             <!-- Row 4 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                             <!-- Row 5 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                         </div>
                         <div class="content affiliates__scrolling">
@@ -212,16 +237,16 @@ $[tag.html.open]
                                 <div>
 
                                     <!-- Repeat this line to add a new scrolling affiliate -->
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="http://placehold.it/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
 
                                 </div>
                             </div>
