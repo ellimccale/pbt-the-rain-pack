@@ -170,7 +170,7 @@
 @h2_decoration: @empty;
 @h2_case: @empty;
 @h2_color: @empty;
-@h3_font: 1.8rem @default_forum_text_font_family;
+@h3_font: 1.6rem @default_forum_text_font_family;
 @h3_decoration: @empty;
 @h3_case: @empty;
 @h3_color: @empty;
@@ -257,7 +257,7 @@ hr { height: 0; border: 0; border-top: 1px solid @container_inner_border_color; 
 .description { font: @description_font; color: @description_color; }
 .viewing { font: @viewing_font; color: @viewing_color; }
 .small { font: @small_desc_font; }
-.note { color: @small_desc_color; }
+.note { font-size: 1.2rem; color: @small_desc_color; }
 .placeholder,
 .placeholder-empty { color: #888; }
 .foot abbr.time,
@@ -554,7 +554,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .options_menu li > a,
 .select_menu_list li > a,
 .smiley-menu li > a,
-.ui-menu-context li > a { font: normal normal 1.3rem @default_forum_text_decoration; letter-spacing: 0.025em; text-transform: none; color: #000 !important; }
+.ui-menu-context li > a { font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; text-transform: none; color: #000 !important; }
 
 .ui-search { .box-sizing(); }
 .ui-search .search-input { height: 26px; border: 0; padding: 2px 8px; line-height: 16px !important; }
@@ -586,7 +586,6 @@ header > a { width: 100%; height: 100%; display: block; }
 
 .ui-dialog div.ui-dialog-content,
 .ui-dialog div.ui-dialog-buttonpane { background-color: @content_area_background_color; border: 20px solid @container_background_color_1; padding: 20px; color: @content_area_text_color; }
-.ui-dialog div.ui-dialog-content { border-bottom-width: 10px; }
 .ui-dialog div.ui-dialog-content input,
 .ui-dialog div.ui-dialog-content select { margin: 5px; }
 .ui-dialog div.ui-dialog-content ~ div.ui-dialog-buttonpane { border-top-width: 0; }
@@ -670,31 +669,42 @@ header > a { width: 100%; height: 100%; display: block; }
  * Tabs
  * ====================================================== */
 
-@tabs_background: @container_inner_border_color;
-@tabs_border: 1px solid @container_inner_border_color;
-@tabs_unselected_background: @container_background_color_2;
-@tabs_unselected_border: 1px solid @container_inner_border_color;
-@tabs_unselected_text_color: @container_links_color;
-@tabs_unselected_text_font: 100% @default_forum_text_font_family;
+/**
+ * These variables have been left in place because they
+ * are also used for the WYSIWYG tabs. This makes it
+ * easier to keep the two styles consistent.
+ */
+
+@tabs_background_color: @dark_color_2;
+@tabs_unselected_background_color: @light_color_1;
+@tabs_unselected_border: 1px solid @container_outer_border_color;
+@tabs_unselected_text_font: 1.2rem @default_forum_text_font_family;
 @tabs_unselected_text_decoration: none;
-@tabs_selected_background: @container_background_color_1;
-@tabs_selected_border: 1px solid transparent;
-@tabs_selected_text_color: @container_links_color;
-@tabs_selected_text_font: @tabs_unselected_text_font;
-@tabs_selected_text_decoration: @tabs_unselected_text_decoration;
-@tabs_hover_background: @container_highlight_color;
+@tabs_unselected_text_case: @empty;
+@tabs_unselected_text_color: mix(@light_color_1, @container_text_color_1, 25%);
+@tabs_hover_background_color: @container_background_color_1;
 @tabs_hover_border: @tabs_unselected_border;
-@tabs_hover_text_color: @tabs_unselected_text_color;
 @tabs_hover_text_font: @tabs_unselected_text_font;
 @tabs_hover_text_decoration: @tabs_unselected_text_decoration;
+@tabs_hover_text_case: @tabs_unselected_text_case;
+@tabs_hover_text_color: @container_links_color;
+@tabs_selected_background_color: @container_background_color_1;
+@tabs_selected_border: 1px solid transparent;
+@tabs_selected_text_font: @tabs_unselected_text_font;
+@tabs_selected_text_decoration: @tabs_unselected_text_decoration;
+@tabs_selected_text_case: @tabs_unselected_text_case;
+@tabs_selected_text_color: @container_text_color_1;
 
-.ui-tabMenu ul { background: @tabs_background; border: @tabs_border; border-top-width: 0; border-right-width: 0; border-left-width: 0; padding: 10px 10px 0 10px; }
-.ui-tabMenu ul li { background: @tabs_unselected_background; height: 26px; margin: 0 2px 0 0; border: @tabs_unselected_border; list-style: none; float: left; position: relative; top: 1px; }
-.ui-tabMenu ul li a { padding: 5px 14px; font: @tabs_unselected_text_font; text-decoration: @tabs_unselected_text_decoration; color: @tabs_unselected_text_color; white-space: nowrap; float: left; }
-.ui-tabMenu ul li:hover { background: @tabs_hover_background; border-bottom: @tabs_hover_border; }
-.ui-tabMenu ul li:hover a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; color: @tabs_hover_text_color; }
-.ui-tabMenu ul li.ui-active { background: @tabs_selected_background; border-bottom: @tabs_selected_border; }
-.ui-tabMenu ul li.ui-active a { border-bottom: 1px solid @tabs_selected_background; font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; color: @tabs_selected_text_color; }
+.ui-tabMenu ul { background-color: @tabs_background_color; padding: 10px 20px 0 20px; }
+.ui-tabMenu ul li { background-color: @tabs_unselected_background_color; border-left: @tabs_unselected_border; border-bottom: @tabs_unselected_border; list-style: none; float: left; .transition(all 0.3s ease); }
+.ui-tabMenu ul li:first-of-type { border-left: 0; }
+.ui-tabMenu ul li a { padding: 10px 20px; font: @tabs_unselected_text_font; letter-spacing: 0.025em; text-decoration: @tabs_unselected_text_decoration; text-transform: @tabs_unselected_text_case; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
+.ui-tabMenu ul li:hover,
+.ui-tabMenu ul li:focus { background-color: @tabs_hover_background_color; border-bottom: @tabs_hover_border; }
+.ui-tabMenu ul li:hover a,
+.ui-tabMenu ul li:focus a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; text-transform: @tabs_hover_text_case; color: @tabs_hover_text_color; }
+.ui-tabMenu ul li.ui-active { background-color: @tabs_selected_background_color; border-bottom: @tabs_selected_border; }
+.ui-tabMenu ul li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; text-transform: @tabs_selected_text_case; color: @tabs_selected_text_color; }
 
 
 /* ======================================================
@@ -1247,7 +1257,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .wysiwyg-area .edit_reason > div { margin-left: 200px; }
 .wysiwyg-area .edit_reason > div > input { max-width: none; }
 
-.ui-wysiwyg .editors { border: 1px solid @container_inner_border_color; }
+.ui-wysiwyg .editors { border: @forms_area_border; }
 .ui-wysiwyg .controls { padding: 17px 0 15px 0; }
 .ui-wysiwyg .controls .group > ul > li.button { background: transparent; margin: 0 0 0 2px; border: 0; padding: 0; line-height: 1 !important; }
 .ui-wysiwyg .controls .group > ul > li.button:hover,
@@ -1259,15 +1269,15 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .ui-wysiwyg .ui-selectMenu-box .icon { border: none; }
 .ui-wysiwyg .ui-selectMenu-box .arrow { height: 18px; }
 
-.wysiwyg-tabs li { background-color: @tabs_selected_background; border: @tabs_selected_border; border-top-width: 0; list-style: none; float: left; position: relative; top: -1px; .transition(all 0.3s ease); }
+.wysiwyg-tabs li { background-color: @tabs_selected_background_color; border: @tabs_selected_border; border-top-color: @light_color_1; list-style: none; float: left; position: relative; top: -1px; .transition(all 0.3s ease); }
 .wysiwyg-tabs li + li { margin-left: 4px; }
-.wysiwyg-tabs li a { padding: 8px 18px; font: @tabs_unselected_text_font; letter-spacing: 0.015em; text-decoration: @tabs_unselected_text_decoration; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
+.wysiwyg-tabs li a { padding: 10px 20px; font: @tabs_unselected_text_font; letter-spacing: 0.015em; text-decoration: @tabs_unselected_text_decoration; text-transform: @tabs_unselected_text_case; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
 .wysiwyg-tabs li:hover,
-.wysiwyg-tabs li:focus { background-color: @tabs_hover_background; border: @tabs_hover_border; border-top-width: 0; }
+.wysiwyg-tabs li:focus { background-color: @tabs_hover_background_color; border: @tabs_hover_border; border-top-color: @light_color_1; }
 .wysiwyg-tabs li:hover a,
-.wysiwyg-tabs li:focus a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; color: @tabs_hover_text_color; }
-.wysiwyg-tabs li.ui-active { background-color: @tabs_unselected_background; border: @tabs_unselected_border; border-top-width: 0; }
-.wysiwyg-tabs li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; color: @tabs_selected_text_color; }
+.wysiwyg-tabs li:focus a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; text-transform: @tabs_hover_text_case; color: @tabs_hover_text_color; }
+.wysiwyg-tabs li.ui-active { background-color: @tabs_unselected_background_color; border: @tabs_unselected_border; border-color: @light_color_1; border-top-color: @white; }
+.wysiwyg-tabs li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; text-transform: @tabs_selected_text_case; color: @tabs_selected_text_color; }
 
 .new-area .user-search .content { padding: 0 15px 0 0; }
 .new-area .recipients h4 { margin-bottom: 3px; display: block; }
@@ -1440,34 +1450,37 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .show-user .visit-badge-store a.button { margin-left: 0; }
 
 
-/* Edit Profile
+/* Edit User Profile
  * ====================================================== */
 
-.big_username { font-size: 2.4rem; }
-
-.edit-user textarea { margin: 0; padding: 2px; }
 .edit-user input,
 .edit-user select,
 .edit-user textarea { margin-top: 5px; display: inline-block; }
-.edit-user label { font-weight: @bold_weight; display: block; }
+.edit-user select + select { margin-left: 10px; }
+.edit-user textarea { width: 400px; padding: 7px 13px; }
+.edit-user label { margin-bottom: 5px; margin-top: 10px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-transform: uppercase; display: block; }
 .edit-user button,
 .edit-user .button,
 .edit-user a.button,
 .edit-user input[type="submit"],
 .edit-user input[type="button"] { margin-left: 0; }
 .edit-user .title { font-weight: @bold_weight; margin-bottom: 4px; }
-.edit-user .content-box { border-width: 0; padding: 10px 20px 20px; }
+.edit-user .description { margin-bottom: 10px; display: block; }
+.edit-user .description + br { display: none; }
+.edit-user .content-box { padding: 0 20px 20px; font-size: 1.2rem; line-height: 1.4; color: @content_area_text_color; }
 .edit-user .content-box + .content-box { margin-left: 10px; }
+.edit-user .content-box h3 { font: 1.6rem @default_forum_text_font_family; line-height: 1; color: @content_area_text_color; }
 .edit-user .content-box.options { position: relative; }
-.edit-user .content-box.options table { table-layout: auto; }
-.edit-user .content-box.options td { padding: 9px 5px; }
+.edit-user .content-box.options table { margin: 10px 0; table-layout: auto; }
+.edit-user .content-box.options td { padding: 5px; }
 .edit-user .content-box.options input[type="radio"] { margin-top: 0; }
-.edit-user .pad { padding: 20px; }
-.edit-user .pad .username { margin-top: 14px; font-weight: normal; font-size: 1em; }
-.edit-user .pad.info { padding-bottom: 0; clear: both; }
-.edit-user .note { font-style: @italic_style; font-size: 1.1rem; }
+.edit-user .user-info { padding: 30px 20px; color: @content_area_text_color; }
+.edit-user .user-info .username { font-size: 1.2rem; color: @content_area_text_color; }
+.edit-user .user-info .username > .description { margin: 0; display: inline; }
+.edit-user .user-info .username--big { font: 2.4rem @default_forum_text_font_family; line-height: 1; color: @content_area_text_color; }
+.edit-user .note { font-style: @italic_style; font-size: 1rem; }
 .edit-user .radio label,
-.edit-user .checkbox label { font-weight: normal; display: inline; }
+.edit-user .checkbox label { margin: 0; font: normal 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; text-transform: none; display: inline; vertical-align: 2px; }
 .edit-user .user-search { padding-top: 3px; }
 .edit-user .notifications table { table-layout: auto; }
 .edit-user .notifications th,
@@ -1475,22 +1488,24 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .edit-user .notifications th.description { width: 760px; }
 .edit-user .edit_button_spacer { min-width: 275px; display: inline-block; }
 
-.edit-user .avatar { padding: 10px 20px 20px; }
-.edit-user .avatar h4 { margin-bottom: 5px; }
-.edit-user .avatar.content-box { padding: 10px 10px 0 0; }
+.edit-user .avatar { background-color: @content_area_background_color; padding: 0 20px 20px; font: @content_area_text_font; color: @content_area_text_color; }
+.edit-user .avatar h4 { margin-bottom: 10px; font: 1.6rem @default_forum_text_font_family; line-height: 1; color: @content_area_text_color; }
 .edit-user .micro-profile .avatar { padding: 0; }
 
 .edit-user #avatar-options { display: flex; }
-.edit-user #avatar-options .content-box { width: 172px; min-height: 270px; border-width: 1px; padding: 10px; text-align: center; position: relative; }
-.edit-user #avatar-options .content-box.options { width: 100%; min-width: 279px; max-width: 350px; text-align: left; }
+.edit-user #avatar-options .content-box { width: 252px; min-height: 430px; border: 1px solid @container_inner_border_color; padding: 20px; text-align: center; position: relative; }
+.edit-user #avatar-options .content-box.options { width: 100%; min-width: 280px; max-width: 350px; text-align: left; }
 
-.notification-block-wrapper { margin: 0; padding: 10px 20px 0; }
-.notification-block-wrapper .subtitle { margin: 20px; }
+.notification-block-wrapper { margin: 20px 0 0; padding: 0; }
+.notification-block-wrapper > .content { background-color: @content_area_background_color; padding: 0 0 20px; }
+.notification-block-wrapper .subtitle { margin: 0; padding: 15px 20px 5px; }
 .notification-block-wrapper .settings { margin: 0; }
-.notification-block-wrapper .settings .col-headings { background-color: @container_background_color_2; margin: 10px 0; border: 1px solid @container_inner_border_color; border-left-width: 0; border-right-width: 0; padding: 5px 20px; }
-.notification-block-wrapper .notification-option-wrapper { padding: 5px 20px 10px; }
-#add-board-desc { margin: 0; padding: 20px 20px 0; }
-#notification-controls { margin: 0; padding: 10px 20px 20px; }
+.notification-block-wrapper .settings .col-headings { margin: 10px 0; border: 1px solid @container_inner_border_color; border-left-width: 0; border-right-width: 0; padding: 10px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-transform: uppercase; color: @content_area_text_color; }
+.notification-block-wrapper .notification-option-wrapper { background-color: transparent; padding: 5px 20px 10px; }
+.notification-block-wrapper .notification-option-wrapper .notification-description { padding: 0; }
+
+#add-board-desc { background-color: @content_area_background_color; margin: 20px 0 0; padding: 20px 20px 0; }
+#notification-controls { background-color: @content_area_background_color; margin: 0; padding: 10px 20px 20px; }
 
 #user_block_list .user-search-selection .ui-selectlist-item { margin-bottom: 10px; float: none; clear: both; }
 #user_block_list .user-search-selection .ui-selectlist-item .block_list_options { width: 430px; padding-left: 20px; float: left; }
@@ -1501,16 +1516,40 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 #forum-avatars-wrapper { width: 510px; margin: 0 auto; padding: 10px; }
 #forum-avatars-wrapper .avatar-wrapper { margin: 10px; float: left; }
 #forum-avatars-wrapper img { max-width: 150px; max-height: 150px; }
-#forum-avatars-wrapper img:hover { margin: -3px; border-width: 3px; border-style: solid; border-color: @link_color; }
+#forum-avatars-wrapper img:hover,
+#forum-avatars-wrapper img:focus { margin: -3px; border-width: 3px; border-style: solid; border-color: @link_color; }
 
 #forum-avatar-editor-container { padding: 0; }
 #image-avatar-editor-container .wrapper { margin-top: 15px; padding: 10px; }
 #image-avatar-editor-container .wrapper.first { margin-top: 10px; clear: both; }
-#image-avatar-editor-container span.fileupload-buttonbar { margin: 10px 0; display: inline-block; }
-#image-avatar-editor-container span.fileupload-buttonbar .ui-button { margin-left: 0; padding: 2px 6px !important; }
+#image-avatar-editor-container span.fileupload-buttonbar { margin: 10px 0 0; display: inline-block; }
+#image-avatar-editor-container span.fileupload-buttonbar .ui-button { margin-left: 0; padding: 0 14px !important; }
 #image-avatar-editor-container .files { margin: 0; }
-#image-avatar-editor-container #link-image { height: 18px; }
 #image-avatar-editor-container #link-image.button { margin-left: 0; cursor: pointer; }
+#image-avatar-editor-container #link-text { margin: 5px 0; }
+
+
+/* Badges
+ * ====================================================== */
+
+#badge-options h4 { margin-top: 10px; }
+#badge-options .badge-thumbs { padding: 5px !important; float: left; }
+#badge-options .badge-thumbs .badge-thumb,
+#badge-options .badge-thumbs .badge-icons { float: left; }
+#badge-options .badge-thumbs .badge-icons img,
+#badge-options .badge-thumbs .badge-icons input { width: 16px; height: 16px; margin: 5px 0 0 10px; }
+#badge-options .badge-thumbs .badge-icons img { margin: 5px 0 5px 10px; vertical-align: middle; }
+#badge-options .badge-thumbs .badge-icons input { margin-top: 8px; padding: 0; }
+#badge-options .badge-thumbs .small { vertical-align: bottom; }
+#badge-options .badges-have .badge-thumbs { width: 240px; }
+#badge-options .badges-dont-have .badge-thumbs { width: 110px; }
+#badge-options .badges-dont-have .badge-icons img { margin-top: 16px; }
+#badge-options .badge-gift,
+#badge-options .badge-use-action { color: @container_text_color_1; }
+
+.badge-thumbs { min-height: 36px; padding: 5px 130px 5px 5px !important; position: relative; }
+.badge-thumbs .badge-thumb { margin: 5px; }
+.badge-thumbs .button { margin-top: -13px; position: absolute; top: 50%; right: 10px; }
 
 
 /* ======================================================
@@ -1532,8 +1571,8 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .micro-profile .avatar .avatar-wrapper img,
 .micro-profile .avatar .avatar-wrapper default { max-width: 50px; max-height: 50px; }
 
-.micro-profile .info { width: 150px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; text-transform: uppercase; overflow: hidden; position: absolute; top: 17px; left: 60px; }
-.micro-profile .info input { background: none; background-color: @forms_field_background_color; width: 150px; height: 25px; margin: 0 !important; border: @forms_field_border; padding: 0 8px; font: @forms_field_text_font; letter-spacing: 0.035em; color: @forms_field_text_color; }
+.micro-profile .info { width: 145px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; text-transform: uppercase; overflow: hidden; position: absolute; top: 17px; left: 65px; }
+.micro-profile .info input { background: none; background-color: @forms_field_background_color; width: 145px; height: 25px; margin: 0 !important; border: @forms_field_border; padding: 0 8px; font: @forms_field_text_font; letter-spacing: 0.035em; color: @forms_field_text_color; }
 .micro-profile .info .small,
 .micro-profile .info img { display: none; }
 
@@ -1542,7 +1581,7 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .user-search-box { margin-top: 10px; width: 220px; }
 
 .user-search-selection .ui-selectlist-item { margin-right: 8px; float: left; }
-.user-search-selection .ui-selectlist-item .content { padding-right: 18px; }
+.user-search-selection .ui-selectlist-item .content { padding: 0 17px 0 0; }
 .user-search-selection .ui-selectlist-item .close { background-color: @content_area_background_color; height: 62px; border: 1px solid @light_color_1; padding: 20px 5px 5px; font: 1.2rem @default_forum_text_font_family; cursor: pointer; position: absolute; right: 0; }
 
 .user-search-selectlist { z-index: 99999; }

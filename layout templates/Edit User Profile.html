@@ -19,9 +19,9 @@
 
     <!-- Tab Content -->
     <div class="content">
-        <div class="pad info">
+        <div class="user-info content-box ui-helper-clearfix">
             <span class="username float-right">Username: <span class="description">$[user.username]</span></span>
-            <span class="big_username" style="color: $[user.color];">$[user.name]</span><br>
+            <span class="username--big" style="color: $[user.color];">$[user.name]</span><br>
         </div>
 
         <noscript>
@@ -60,3 +60,17 @@
 
 </div>
 <!-- / Edit User Container -->
+
+<script>
+$(function() {
+    // Add warning about avatar size to avatar tab
+    (function warnAvatar() {
+        var $avatarSettings = $('#avatar-options > .options').find('table.radio');
+        var $message = $('<p style="margin: 10px 0 20px;"><span class="bold">Reminder:</span> Avatars should be 200px by 300px, '
+                        + 'which is not supported by the ProBoards upload tool. Please upload your avatar to an external host '
+                        + '(such as nickpic.host) and use the "Link Image" option to save your avatar settings.</p>');
+        
+        $avatarSettings.before($message);
+    })();
+});
+</script>
