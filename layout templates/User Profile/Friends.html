@@ -1,13 +1,11 @@
-<!-- Friends -->
 <!-- Friends Info -->
-<div class="content-box pad-all-double">
+<div class="content-box">
     <p style="text-align: left;"><span class="friends-stats">($[total_online]) Online &nbsp;&nbsp; ($[total_offline]) Offline</span> Friends are members that are following each other.</p>
 </div>
-<!-- / Friends Info -->
 
 <!-- Friends List -->
 {if $[online_friend]}
-    <div class="online-friends clear">
+    <div class="friends content-box">
         {foreach $[online_friend]}
             $[online_friend.microprofile]
         {/foreach}
@@ -15,7 +13,7 @@
 {/if}
 
 {if $[offline_friend]}
-    <div class="offline-friends clear">
+    <div class="friends content-box">
         {foreach $[offline_friend]}
             $[offline_friend.microprofile]
         {/foreach}
@@ -23,7 +21,7 @@
 {/if}
 
 {if $[view_friends_link]}
-    <div class="members-link-container clear">
+    <div class="content-box">
         $[view_friends_link]
     </div>
 {/if}
@@ -32,18 +30,11 @@
 {if $[suggested_user]}
 
     <!-- Suggested Friends -->
-    <div class="suggested-friends content-box pad-all-double clear">
-        <div class="bold pad-bottom">Other members you might know...</div>
+    <div class="content-box clear">
+        <p class="bold pad-bottom">Other members you might know...</p>
         {foreach $[suggested_user]}
             <div class="mini-user $[suggested_user.class]">
-                <div class="mini-user-inside pad-bottom-thin">
-                    <div class="mini-avatar">
-                        $[suggested_user.avatar_medium]
-                    </div>
-                    <span class="name">
-                        $[suggested_user]
-                    </span>
-                </div>
+                $[suggested_user.microprofile]
                 $[suggested_user.follow_button]
             </div>
         {/foreach}
@@ -51,4 +42,3 @@
     <!-- / Suggested Friends -->
 
 {/if}
-<!-- / Friends -->

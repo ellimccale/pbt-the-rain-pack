@@ -12,17 +12,17 @@
             </colgroup>
             <thead>
                 <tr class="heading">
-                    <th>This Member's Groups</th>
-                    <th>Leaders</th>
-                    <th>Members</th>
-                    <th>Status</th>
+                    <th class="group_desc">This Member's Groups</th>
+                    <th class="leaders">Leaders</th>
+                    <th class="members">Members</th>
+                    <th class="status">Status</th>
                 </tr>
             </thead>
             <tbody>
                 {foreach $[group]}
                     <tr id="$[group.content_id]" class="$[group.content_class]">
                         <td class="group_desc">
-                            <a href="$[group.href]">$[group.name]</a>
+                            <a href="$[group.href]" class="group-link">$[group.name]</a>
                             <br />
                             {if $[group.description]}$[group.description]<br>{/if}
                             <span class="small group-controls">
@@ -42,13 +42,15 @@
 {else}
 
     <!-- No Groups -->
-    <p id="$[no_groups_message_id]" class="pad-bottom-double">
-        {if $[user.id] == $[current_user.id]}
-            You are not a member of any group.
-        {else}
-            This user is not a member of any group.
-        {/if}
-    </p>
+    <div class="content-box">
+        <p id="$[no_groups_message_id]" class="center">
+            {if $[user.id] == $[current_user.id]}
+                You are not a member of any group.
+            {else}
+                This user is not a member of any group.
+            {/if}
+        </p>
+    </div>
     <!-- / No Groups -->
 
 {/if}
@@ -66,17 +68,17 @@
             </colgroup>
             <thead>
                 <tr class="heading">
-                    <th>Other Groups</th>
-                    <th>Leaders</th>
-                    <th>Members</th>
-                    <th>{if $[user.id] == $[current_user.id]}Options{else}Status{/if}</th>
+                    <th class="group_desc">Other Groups</th>
+                    <th class="leaders">Leaders</th>
+                    <th class="members">Members</th>
+                    <th class="status">{if $[user.id] == $[current_user.id]}Options{else}Status{/if}</th>
                 </tr>
             </thead>
             <tbody>
                 {foreach $[other_group]}
                     <tr id="$[other_group.content_id]" class="$[other_group.content_class]">
                         <td class="group_desc">
-                            <a href="$[other_group.href]">$[other_group.name]</a>
+                            <a href="$[other_group.href]" class="group-link">$[other_group.name]</a>
                             <br>
                             {if $[other_group.description]}$[other_group.description]<br>{/if}
                             <span class="small group-controls">

@@ -3,7 +3,7 @@
 
     <!-- Title Bar -->
     <div class="title-bar">
-        <h2>$[user.name] ($[user.username])</h2>
+        <h2>$[user.name] (@$[user.username])</h2>
     </div>
     <!-- / Title Bar -->
 
@@ -17,39 +17,109 @@
 
     <!-- User Profile Content -->
     <div class="content">
-        <div class="pad-all-thick clear">
-            <div class="float-left">
-                <div class="float-left pad-right-thick">$[user.avatar_medium]</div>
-                <div class="name_and_group float-right">
-                    <span class="big_username" style="color: $[user.color];">$[user.name]</span><br>
-                    {if $[user.group]}
-                        $[user.group.name]<br>$[user.group.stars]
-                    {else}
-                        $[user.rank.name]<br>$[user.rank.stars]
-                    {/if}
+        $[user.avatar_medium]
+
+        <div class="show-user__profile">
+
+            <!-- User Profile Header -->
+            <div class="show-user__header content-box">
+                <div class="show-user__user">
+                    <p class="show-user__user-name" style="color: $[user.color];">$[user.name]</p>
+                    <p class="show-user__user-group">
+                        {if $[user.group]}
+                            $[user.group.name]
+                        {else}
+                            $[user.rank.name]
+                        {/if}
+                        <span>(@$[user.username])</span>
+                    </p>
+                </div>
+                <div>
+                    <div class="show-user__controls ui-helper-clearfix">
+                        <!-- Do not show these buttons if the user is viewing their own profile -->
+                        {if $[user.id] != $[current_user.id]}
+                            <!-- Do not show options on admin account -->
+                            {if $[user.id] != 1}
+                                $[options]
+                            {/if}
+
+                            $[follow_button]
+
+                            {if $[send_message_button]}
+                                <a href="$[send_message_button.href]" class="$[send_message_button.class]" title="Send Message">
+                                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                                </a>
+                            {/if}
+
+                            <!--
+                              NOTE: Uncomment this block to add the donation button for the Monetary System plugin.
+                              -->
+                            <!-- <a href="/user/$[user.id]?monetarydonation&view=1" class="button" title="Send Donation">
+                                <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                            </a> -->
+                        {/if}
+
+                        {if $[edit_profile_button]}
+                            <a href="$[edit_profile_button.href]" class="$[edit_profile_button.class]" title="Edit Profile">
+                                <i class="fas fa-edit" aria-hidden="true"></i>
+                            </a>
+                        {/if}
+                    </div>
+                    <p class="show-user__online">
+                        {if $[user.is_online]}
+                            <span class="bold">Currently Online</span>
+                        {else}
+                            <span>Last Online $[user.last_online]</span>
+                        {/if}
+                    </p>
                 </div>
             </div>
-            <div class="float-right controls">
-                $[options]
-                $[send_message_button]
-                $[edit_profile_button]
-                $[follow_button]
-                $[invite_button]
-                <div class="float-right clear pad-top">
-                    Username: <span class="note pad-right">$[user.username]</span>
-                    {if $[user.is_online]}
-                        Member is Online
-                    {else}
-                        Last Online: <span class="note">$[user.last_online]</span>
-                    {/if}
-                </div>
+            <!-- / User Profile Header -->
+
+            <div class="ui-helper-clearfix">
+                $[content]
             </div>
-        </div>
-        <div class="pad-all-thick ui-helper-clearfix clear">
-            $[content]
         </div>
     </div>
     <!-- / User Profile Content -->
 
 </div>
 <!-- / User Profile Container -->
+
+<script>
+$(function() {
+    // Build follow button with icons
+    (function buildFollowButton() {
+        function buildFollowButton() {
+            var $followButton = $('.follow_button');
+            var buttonContent = '';
+
+            /**
+             * If the current user is already following the user they're viewing,
+             * we want to show the "Unfollow" button.
+             */
+            if ($followButton.text() === 'Unfollow') {
+                $followButton.attr('title', 'Unfollow User');
+                buttonContent += '<i class="fas fa-user-times" aria-hidden="true"></i>';
+            } else { // Otherwise, show the "Follow" button
+                $followButton.attr('title', 'Follow User');
+                buttonContent += '<i class="fas fa-user-plus" aria-hidden="true"></i>';
+            }
+
+            $followButton.html(buttonContent);
+        }
+
+        buildFollowButton();
+
+        /**
+         * This is needed because the ajax that updates this button overwrites the
+         * button content with `new_button_text`, so we have to wait until it's done.
+         */
+        $(document).ajaxComplete(function(event, xhr, settings) {
+            if (settings.url === proboards.routeMap.follow_user) {
+                buildFollowButton();
+            }
+        });
+    })();
+});
+</script>

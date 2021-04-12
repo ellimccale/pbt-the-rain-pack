@@ -1,36 +1,29 @@
 <!-- Activity -->
-<div class="content-box">
-    {if $[can.set_status]}
+{if $[can.set_status]}
 
-        <!-- Status -->
+    <!-- Status -->
+    <div class="content-box">
         $[form.header]
-            <table>
-                <tr id="status-bar" class="heading">
-                    <td id="status-title-box" class="avatar">Status</td>
-                    <td id="status-input-box" class="main">$[form.update.input]</td>
-                    <td id="status-update-box" class="time-container">$[form.submit.button]</td>
-                </tr>
-            </table>
-        $[form.footer]
-        <!-- / Status -->
 
-    {else}
         <table>
-            <tr id="status-bar" class="heading">
-                <td class="avatar">&nbsp;</td>
-                <td class="content">&nbsp;</td>
-                <td class="time-container">&nbsp;</td>
+            <tr>
+                <td class="status-input">$[form.update.input]</td>
+                <td class="status-submit">$[form.submit.button]</td>
             </tr>
         </table>
-    {/if}
 
-    <!-- Activity List -->
+        $[form.footer]
+    </div>
+    <!-- / Status -->
+
+{/if}
+
+<div class="content-box">
     <table class="activity list">
         <tbody class="$[activity_list_class]">
             $[activity_list]
         </tbody>
     </table>
-    <!-- / Activity List -->
 
     $[more_button]
 </div>

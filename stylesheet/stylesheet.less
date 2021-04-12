@@ -223,6 +223,9 @@ html {
 }
 
 body { background-color: @body_background_color; background-image: @body_background_image; background-attachment: @body_background_attachment; background-repeat: @body_background_repeat; background-position: @body_background_position; font-style: @default_forum_text_font_style; font-weight: @default_forum_text_font_weight; font-size: @default_forum_text_font_size; font-family: @default_forum_text_font_family; line-height: 1.4; text-decoration: @default_forum_text_decoration; text-transform: @default_forum_text_case; color: @default_forum_text_color; display: flex; flex-direction: column; }
+body::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
+body::-webkit-scrollbar-track { background-color: @dark_color_2; }
+body::-webkit-scrollbar-thumb { background-color: @accent_color; border-width: 3px 6px; border-style: solid; border-color: @dark_color_2; }
 
 
 /* Links
@@ -439,7 +442,7 @@ header > a { width: 100%; height: 100%; display: block; }
 #nav-tree { white-space: nowrap; }
 #nav-tree > li { display: inline-block; vertical-align: top; }
 #nav-tree > li:not(:last-child) div::after { content: " \203A "; font: 1rem @default_forum_text_font_family; color: @dark_color_2; padding: 7px 0; display: inline-block; vertical-align: top; }
-#nav-tree > li a { max-width: 250px; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; .text-overflow(); }
+#nav-tree > li a { max-width: 250px; padding: 7px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; vertical-align: top; .text-overflow(); }
 #nav-tree > li a:hover,
 #nav-tree > li a:focus { color: @dark_color_2; }
 
@@ -454,7 +457,7 @@ header > a { width: 100%; height: 100%; display: block; }
 /* Participated Threads
  * ====================================================== */
 
-.recent-threads-button { background: transparent; margin-left: 10px; border: 1px solid @container_outer_border_color; padding: 7px 14px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-align: center; text-decoration: none; text-transform: uppercase; color: @dark_color_2; cursor: pointer; float: right; }
+.recent-threads-button { background: transparent; margin-left: 10px; border: 1px solid @container_outer_border_color; padding: 7px 20px; font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-align: center; text-decoration: none; text-transform: uppercase; color: @dark_color_2; cursor: pointer; float: right; }
 .recent-threads-button:hover,
 .recent-threads-button:focus,
 .recent-threads-button:active { color: @dark_color_2; }
@@ -558,7 +561,7 @@ header > a { width: 100%; height: 100%; display: block; }
 
 .ui-search { .box-sizing(); }
 .ui-search .search-input { height: 26px; border: 0; padding: 2px 8px; line-height: 16px !important; }
-.ui-search .search-filters-button { background-color: @light_color_1; width: auto; height: 26px; border: 0; padding: 5px 8px 0 8px; color: @dark_color_2; cursor: pointer; display: inline-block; vertical-align: top; }
+.ui-search .search-filters-button { background-color: @light_color_1; width: auto; height: 26px; border: 0; padding: 5px 7px 0 8px; color: @dark_color_2; cursor: pointer; display: inline-block; vertical-align: top; }
 .ui-search .search-filters-button .icon { width: auto; height: auto; display: inline-block; }
 .ui-search .search-filters-button.state-active { background-color: @accent_color_light; color: @white; }
 
@@ -586,6 +589,9 @@ header > a { width: 100%; height: 100%; display: block; }
 
 .ui-dialog div.ui-dialog-content,
 .ui-dialog div.ui-dialog-buttonpane { background-color: @content_area_background_color; border: 20px solid @container_background_color_1; padding: 20px; color: @content_area_text_color; }
+.ui-dialog div.ui-dialog-content::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
+.ui-dialog div.ui-dialog-content::-webkit-scrollbar-track { background-color: @content_area_background_color; }
+.ui-dialog div.ui-dialog-content::-webkit-scrollbar-thumb { background-color: @accent_color_light; border: 6px solid @content_area_background_color; }
 .ui-dialog div.ui-dialog-content input,
 .ui-dialog div.ui-dialog-content select { margin: 5px; }
 .ui-dialog div.ui-dialog-content ~ div.ui-dialog-buttonpane { border-top-width: 0; }
@@ -604,11 +610,11 @@ header > a { width: 100%; height: 100%; display: block; }
 /* --- Participated Dialog --- */
 
 #recent-threads { background-color: @content_area_background_color; border: 0; }
-#recent-threads th { padding: 8px 10px 0; }
-#recent-threads td { padding: 10px; }
+#recent-threads th { background-color: @container_inner_border_color; padding: 10px 10px 6px; }
+#recent-threads td { border-top: 1px solid @container_inner_border_color; border-bottom: 1px solid @container_inner_border_color; padding: 10px; }
 #recent-threads table.list .checkbox input[type="checkbox"] { width: 19px; height: 19px; }
 #recent-threads .subject { padding-left: 0; text-align: left; }
-#recent-threads .subject .thread-link { max-width: 85%; font: 1.4rem @default_forum_text_font_family; text-transform: none; color: @link_color; display: inline-block; vertical-align: middle; .text-overflow(); }
+#recent-threads .subject .thread-link { max-width: 85%; font: 1.2rem @default_forum_text_font_family; text-transform: none; color: @link_color; display: inline-block; vertical-align: middle; .text-overflow(); }
 #recent-threads .subject .thread-link:hover,
 #recent-threads .subject .thread-link:focus { color: @container_links_color; }
 #recent-threads .latest { width: 36%; text-align: right; }
@@ -737,47 +743,32 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Icons
  * ====================================================== */
 
-@fa_shoutbox_refresh_icon_color: @buttons_text_color;
-@fa_settings_icon_color: @buttons_text_color;
-@fa_search_icon_color: @buttons_text_color;
-@fa_like_icon_color: @buttons_text_color;
-@fa_like_icon_liked_color: @white;
-@fa_lock_icon_color: @buttons_text_color;
-@fa_poll_icon_color: @buttons_text_color;
-@fa_bookmark_icon_color: @buttons_text_color;
-@fa_falling_icon_color: @buttons_text_color;
-@fa_message_icon_color: @container_text_color_1;
-@fa_message_new_icon_color: @accent_color_light;
-@fa_checkmark_icon_color: @accent_color_light;
-
 /* --- Shoutbox --- */
 
-.shoutbox_refresh_button .fas.fa-sync-alt { font-size: 1.4rem; color: @fa_shoutbox_refresh_icon_color; }
+.shoutbox_refresh_button .fas.fa-sync-alt { font-size: 1.4rem; color: @buttons_text_color; }
 
 /* --- Status --- */
 
-.lock_icon { font-size: 1.5rem; color: @fa_lock_icon_color; }
-.poll_icon { font-size: 1.5rem; color: @fa_poll_icon_color; }
-.bookmark_icon { font-size: 1.4rem; color: @fa_bookmark_icon_color; }
-.falling_icon { font-size: 1.4rem; color: @fa_falling_icon_color; }
+.lock_icon { font-size: 1.5rem; color: @buttons_text_color; }
+.poll_icon { font-size: 1.5rem; color: @buttons_text_color; }
+.bookmark_icon { font-size: 1.4rem; color: @buttons_text_color; }
+.falling_icon { font-size: 1.4rem; color: @buttons_text_color; }
 
 /* --- Posts/Messages --- */
 
-.search-filters-button .icon > .fas.fa-search { padding: 1px 0; font-size: 1.4rem; color: @fa_search_icon_color; }
-
-.posts .post .content-head .controls a.likes-button { padding: 1px 10px 0; font-size: 1.4rem; line-height: 1; letter-spacing: 0; color: @fa_like_icon_color; }
-.posts .post .content-head .controls a.likes-button.liked { color: @fa_like_icon_liked_color; }
+.posts .post .content-head .controls a.likes-button { padding: 1px 10px 0; font-size: 1.4rem; line-height: 1; letter-spacing: 0; color: @buttons_text_color; }
+.posts .post .content-head .controls a.likes-button.liked { color: @white; }
 .posts .post .content-head .controls a.likes-button.liked:hover,
-.posts .post .content-head .controls a.likes-button.liked:focus { background-color: @buttons_hover_background_color; color: @fa_like_icon_color; }
+.posts .post .content-head .controls a.likes-button.liked:focus { background-color: @buttons_hover_background_color; color: @buttons_text_color; }
 
 /* --- Conversations --- */
 
-.conversation .icon > .far.fa-envelope { font-size: 1.6rem; color: @fa_message_icon_color; }
-.conversation.new .icon > .fas.fa-envelope { font-size: 1.6rem; color: @fa_message_new_icon_color; }
+.conversation .icon > .far.fa-envelope { font-size: 1.6rem; color: @container_text_color_1; }
+.conversation.new .icon > .fas.fa-envelope { font-size: 1.6rem; color: @accent_color_light; }
 
 /* --- Checkmark --- */
 
-.ui-poll .results tr td .select-box i { padding: 3px; font-size: 1.1rem; color: @fa_checkmark_icon_color; visibility: hidden; display: block; }
+.ui-poll .results tr td .select-box i { padding: 3px; font-size: 1.1rem; color: @white; visibility: hidden; display: block; }
 .ui-poll .results tr.ui-selected td .select-box i { visibility: visible; }
 
 /* --- New Icon --- */
@@ -1026,6 +1017,9 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .posts .item .message ul { margin-left: 30px; list-style-type: disc; }
 .posts .item .message ol { margin-left: 30px; list-style-type: decimal; }
 .posts .item .message code { background-color: transparent; max-height: 175px; margin-bottom: 14px; border: 1px solid @light_color_1; padding: 14px 20px; font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; line-height: 1.6; color: mix(@content_area_text_color, @light_color_1, 75%); white-space: pre-wrap; overflow-y: auto; overflow-x: hidden; display: block; }
+.posts .item .message code::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
+.posts .item .message code::-webkit-scrollbar-track { background-color: @content_area_background_color; }
+.posts .item .message code::-webkit-scrollbar-thumb { background-color: @accent_color_light; border: 6px solid @content_area_background_color; }
 
 .posts .item .foot { margin-top: 40px; }
 .posts .item .foot .edited_by { font: italic 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; text-align: right; color: mix(@content_area_text_color, @light_color_1, 25%); }
@@ -1059,11 +1053,12 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .posts .item.recent .content-head .info { margin-top: 0; }
 .posts .item.recent .content-head .info .thread-link { display: block; }
 
-.posts.summary .item .content { padding: 0 20px 20px; }
-.posts.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 15px 20px 0; }
+.posts.summary .item .content { padding: 0 20px 10px; }
+.posts.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 25px 20px 0; }
 .posts.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @container_inner_border_color; padding-bottom: 15px; float: none; }
-.posts.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px; font-size: 1.2rem; line-height: 1.8; }
+.posts.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px 20px; font-size: 1.2rem; line-height: 1.8; }
 .posts.summary .item.first .content { padding-top: 20px; }
+.posts.summary .item.last .content { padding-bottom: 20px; }
 
 
 /* Polls
@@ -1081,11 +1076,11 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .ui-poll .results { margin-top: 16px; margin-bottom: 16px; }
 .ui-poll .results td { padding: 6px 12px; }
 .ui-poll .results td:first-child { padding-left: 0; padding-right: 0; }
-.ui-poll .results td .select-box { background-color: @buttons_background_color; width: 19px; height: 19px; border: @buttons_border; border-radius: 2px; cursor: pointer; }
+.ui-poll .results td .select-box { background-color: @container_background_color_1; width: 19px; height: 19px; border: 1px solid @container_outer_border_color; border-radius: 2px; cursor: pointer; }
 .ui-poll .results td .select-box i { padding: 3px; visibility: hidden; display: block; }
 .ui-poll .results tr.ui-hover { background-color: transparent; cursor: pointer; }
 .ui-poll .results tr.ui-selected { background-color: transparent; }
-.ui-poll .results tr.ui-selected td .select-box { background-color: @buttons_hover_background_color; border: @buttons_hover_border; }
+.ui-poll .results tr.ui-selected td .select-box { background-color: @accent_color_light; border: 1px solid @accent_color; }
 .ui-poll .results tr.ui-selected td .select-box i { visibility: visible; }
 .ui-poll .results .stats { margin-left: 8px; line-height: 18px !important; float: left; }
 
@@ -1198,6 +1193,9 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .messages .item .message ul { margin-left: 30px; list-style-type: disc; }
 .messages .item .message ol { margin-left: 30px; list-style-type: decimal; }
 .messages .item .message code { background-color: transparent; max-height: 175px; margin-bottom: 14px; border: 1px solid @light_color_1; padding: 14px 20px; font: 1.2rem "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; line-height: 1.6; color: mix(@content_area_text_color, @light_color_1, 75%); white-space: pre-wrap; overflow-y: auto; overflow-x: hidden; display: block; }
+.messages .item .message code::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
+.messages .item .message code::-webkit-scrollbar-track { background-color: @content_area_background_color; }
+.messages .item .message code::-webkit-scrollbar-thumb { background-color: @accent_color_light; border: 6px solid @content_area_background_color; }
 
 .messages .item .foot { margin-top: 40px; }
 .messages .item .foot .signature { border-top: 1px solid @container_inner_border_color; padding-top: 12px; font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.025em; color: mix(@content_area_text_color, @light_color_1, 25%); }
@@ -1222,11 +1220,12 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .messages .item--no-messages .content { padding: 20px; }
 .messages .item--no-messages .message { background-color: @content_area_background_color; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
 
-.messages.summary .item .content { padding: 0 20px 20px; }
-.messages.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 15px 20px 0; }
+.messages.summary .item .content { padding: 0 20px 10px; }
+.messages.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 25px 20px 0; }
 .messages.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @light_color_1; padding-bottom: 15px; float: none; }
-.messages.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px; font-size: 1.2rem; line-height: 1.8; }
+.messages.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px 20px; font-size: 1.2rem; line-height: 1.8; }
 .messages.summary .item.first .content { padding-top: 20px; }
+.messages.summary .item.last .content { padding-bottom: 20px; }
 
 
 /* ======================================================
@@ -1269,14 +1268,15 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .ui-wysiwyg .ui-selectMenu-box .icon { border: none; }
 .ui-wysiwyg .ui-selectMenu-box .arrow { height: 18px; }
 
-.wysiwyg-tabs li { background-color: @tabs_selected_background_color; border: @tabs_selected_border; border-top-color: @light_color_1; list-style: none; float: left; position: relative; top: -1px; .transition(all 0.3s ease); }
+.wysiwyg-tabs { position: relative; top: -1px; }
+.wysiwyg-tabs li { background-color: @tabs_unselected_background_color; border: 1px solid @light_color_1; border-top: 0; list-style: none; float: left; .transition(all 0.3s ease); }
 .wysiwyg-tabs li + li { margin-left: 4px; }
-.wysiwyg-tabs li a { padding: 10px 20px; font: @tabs_unselected_text_font; letter-spacing: 0.015em; text-decoration: @tabs_unselected_text_decoration; text-transform: @tabs_unselected_text_case; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
+.wysiwyg-tabs li a { padding: 10px 20px; font: @tabs_unselected_text_font; letter-spacing: 0.025em; text-decoration: @tabs_unselected_text_decoration; text-transform: @tabs_unselected_text_case; color: @tabs_unselected_text_color; white-space: nowrap; display: block; .transition(all 0.3s ease); }
 .wysiwyg-tabs li:hover,
-.wysiwyg-tabs li:focus { background-color: @tabs_hover_background_color; border: @tabs_hover_border; border-top-color: @light_color_1; }
+.wysiwyg-tabs li:focus { background-color: @tabs_hover_background_color; }
 .wysiwyg-tabs li:hover a,
 .wysiwyg-tabs li:focus a { font: @tabs_hover_text_font; text-decoration: @tabs_hover_text_decoration; text-transform: @tabs_hover_text_case; color: @tabs_hover_text_color; }
-.wysiwyg-tabs li.ui-active { background-color: @tabs_unselected_background_color; border: @tabs_unselected_border; border-color: @light_color_1; border-top-color: @white; }
+.wysiwyg-tabs li.ui-active { background-color: @white; }
 .wysiwyg-tabs li.ui-active a { font: @tabs_selected_text_font; text-decoration: @tabs_selected_text_decoration; text-transform: @tabs_selected_text_case; color: @tabs_selected_text_color; }
 
 .new-area .user-search .content { padding: 0 15px 0 0; }
@@ -1353,90 +1353,88 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
  * User Profile
  * ====================================================== */
 
-.show-user .controls > * { float: right; }
+.show-user.container > .content { display: flex; }
 
 .show-user .content-box { overflow: hidden; }
 .show-user .content-box + .content-box { margin-top: 10px; }
 
 .show-user table { width: 100%; table-layout: auto; }
-.show-user table.list td.main { padding: 5px 20px; border-right-width: 0; border-width: 1px 0 0 0; }
-.show-user table.list td.time-container { width: 22%; border-width: 1px 0 0 0; padding: 5px 20px 5px 0; text-align: right; }
+.show-user table.list > tbody > tr { border: 1px solid @container_inner_border_color; }
+.show-user table.list > tbody > tr > td { padding: 10px 10px 8px; }
+.show-user table.list > thead > tr > th.avatar,
+.show-user table.list > tbody > tr > td.avatar { display: none; }
+
+.show-user td.status-input { width: 100%; }
+.show-user td.status-input input[type="text"] { max-width: none; height: 40px; }
+.show-user td.status-submit { width: auto; }
+.show-user td.status-submit input[type="submit"] { margin-left: 4px; }
+
+.show-user .main { padding-left: 15px !important; }
+.show-user .main a { padding: 0 0.15em; }
+.show-user .delete { width: 60px; text-align: right; vertical-align: middle; }
+.show-user .delete a { display: none; }
+.show-user .time-container { width: 22%; padding-right: 15px !important; text-align: right; }
 
 .show-user .heading th,
-.show-user .heading td { border: 0; padding: 10px 20px; font-weight: @bold_weight; text-align: center; }
+.show-user .heading td { text-align: center; }
 
 .show-user .mini-user { width: 75px; max-width: 75px; min-height: 90px; padding: 4px 0; text-align: center; vertical-align: top; overflow: hidden; display: inline-block; }
 
-.show-user .empty-result-message { border-width: 1px 0 0 !important; padding-bottom: 25px; text-align: center; }
+.show-user a.show-more { background-color: @buttons_background_color; height: 40px; margin-top: 10px; border: @buttons_border; font: @buttons_text_font; line-height: 38px !important; letter-spacing: 0.15em; text-align: center; text-decoration: @buttons_text_decoration; text-transform: @buttons_text_case; color: @buttons_text_color; display: block; .transition(all 0.3s ease); }
+.show-user a.show-more:hover,
+.show-user a.show-more:focus { background-color: @buttons_hover_background_color; border: @buttons_hover_border; font: @buttons_hover_text_font; text-decoration: @buttons_hover_text_decoration; text-transform: @buttons_hover_text_case; color: @buttons_hover_text_color; }
 
-.show-user .delete { width: 60px; border-width: 1px 0 0 0; padding: 5px 10px 5px 5px; text-align: right; vertical-align: middle; }
-.show-user .delete a { display: none; }
+/* --- Profile --- */
 
-.show-user a.show-more { border-top: 1px solid @container_inner_border_color; padding: 8px 0; font-weight: @bold_weight; text-align: center; display: block; }
+.show-user .avatar-wrapper { width: 210px; height: 320px; margin-right: 10px; }
+.show-user .avatar-wrapper embed,
+.show-user .avatar-wrapper object,
+.show-user .avatar-wrapper > div,
+.show-user .avatar-wrapper > div > div { width: 210px; height: 320px; }
+.show-user .avatar-wrapper img,
+.show-user .avatar-wrapper default { max-width: 210px; max-height: 320px; }
+
+.show-user__profile { flex-grow: 1; }
+
+.show-user__header { margin-bottom: 10px; padding: 32px 30px 28px; display: flex; flex-wrap: wrap; align-items: center; }
+
+.show-user__user { flex-grow: 1; }
+.show-user__user-name { font: @bold_weight 2.2rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.025em; }
+.show-user__user-group { margin-top: 12px; font: 1.4rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.025em; text-transform: uppercase; }
+.show-user__user-group > span { padding-left: 5px; text-transform: lowercase; color: mix(@white, @container_text_color_1, 40%); }
+
+.show-user__controls { margin-top: -16px; margin-right: -16px; }
+.show-user__controls > .button { background: none; height: auto; margin: 0; border: 0; padding: 16px; font-size: 1.7rem; line-height: 1 !important; letter-spacing: 0; color: @container_text_color_1; display: block; float: right; }
+.show-user__controls > .button:hover,
+.show-user__controls > .button:focus { background: none; border: 0; font-size: 1.7rem; color: @container_links_color; }
+#options-container .status { margin-left: -6px; padding-top: 1px; font-size: 1.6rem; float: left; }
+#options-container .icon { padding: 0 0 0 6px; line-height: 1 !important; float: left; }
+
+.show-user__online { font: 1.2rem @default_forum_text_font_family; letter-spacing: 0.015em; text-align: right; }
+.show-user__online > span:not(.bold) { color: mix(@white, @container_text_color_1, 40%); }
 
 /* --- Summary --- */
 
-.show-user #center-column { vertical-align: top; }
-.show-user #right-column { width: 95px; vertical-align: top; }
-
-.show-user .center-col { padding: 10px; }
-.show-user .center-col abbr.time { font-size: 100%; }
-.show-user .right-col { width: 85px; margin-left: 10px; border: 0; padding: 0 0 10px 10px; text-align: center; }
-
-.show-user td.status-input,
-.show-user td.status-input input { width: 100%; }
-.show-user td.status-submit { width: auto; text-align: right; }
-.show-user td.headings { width: 175px; vertical-align: top; }
-
-.show-user .social { width: 50%; float: left; }
-.show-user .messengers span.label { width: 55px; display: inline-block; }
-
-/* --- Activity --- */
-
-.show-user #status-bar { border-top: none !important; }
-.show-user #status-bar td { border: none; }
-.show-user #status-input-box,
-.show-user #status-input-box input { width: 100%; }
-.show-user #status-input-box { padding-right: 0; }
-.show-user #status-update-box { padding-left: 0; }
-
-/* --- Following --- */
-
-.show-user .following { table-layout: auto; }
-
-.show-user th.avatar,
-.show-user td.avatar { display: none; }
+.show-user td.headings { width: 150px; vertical-align: top; }
 
 /* --- Friends --- */
 
 .show-user .friends-stats { float: right; }
 
-.show-user .members-link-container { margin-top: 10px; }
-
-.show-user .online-friends,
-.show-user .offline-friends { margin-left: -10px; }
-.show-user .online-friends .micro-profile,
-.show-user .offline-friends .micro-profile { margin-top: 10px; margin-left: 10px; margin-bottom: 0; text-align: left; float: left; }
-
-.show-user .suggested-friends { margin-top: 10px; }
+.show-user .friends { padding: 10px 20px 20px 10px; }
+.show-user .friends .micro-profile { margin-top: 10px; margin-left: 10px; }
 
 /* --- Groups --- */
 
-.show-user .groups td { border-width: 1px 1px 0 0; padding: 10px 20px; }
-.show-user .groups th:first-child,
-.show-user .groups td:first-child { border-left: 0; text-align: left; }
-.show-user .groups td:last-child { border-right: 0; }
-
-.show-user .groups .group_desc { width: 40%; }
+.show-user .groups .group_desc { width: 40%; padding-left: 20px !important; text-align: left; }
 .show-user .groups .leaders { width: 25%; text-align: center; }
 .show-user .groups .members { width: 10%; text-align: center; }
 .show-user .groups .status { width: 15%; text-align: center; }
-.show-user .groups .heading td { padding: 4px 0; text-align: center; }
+
+.show-user .group-link { font: @content_area_text_font; text-transform: none; color: @content_area_text_color; }
 
 /* --- Notifications --- */
 
-.show-user .notifications > tbody > tr:first-child > td { border-top-width: 0; }
-.show-user .notifications .main { padding: 10px 20px; }
 .show-user .notifications .main .new-icon { display: inline-block; }
 
 /* --- Badges --- */
@@ -1571,8 +1569,8 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .micro-profile .avatar .avatar-wrapper img,
 .micro-profile .avatar .avatar-wrapper default { max-width: 50px; max-height: 50px; }
 
-.micro-profile .info { width: 145px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; text-transform: uppercase; overflow: hidden; position: absolute; top: 17px; left: 65px; }
-.micro-profile .info input { background: none; background-color: @forms_field_background_color; width: 145px; height: 25px; margin: 0 !important; border: @forms_field_border; padding: 0 8px; font: @forms_field_text_font; letter-spacing: 0.035em; color: @forms_field_text_color; }
+.micro-profile .info { width: 158px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; text-transform: uppercase; overflow: hidden; position: absolute; top: 16px; left: 48px; }
+.micro-profile .info input { background: none; background-color: @forms_field_background_color; width: 158px; height: 25px; margin: 0 !important; border: @forms_field_border; padding: 0 8px; font: @forms_field_text_font; letter-spacing: 0.035em; color: @forms_field_text_color; }
 .micro-profile .info .small,
 .micro-profile .info img { display: none; }
 
@@ -1624,7 +1622,7 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .mini-profile__personal-text { background-color: @white; max-height: 70px; margin-top: auto; padding: 10px 15px; font: 1rem @default_forum_text_font_family; line-height: 1.2; letter-spacing: 0.025em; color: @default_forum_text_color; position: relative; z-index: 105; }
 .mini-profile__personal-text::after { content: ''; width: 0; height: 0; margin-left: -7px; border: 7px solid transparent; border-top-color: @white; position: absolute; top: 100%; left: 50%; }
 
-.mini-profile__gif { background: url('https://placehold.it/190x100/1d1d1d') left top no-repeat; width: 190px; height: 100px; overflow: hidden; }
+.mini-profile__gif { background: url('https://via.placeholder.com/190x100/b3b3ad') left top no-repeat; width: 190px; height: 100px; overflow: hidden; }
 .mini-profile__gif > img { width: 100%; height: 100%; object-fit: cover; }
 
 .mini-profile__user-name { background-color: @title_bar_background_color; margin-top: 5px; padding: 22px 25px; font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 0 fade(@dark_color_2, 50%); color: @title_text_color; }
@@ -1768,6 +1766,9 @@ input.date { width: 100px; }
 input.time { width: 85px; }
 
 textarea { background: none; background-color: @forms_area_background_color; border: @forms_area_border; padding: 14px 20px; font: @forms_area_text_font; line-height: 1.8; letter-spacing: 0.025em; color: @forms_area_text_color; resize: none; }
+textarea::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
+textarea::-webkit-scrollbar-track { background-color: @content_area_background_color; }
+textarea::-webkit-scrollbar-thumb { background-color: @accent_color_light; border: 6px solid @content_area_background_color; }
 
 select { background-color: @forms_select_background_color; height: 30px; border: @forms_select_border; padding: 1px 8px 0; font: @forms_select_text_font; letter-spacing: 0.025em; color: @forms_select_text_color; }
 
@@ -1779,11 +1780,7 @@ select { background-color: @forms_select_background_color; height: 30px; border:
  * Labels
  * ====================================================== */
 
-@labels_weight: @bold_weight;
-@labels_size: 1rem;
-@labels_case: none;
-
-.ui-label { margin: 0 5px 0 0; font-weight: @labels_weight; font-size: @labels_size; text-transform: @labels_case; display: inline; position: relative; top: -1px; }
+.ui-label { margin: 0 0 0 8px; font-weight: @bold_weight; font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; display: inline; }
 
 .label-row { height: 20px; margin: 10px 0; line-height: 20px !important; clear: left; }
 .label-row * { float: left; }
