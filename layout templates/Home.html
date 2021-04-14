@@ -10,9 +10,14 @@
         <!-- / Title Bar -->
 
         <!-- Board List -->
-        <div class="content">
+        <!--
+          NOTE: The following statement should match the IDs of categories with image
+                boards. To apply multiple boards, use the "or" operator:
+                $[category.id == 2] || $[category.id == 3]
+        -->
+        {if $[category.id] == 6}<ul class="accordionza">{else}<div class="content">{/if}
             $[category.board_list]
-        </div>
+        {if $[category.id] == 6}</ul>{else}</div>{/if}
         <!-- / Board List -->
 
     </div>
@@ -97,7 +102,6 @@
                     <p>Last Updated: $[last_updated_thread.recent_link] by $[last_updated_thread.last_post.created_by] ($[last_updated_thread.last_post.created_on])</p>
                 {/if}
                 <p>$[recent_threads_link] - $[recent_posts_link]{if $[rss_feed_link]} - $[rss_feed_link]{/if}{if $[mark_boards_read_link]} - $[mark_boards_read_link]{/if}</p>
-                </p>
             </div>
             <!-- / Content -->
 

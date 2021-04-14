@@ -3,16 +3,21 @@
 
         <!-- Non-Redirect Boards -->
         <!--
-            NOTE: The following statement should match the IDs of categories with image
+          NOTE: The following statement should match the IDs of categories with image
                 boards. To apply multiple boards, use the "or" operator:
-                board.category_id == 2 || board.category_id == 3
-        -->
-        {if $[board.category_id] == 20}
+                $[board.category_id == 2] || $[board.category_id == 3]
+          -->
+        {if $[board.category_id] == 6 && $[route.name] == "home"}
 
             <!-- Image Boards -->
-            <div id="$[board.content_id]" class="$[board.content_class]">
-
-            </div>
+            <li id="$[board.content_id]" class="o-board board slide">
+                <div class="main clickable">
+                    <p class="link">$[board]</p>
+                    {if $[board.description]}
+                        <p class="description">$[board.description]</p>
+                    {/if}
+                </div>
+            </li>
             <!-- / Image Boards -->
 
         {else}
