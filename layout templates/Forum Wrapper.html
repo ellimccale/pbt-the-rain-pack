@@ -79,16 +79,6 @@ $[tag.html.open]
             })();
         });
         </script>
-
-        <script>
-        $(window).load(function() {
-            /**
-             * Remove inline styles from Thread Descriptions plugin.
-             * Has to be on window.load in `head`.
-             */
-            $('.thread_description_page').removeAttr('style');
-        });
-        </script>
     </head>
     <body>
 
@@ -156,6 +146,9 @@ $[tag.html.open]
         </header>
         <!-- / Header -->
 
+        <!-- Required variable: contains PB scripts and ads -->
+        $[header]
+
         <!-- Forum Wrapper -->
         <div id="wrapper">
 
@@ -172,18 +165,17 @@ $[tag.html.open]
 
             {/if}
 
-            <!-- Required variable: contains PB scripts and ads -->
-            $[header]
-
             <!-- Main Content -->
             <main id="content">
                 {if $[notice]}
+
+                    <!-- Notice -->
                     <div class="container">
                         <div class="title-bar"><h2>$[notice.title]</h2></div>
-                        <div class="content pad-all cap-bottom">
-                            $[notice.message]
-                        </div>
+                        <div class="content">$[notice.message]</div>
                     </div>
+                    <!-- / Notice -->
+
                 {/if}
 
                 $[content]
@@ -441,6 +433,20 @@ $[tag.html.open]
 
                 paginateIcons();
                 pb.events.on('afterSearch', paginateIcons);
+            })();
+
+            // Style My Tooltips
+            (function styleMyTooltips() {
+                function paginateTooltips() {
+                    $('[title]').style_my_tooltips({
+                        tip_follows_cursor: true,
+                        tip_delay_time: 0,
+                        tip_fade_speed: 200,
+                    });
+                }
+
+                paginateTooltips();
+                pb.events.on('afterSearch', paginateTooltips);
             })();
         });
         </script>

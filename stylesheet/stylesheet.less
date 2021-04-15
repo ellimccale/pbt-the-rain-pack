@@ -309,14 +309,14 @@ hr { height: 0; border: 0; border-top: 1px solid @container_inner_border_color; 
 /* --- style-my-tooltips --- */
 
 #s-m-t-tooltip {
-    background: @dark_color_2;
+    background: @dark_color_1;
     max-width: 400px;
     margin: 24px 14px 7px 12px;
-    border: 1px solid @container_inner_border_color;
+    border: 1px solid @dark_color_2;
     padding: 0.5em 1em;
     font: 0.9rem @default_forum_text_font_family;
     line-height: 1.8;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: @light_color_1;
     z-index: 1001;
@@ -493,6 +493,9 @@ header > a { width: 100%; height: 100%; display: block; }
 
 .container .content { background-color: @container_background_color_1; padding: 20px; color: @container_text_color_1; overflow: hidden; }
 
+.notice.container > .content,
+.error.container > .content { padding: 15px 20px !important; font-size: 1.4rem; line-height: 1.8; letter-spacing: 0.025em; }
+
 .content-box { background-color: @content_area_background_color; padding: 20px; font: @content_area_text_font; line-height: 1.6; letter-spacing: 0.025em; color: @content_area_text_color; }
 
 
@@ -532,10 +535,10 @@ header > a { width: 100%; height: 100%; display: block; }
 /* Control Bars
  * ====================================================== */
 
-.container > .control-bar { background-color: @dark_color_2; margin-bottom: 0; padding: 0 20px 0 15px; top: 40px !important; .box-sizing(content-box); }
+.container > .control-bar { background-color: @dark_color_2; margin-bottom: 0; padding: 0 20px 0 18px; top: 40px !important; .box-sizing(content-box); }
 .container > .control-bar > .controls { padding: 7px 5px; color: #000; float: right; .box-sizing(); }
 .control-bar .control-icons { padding-top: 9px; padding-left: 5px; display: block; }
-.control-bar .control-icons > span[class*="_icon"] { margin-right: 12px; }
+.control-bar .control-icons > span[class*="_icon"] { margin-right: 12px; color: @container_outer_border_color; }
 .control-bar .controls ul { z-index: 233; }
 .control-bar .controls .ui-selectMenu-box { margin-left: 10px; }
 .control-bar .ui-search { padding: 7px 0 7px 5px !important; }
@@ -743,52 +746,22 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * Icons
  * ====================================================== */
 
-/* --- Shoutbox --- */
-
-.shoutbox_refresh_button .fas.fa-sync-alt { font-size: 1.4rem; color: @buttons_text_color; }
-
 /* --- Status --- */
 
-.lock_icon { font-size: 1.5rem; color: @buttons_text_color; }
-.poll_icon { font-size: 1.5rem; color: @buttons_text_color; }
-.bookmark_icon { font-size: 1.4rem; color: @buttons_text_color; }
-.falling_icon { font-size: 1.4rem; color: @buttons_text_color; }
-
-/* --- Posts/Messages --- */
-
-.posts .post .content-head .controls a.likes-button { padding: 1px 10px 0; font-size: 1.4rem; line-height: 1; letter-spacing: 0; color: @buttons_text_color; }
-.posts .post .content-head .controls a.likes-button.liked { color: @white; }
-.posts .post .content-head .controls a.likes-button.liked:hover,
-.posts .post .content-head .controls a.likes-button.liked:focus { background-color: @buttons_hover_background_color; color: @buttons_text_color; }
-
-/* --- Conversations --- */
-
-.conversation .icon > .far.fa-envelope { font-size: 1.6rem; color: @container_text_color_1; }
-.conversation.new .icon > .fas.fa-envelope { font-size: 1.6rem; color: @accent_color_light; }
-
-/* --- Checkmark --- */
-
-.ui-poll .results tr td .select-box i { padding: 3px; font-size: 1.1rem; color: @white; visibility: hidden; display: block; }
-.ui-poll .results tr.ui-selected td .select-box i { visibility: visible; }
+.lock_icon { font-size: 1.5rem; }
+.poll_icon { font-size: 1.5rem; }
+.bookmark_icon { font-size: 1.4rem; }
+.falling_icon { font-size: 1.4rem; }
 
 /* --- New Icon --- */
 
-@new_link_font: @bold_weight 0.7rem @default_forum_text_font_family;
-@new_link_decoration: none;
-@new_link_transform: uppercase;
-@new_link_color: @accent_color_light;
-@new_hover_link_font: @new_link_font;
-@new_hover_link_decoration: @new_link_decoration;
-@new_hover_link_transform: @new_link_transform;
-@new_hover_link_color: @new_link_color;
-
 .new-icon,
-.new-icon a { height: 11px; font: @new_link_font; line-height: 10px !important; letter-spacing: 0.06em; text-decoration: @new_link_decoration; text-transform: @new_link_transform; text-align: center; color: @new_link_color !important; }
+.new-icon a { height: 11px; font: @bold_weight 0.7rem @default_forum_text_font_family; line-height: 10px !important; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; text-align: center; color: @accent_color_light !important; }
 .new-icon { margin: 6px 8px 2px 0; padding: 0 3px; word-wrap: normal; display: none; float: left; }
 .new-icon a { position: relative; }
 .new-icon a::after { content: ""; padding: 16px; position: absolute; left: -8px; top: -8px; }
 .new-icon:hover,
-.new-icon:hover a { font: @new_hover_link_font; text-decoration: @new_hover_link_decoration; text-transform: @new_hover_link_transform; color: @new_hover_link_color !important; }
+.new-icon:hover a { font: inherit; text-decoration: none; color: @accent_color_light !important; }
 
 
 /* ======================================================
@@ -819,11 +792,11 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 /* Ads
  * ====================================================== */
 
-.ad-banner--top { position: relative !important; }
-.ad-banner--top-50 { height: 70px !important; }
-.ad-banner--top-60 { height: 80px !important; }
-.ad-banner--top-90 { height: 110px !important; }
-.ad-banner--top-250 { height: 270px !important; }
+.ad-banner--top { position: relative !important; top: -40px; }
+.ad-banner--top-50 { height: 50px !important; }
+.ad-banner--top-60 { height: 60px !important; }
+.ad-banner--top-90 { height: 90px !important; }
+.ad-banner--top-250 { height: 250px !important; }
 .ad-banner--top iframe { margin: 0 auto 20px !important; }
 
 .ad-banner--bottom { margin: 40px auto 0 !important; }
@@ -987,7 +960,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 
 .threads td.icon { line-height: 1 !important; text-align: right; white-space: nowrap; }
 .threads td.icon .control-icons { margin-left: -4px; display: inline-block; vertical-align: middle; }
-.threads td.icon .control-icons > span[class*="_icon"] { margin-right: 7px; }
+.threads td.icon .control-icons > span[class*="_icon"] { margin-right: 7px; color: @buttons_text_color; }
 
 .threads td.replies-views { width: 12%; font: 1rem @default_forum_text_font_family; letter-spacing: 0.05em; text-transform: uppercase; text-align: center; }
 
@@ -1025,6 +998,8 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .posts .item .content-head .info .likes { margin-left: 15px; }
 .posts .item .content-head .controls { float: right; }
 .posts .item .content-head .controls > .button { margin-left: 2px; }
+.posts .item .content-head .controls > a.likes-button { padding: 1px 10px 0; font-size: 1.4rem; line-height: 1; letter-spacing: 0; }
+.posts .item .content-head .controls > a.likes-button.liked { background-color: @buttons_active_background_color; border: @buttons_active_border; color: @buttons_active_text_color; }
 
 .posts .item .message { margin-bottom: 10px; font: @content_area_text_font; line-height: 1.6; letter-spacing: 0.025em; color: @content_area_text_color; word-wrap: break-word; overflow-x: auto; overflow-y: hidden; flex-grow: 1; }
 .posts .item .message table { width: inherit; }
@@ -1058,10 +1033,10 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * ====================================================== */
 
 .posts .item--no-posts .content { padding: 20px; }
-.posts .item--no-posts .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+.posts .item--no-posts .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.4rem; line-height: 1.8; letter-spacing: 0.025em; }
 
 .posts .item.blocked .content { padding: 20px; }
-.posts .item.blocked .content .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+.posts .item.blocked .content .message { background-color: @content_area_background_color; padding: 20px; font-size: 1.4rem; line-height: 1.8; letter-spacing: 0.025em; }
 .posts .item.blocked .content .button { margin-left: 0; margin-top: 12px; }
 .posts .item.blocked .unblocked { display: none; }
 
@@ -1092,7 +1067,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .ui-poll .results td { padding: 6px 12px; }
 .ui-poll .results td:first-child { padding-left: 0; padding-right: 0; }
 .ui-poll .results td .select-box { background-color: @container_background_color_1; width: 19px; height: 19px; border: 1px solid @container_outer_border_color; border-radius: 2px; cursor: pointer; }
-.ui-poll .results td .select-box i { padding: 3px; visibility: hidden; display: block; }
+.ui-poll .results td .select-box i { padding: 3px; font-size: 1.1rem; color: @white; visibility: hidden; display: block; }
 .ui-poll .results tr.ui-hover { background-color: transparent; cursor: pointer; }
 .ui-poll .results tr.ui-selected { background-color: transparent; }
 .ui-poll .results tr.ui-selected td .select-box { background-color: @accent_color_light; border: 1px solid @accent_color; }
@@ -1148,7 +1123,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .conversations table.list { table-layout: auto; }
 .conversations table.list .checkbox { padding: 4px 0 0; }
 
-.conversations td.icon { width: 20px; padding: 18px 10px 12px 20px; text-align: center; }
+.conversations td.icon { width: 20px; padding: 18px 10px 12px 20px; font-size: 1.6rem; text-align: center; color: @container_text_color_1; }
 
 .conversations td.main { text-align: left; }
 .conversations td.main .labels { margin-bottom: 1px; display: block; }
@@ -1174,6 +1149,7 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .conversations span.labels { margin-left: -8px; }
 
 .conversations .item.new { .box-shadow(inset 5px 0 0 0 @accent_color_light); }
+.conversations .item.new td.icon { color: @accent_color_light; }
 .conversations .item.new .new-icon { display: inline-block; }
 .conversations .item--no-messages td { padding: 20px !important; line-height: 1.8 !important; }
 
@@ -1233,11 +1209,11 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
  * ====================================================== */
 
 .messages .item--no-messages .content { padding: 20px; }
-.messages .item--no-messages .message { background-color: @content_area_background_color; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0.025em; }
+.messages .item--no-messages .message { background-color: @content_area_background_color; font-size: 1.4rem; line-height: 1.8; letter-spacing: 0.025em; }
 
 .messages.summary .item .content { padding: 0 20px 10px; }
 .messages.summary .item .content-head { background-color: @content_area_background_color; margin: 0; border: 0; padding: 25px 20px 0; }
-.messages.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @light_color_1; padding-bottom: 15px; float: none; }
+.messages.summary .item .content-head .info { width: 100%; margin: 0; border-bottom: 1px solid @container_inner_border_color; padding-bottom: 15px; float: none; }
 .messages.summary .item .message { background-color: @content_area_background_color; margin: 0; padding: 15px 20px 20px; font-size: 1.2rem; line-height: 1.8; }
 .messages.summary .item.first .content { padding-top: 20px; }
 .messages.summary .item.last .content { padding-bottom: 20px; }
@@ -1420,8 +1396,9 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 
 .show-user__controls { margin-top: -16px; margin-right: -16px; }
 .show-user__controls > .button { background: none; height: auto; margin: 0; border: 0; padding: 16px; font-size: 1.8rem; line-height: 1 !important; letter-spacing: 0; color: @container_text_color_1; display: block; float: right; }
+.show-user__controls > .button:active,
 .show-user__controls > .button:hover,
-.show-user__controls > .button:focus { background: none; border: 0; font-size: 1.7rem; color: @container_links_color; }
+.show-user__controls > .button:focus { background: none; border: 0; font-size: 1.8rem; color: @container_links_color; }
 #options-container .status { margin-left: -6px; padding-top: 1px; font-size: 1.6rem; float: left; }
 #options-container .icon { padding: 0 0 0 6px; line-height: 1 !important; float: left; }
 
@@ -1506,7 +1483,7 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .edit-user .micro-profile .avatar { padding: 0; }
 
 .edit-user #avatar-options { display: flex; }
-.edit-user #avatar-options .content-box { width: 252px; min-height: 430px; border: 1px solid @container_inner_border_color; padding: 20px; text-align: center; position: relative; }
+.edit-user #avatar-options .content-box { width: 252px; min-height: 430px; border: 1px solid @light_color_1; padding: 20px; text-align: center; position: relative; }
 .edit-user #avatar-options .content-box.options { width: 100%; min-width: 280px; max-width: 350px; text-align: left; }
 
 .notification-block-wrapper { margin: 20px 0 0; padding: 0; }
@@ -1912,7 +1889,7 @@ select { background-color: @forms_select_background_color; height: 30px; border:
 .shoutbox_form .shoutbox_counter { margin-top: -5px; font: @shoutbox_reply_counter_font; color: @shoutbox_reply_counter_color; float: right; }
 .shoutbox_form .shoutbox_post_button { margin-left: 0; }
 .shoutbox_form .shoutbox_cancel_button { vertical-align: bottom; }
-.shoutbox_form .shoutbox_refresh_button { padding: 2px 7px 0 7px; float: right; }
+.shoutbox_form .shoutbox_refresh_button { padding: 2px 7px 0 7px; font-size: 1.4rem; color: @buttons_text_color; float: right; }
 .shoutbox_form .button img { padding: 2px 0 0; display: inline; }
 .shoutbox_form input[type="text"] { margin-top: 2px; margin-bottom: 4px; }
 .shoutbox_form textarea { width: 100%; height: 38px; margin-right: 0; margin-bottom: 5px; margin-top: 5px; position: inherit; }
