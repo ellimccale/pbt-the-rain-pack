@@ -4,17 +4,17 @@
         <!-- Non-Redirect Boards -->
         <!--
           NOTE: The following statement should match the IDs of categories with image
-                boards. To apply multiple boards, use the "or" operator:
-                $[board.category_id == 2] || $[board.category_id == 3]
+                boards. To apply multiple categories, use the "or" operator:
+                [board.category_id == 2] || [board.category_id == 3]
           -->
         {if $[board.category_id] == 6 && $[route.name] == "home"}
 
             <!-- Image Boards -->
             <li id="$[board.content_id]" class="board slide">
                 <div class="main clickable">
-                    <p class="link">$[board]</p>
+                    <p id="$[board.content_id]-name" class="link">$[board]</p>
                     {if $[board.description]}
-                        <p class="description">$[board.description]</p>
+                        <p class="description" aria-labelledby="$[board.content_id]-name" role="region" tabindex="0">$[board.description]</p>
                     {/if}
                 </div>
             </li>

@@ -10,7 +10,8 @@ $[tag.html.open]
         $[head]
 
         <!-- Open Sans -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -115,20 +116,14 @@ $[tag.html.open]
                     {/foreach}
                     {if !$[current_user.is_guest]}
                         <li>
-                            <a href="$[logout_link.href]">
-                                Logout
-                            </a>
+                            <a href="$[logout_link.href]">Logout</a>
                         </li>
                     {else}
                         <li>
-                            <a href="$[login_link.href]">
-                                Login
-                            </a>
+                            <a href="$[login_link.href]">Login</a>
                         </li>
                         <li>
-                            <a href="$[register_link.href]">
-                                Register
-                            </a>
+                            <a href="$[register_link.href]">Register</a>
                         </li>
                     {/if}
                 </ul>
@@ -156,12 +151,12 @@ $[tag.html.open]
             <section class="welcome" aria-labelledby="welcome">
 
                 <!-- Label for this section; read by screen readers -->
-                <h2 id="welcome" class="visually-hidden">Welcome to $[forum.name]</h2>
+                <h2 id="welcome" class="visually-hidden">Welcome to $[forum.name].</h2>
 
                 <!-- Resources / Links -->
                 <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--links">
-                    <h3 class="welcome__title welcome__title--no-flex">Resources</h3>
-                    <nav class="welcome__links">
+                    <h3 id="welcome-links" class="welcome__title welcome__title--no-flex">Links</h3>
+                    <nav class="welcome__links" aria-labelledby="welcome-links">
                         <a href="#" target="_parent">Mixtape Swag</a>
                         <a href="#" target="_parent">Tilde Vape</a>
                         <a href="#" target="_parent">Hashtag Thundercats</a>
@@ -180,9 +175,9 @@ $[tag.html.open]
                         scrollable content focusable with keyboard navigation.
                   -->
                 <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--updates">
-                    <h3 class="welcome__title welcome__title--no-flex">Updates &amp; Weather</h3>
-                    <div class="welcome__updates" aria-label="Updates for this forum." role="region" tabindex="0">
-                        <div>
+                    <h3 id="welcome-updates-weather" class="welcome__title welcome__title--no-flex">Updates &amp; Weather</h3>
+                    <div class="welcome__updates">
+                        <div aria-labelledby="welcome-updates-weather" role="region" tabindex="0">
                             <p class="welcome__updates-item"><strong>April 18</strong> Site changes underway!</p>
                             <p class="welcome__updates-item"><strong>April 14</strong> Poutine pitchfork asymmetrical af mustache heirloom. Paleo la croix kickstarter PBR&B synth mustache sriracha.</p>
                             <p class="welcome__updates-item"><strong>April 11</strong> Air plant fixie semiotics fam tousled taiyaki tattooed meh whatever crucifix 8-bit swag goth twee chicharrones.</p>
@@ -200,14 +195,14 @@ $[tag.html.open]
                 <!-- Staff -->
                 <div class="welcome__content welcome__content--flex-center-space welcome__content--staff">
                     <h3 class="welcome__title">Staff</h3>
-                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
-                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="Staff Member Avatar">
                     </a>
-                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
-                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="Staff Member Avatar">
                     </a>
-                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
-                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="Staff Member Avatar">
                     </a>
                 </div>
                 <!-- / Staff -->
@@ -215,8 +210,8 @@ $[tag.html.open]
                 <!-- Spotlight -->
                 <div class="welcome__content welcome__content--flex-center-space welcome__content--spotlights">
                     <h3 class="welcome__title">Spotlight</h3>
-                    <a href="#" target="_parent" title="Spotlighted Member" class="welcome__spotlight">
-                        <img src="https://via.placeholder.com/240x75/1d1d1d/d6d5ce" alt="">
+                    <a href="#" target="_parent" title="Spotlighted Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/245x75/1d1d1d/d6d5ce" alt="Spotlighted Member Avatar">
                     </a>
                 </div>
                 <!-- / Spotlight -->

@@ -10,14 +10,12 @@
     <!-- Posting Area -->
     <div class="content">
         $[form.header]
-
         {if $[form.created_by_guest_name.input]}
             <div class="guest_name content-box">
                 <label>Guest Name:</label>
                 $[form.created_by_guest_name.input]
             </div>
         {/if}
-
         <div class="subject_line content-box">
             <table>
                 <tr>
@@ -37,14 +35,12 @@
                 </tr>
             </table>
         </div>
-
         {if $[form.recipients.input]}
             <div class="recipients content-box">
                 <label>Recipients:</label>
                 $[form.recipients.input]
             </div>
         {/if}
-
         {if $[participant]}
             <div class="participants content-box">
                 Participants:
@@ -54,33 +50,26 @@
                 {if $[change_participants_button]}($[change_participants_button]){/if}
             </div>
         {/if}
-
         <div class="editor content-box ui-helper-clearfix">
             $[form.message.input]
         </div>
-
         {if $[form.updated_reason.input]}
             <div class="edit_reason content-box">
                 <label>Edit Reason (optional):</label>
                 <div>$[form.updated_reason.input]</div>
             </div>
         {/if}
-
         {if $[posting_errors]}
             <div class="posting-errors content-box">$[posting_errors]</div>
         {/if}
-
         $[captcha]
-
         <div class="submit content-box">
             <span class="float-right">$[form.post.button]</span>
             <span class="note small left-item" id="$[transcription.id]"></span>
         </div>
-
         <div id="show-attachment" class="attachment content-box">
             $[attachment_widget]
         </div>
-
         $[form.footer]
     </div>
     <!-- / Posting Area -->

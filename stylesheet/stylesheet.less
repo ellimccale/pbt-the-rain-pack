@@ -502,30 +502,27 @@ header > a { width: 100%; height: 100%; display: block; }
 .welcome__title--no-flex { flex-grow: 0; flex-basis: auto; }
 
 .welcome__links { flex-grow: 1; flex-basis: 100%; display: flex; flex-direction: column; }
-.welcome__links > a { background-color: fade(@light_color_1, 10%); margin: 2px 0; padding: 3px 5px; text-align: center; color: @light_color_1; flex: 1; .transition(all 0.3s ease); }
+.welcome__links > a { background-color: fade(@light_color_1, 10%); margin: 2px 0; padding: 3px 5px; text-align: center; color: @light_color_1; flex: 1; display: flex; align-items: center; justify-content: center; .transition(all 0.3s ease); }
 .welcome__links > a:hover,
 .welcome__links > a:focus { background-color: fade(@light_color_1, 20%); color: @light_color_2; }
 
 .welcome__updates { background-color: fade(@light_color_1, 10%); overflow: hidden; flex-grow: 1; flex-basis: 100%; }
-.welcome__updates > div { max-height: 130px; margin: 18px 0; padding: 0 20px; overflow-y: auto; }
+.welcome__updates > div { max-height: 140px; margin: 18px 0; padding: 0 20px; overflow-y: auto; }
 .welcome__updates > div::-webkit-scrollbar { width: 14px; height: 14px; cursor: pointer; }
 .welcome__updates > div::-webkit-scrollbar-track { background-color: transparent; }
 .welcome__updates > div::-webkit-scrollbar-thumb { background-color: transparent; border-right: 10px solid transparent; box-shadow: inset 0 0 0 10px @accent_color_light; }
-.welcome__updates-item { font: 1.2rem @default_forum_text_font_family; line-height: 1.8; letter-spacing: 0.025em; text-align: justify; text-align-last: left; }
+.welcome__updates-item { font: 1.2rem @default_forum_text_font_family; line-height: 1.8; letter-spacing: 0.025em; text-align: justify; }
 .welcome__updates-item + .welcome__updates-item { margin-top: 10px; }
 .welcome__updates-item > strong { padding-right: 5px; font-weight: @bold_weight; text-transform: uppercase; color: @accent_color_light; }
 
-.welcome__status { margin-top: 30px; }
+.welcome__status { margin-top: 20px; }
 .welcome__status > img { max-width: 50px; margin-right: 20px; float: left; }
 .welcome__status > p { font: 1rem @default_forum_text_font_family; line-height: 2.2; letter-spacing: 0.25em; text-transform: uppercase; }
 .welcome__status .separator { padding: 0 0.5em; }
 .welcome__status .strike { text-decoration: line-through; }
 
-.welcome__staff-avatar { max-width: 82px; height: 75px; padding: 0 3px; display: block; }
-.welcome__staff-avatar > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.welcome__spotlight { max-width: 240px; height: 75px; display: block; }
-.welcome__spotlight > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.welcome__flex-image { height: 75px; padding: 0 3px; display: block; flex: 1; }
+.welcome__flex-image > img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 
 /* ======================================================
@@ -795,7 +792,7 @@ table.list > tbody > tr.spacer > td { height: 5px; padding: 0; }
 table.list > tbody > tr.spacer:last-of-type { display: none; }
 table.list .checkbox { width: 45px; padding: 0; line-height: 1 !important; text-align: center; }
 table.list .checkbox input[type="checkbox"] { background: none; background-color: @container_background_color_1; width: 17px; height: 17px; margin: 0; border: 1px solid @container_outer_border_color; border-radius: 2px; cursor: pointer; -webkit-appearance: none; -moz-appearance: none; }
-table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_color_light; background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='https://www.w3.org/2000/svg' width='14px' height='10px' viewBox='0 0 14 10'%3E%3Cpath fill='%23ffffff' d='M5.085 9.875a.616.616 0 0 0 .914 0l7.49-7.465a.619.619 0 0 0 .178-.457.619.619 0 0 0-.178-.453L12.55.582a.566.566 0 0 0-.444-.2.645.645 0 0 0-.47.2L5.542 6.676 2.7 3.832a.645.645 0 0 0-.47-.2.566.566 0 0 0-.444.2l-.939.914a.676.676 0 0 0 0 .914z'/%3E%3C/svg%3E"); background-position: 3px center; background-repeat: no-repeat; background-size: 11px; border: 1px solid @accent_color; }
+table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_color_light; background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='10px' viewBox='0 0 14 10'%3E%3Cpath fill='%23ffffff' d='M5.085 9.875a.616.616 0 0 0 .914 0l7.49-7.465a.619.619 0 0 0 .178-.457.619.619 0 0 0-.178-.453L12.55.582a.566.566 0 0 0-.444-.2.645.645 0 0 0-.47.2L5.542 6.676 2.7 3.832a.645.645 0 0 0-.47-.2.566.566 0 0 0-.444.2l-.939.914a.676.676 0 0 0 0 .914z'/%3E%3C/svg%3E"); background-position: 3px center; background-repeat: no-repeat; background-size: 11px; border: 1px solid @accent_color; }
 
 .list .item > .main { cursor: pointer; overflow: hidden; }
 .list .item .list-item-checkbox { opacity: 0; .transition(opacity 0.3s ease); }
@@ -979,7 +976,10 @@ table.list .checkbox input[type="checkbox"]:checked { background-color: @accent_
 .boards .slide .main .link a:hover,
 .boards .slide .main .link a:focus { color: @container_links_color; }
 .boards .slide .main .link + .description { margin-top: 13px; }
-.boards .slide .main .description { font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; color: @container_text_color_1; }
+.boards .slide .main .description { max-height: 77px; font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.025em; text-align: justify; color: @container_text_color_1; overflow-y: auto; }
+.boards .slide .main .description::-webkit-scrollbar { width: 20px; height: 20px; cursor: pointer; }
+.boards .slide .main .description::-webkit-scrollbar-track { background-color: transparent; }
+.boards .slide .main .description::-webkit-scrollbar-thumb { background-color: transparent; border-right: 16px solid transparent; box-shadow: inset 0 0 0 16px @accent_color_light; }
 
 #board-33.slide { background-image: url('https://storage.proboards.com/6250332/images/CqrPkilvGSMRlaUvAZnq.jpg'); }
 #board-30.slide { background-image: url('https://storage.proboards.com/6250332/images/kcBF0CexDB0CKiVFLPYj.jpg'); }

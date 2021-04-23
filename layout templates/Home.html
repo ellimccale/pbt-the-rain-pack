@@ -12,8 +12,8 @@
         <!-- Board List -->
         <!--
           NOTE: The following statement should match the IDs of categories with image
-                boards. To apply multiple boards, use the "or" operator:
-                $[category.id == 2] || $[category.id == 3]
+                boards. To apply multiple categories, use the "or" operator:
+                [category.id == 2] || [category.id == 3]
           -->
         {if $[category.id] == 6}
             <ul class="accordionza">

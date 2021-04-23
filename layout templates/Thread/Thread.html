@@ -6,7 +6,6 @@
         {if $[reply_button]}
             <ul class="controls"><li>$[reply_button]</li></ul>
         {/if}
-
         <h2>$[thread.subject]</h2>
     </div>
     <!-- / Title Bar -->
@@ -14,13 +13,10 @@
     <!-- Control Bar -->
     <div class="control-bar ui-helper-clearfix $[scroll_class]">
         $[search]
-
         <div class="controls">
             $[action_menu]
         </div>
-
         <div class="float-left">$[thread.icons]</div>
-
         $[pagination]
     </div>
     <!-- / Control Bar -->
@@ -32,13 +28,11 @@
                 $[poll]
             </div>
         {/if}
-
         <table role="presentation">
             <tbody class="$[list_class]">
                 $[post_list]
             </tbody>
         </table>
-
         {if !$[quick_reply]}
             {if $[bottom_reply_button]}
                 <div class="reply_button pad-all-double">$[bottom_reply_button]<br class="clear"></div>
@@ -58,7 +52,7 @@ $(function() {
     (function addIconPadding() {
         $('.control-icons').each(function() {
             var $icons = $(this).children('span[class$="_icon"]:visible:last');
-            $icons.css('margin-right', '15px');
+            $icons.css('margin-right', '20px');
         });
     })();
 });

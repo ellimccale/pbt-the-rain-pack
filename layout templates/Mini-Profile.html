@@ -9,13 +9,11 @@
                     $[user.rank.name]
                 {/if}
             </p>
-
             {if $[user.custom_title]}
                 <p class="mini-profile__user-title">
                     $[user.custom_title]
                 </p>
             {/if}
-
             <div class="mini-profile__fields">
                 {foreach $[user.mini_custom_field]}
                     {if $[user.mini_custom_field.name] == "Application" || $[user.mini_custom_field.name] == "Plotter" || $[user.mini_custom_field.name] == "Tracker"}
@@ -39,7 +37,6 @@
                     {/if}
                 {/foreach}
             </div>
-
             <p class="mini-profile__personal-text">
                 {if $[user.personal_text.message]}
                     $[user.personal_text.message]
@@ -47,7 +44,6 @@
                     I have nothing to say.
                 {/if}
             </p>
-
             <div class="mini-profile__gif">
                 {foreach $[user.mini_custom_field]}
                     {if $[user.mini_custom_field.name] == "Mini Profile Gif"}
@@ -56,12 +52,10 @@
                 {/foreach}
             </div>
         </div>
-
         {if $[user.avatar]}
             <div class="mini-profile__avatar">$[user.avatar]</div>
         {/if}
     {/if}
-
     <p class="mini-profile__user-name">
         $[user]
         {if $[user.is_guest]}
