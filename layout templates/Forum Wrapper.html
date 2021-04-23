@@ -149,6 +149,83 @@ $[tag.html.open]
         <!-- Required variable: contains PB scripts and ads -->
         $[header]
 
+        <!-- Only show Welcome Section on Home page -->
+        {if $[route.name] == 'home'}
+
+            <!-- Welcome Section -->
+            <section class="welcome" aria-labelledby="welcome">
+
+                <!-- Label for this section; read by screen readers -->
+                <h2 id="welcome" class="visually-hidden">Welcome to $[forum.name]</h2>
+
+                <!-- Resources / Links -->
+                <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--links">
+                    <h3 class="welcome__title welcome__title--no-flex">Resources</h3>
+                    <nav class="welcome__links">
+                        <a href="#" target="_parent">Mixtape Swag</a>
+                        <a href="#" target="_parent">Tilde Vape</a>
+                        <a href="#" target="_parent">Hashtag Thundercats</a>
+                        <a href="#" target="_parent">Helvetica Four Loko</a>
+                        <a href="#" target="_parent">Fashion Axe</a>
+                        <a href="#" target="_parent">Live-edge</a>
+                        <a href="#" target="_parent">Food Truck Meditation</a>
+                        <a href="#" target="_parent">Single-origin Coffee</a>
+                    </nav>
+                </div>
+                <!-- / Resources / Links -->
+
+                <!-- Updates -->
+                <!--
+                  NOTE: `aria-label`, `role`, and `tabindex` attributes are required to make
+                        scrollable content focusable with keyboard navigation.
+                  -->
+                <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--updates">
+                    <h3 class="welcome__title welcome__title--no-flex">Updates &amp; Weather</h3>
+                    <div class="welcome__updates" aria-label="Updates for this forum." role="region" tabindex="0">
+                        <div>
+                            <p class="welcome__updates-item"><strong>April 18</strong> Site changes underway!</p>
+                            <p class="welcome__updates-item"><strong>April 14</strong> Poutine pitchfork asymmetrical af mustache heirloom. Paleo la croix kickstarter PBR&B synth mustache sriracha.</p>
+                            <p class="welcome__updates-item"><strong>April 11</strong> Air plant fixie semiotics fam tousled taiyaki tattooed meh whatever crucifix 8-bit swag goth twee chicharrones.</p>
+                            <p class="welcome__updates-item"><strong>April 01</strong> Tbh 90's kinfolk brooklyn fam humblebrag. Selfies shoreditch pinterest ethical gluten-free sartorial hammock man braid. Drinking vinegar portland disrupt swag kinfolk mustache sriracha godard snackwave heirloom.</p>
+                        </div>
+                    </div>
+                    <div class="welcome__status ui-helper-clearfix">
+                        <img src="https://via.placeholder.com/50x50/1d1d1d/d6d5ce" alt="" aria-hidden="true">
+                        <p><strong>Season:</strong> Winter (January)</p>
+                        <p>Mating <span class="separator">|</span> <span class="strike">Birthing</span></p>
+                    </div>
+                </div>
+                <!-- / Updates -->
+
+                <!-- Staff -->
+                <div class="welcome__content welcome__content--flex-center-space welcome__content--staff">
+                    <h3 class="welcome__title">Staff</h3>
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    </a>
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    </a>
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__staff-avatar">
+                        <img src="https://via.placeholder.com/75x75/1d1d1d/d6d5ce" alt="">
+                    </a>
+                </div>
+                <!-- / Staff -->
+
+                <!-- Spotlight -->
+                <div class="welcome__content welcome__content--flex-center-space welcome__content--spotlights">
+                    <h3 class="welcome__title">Spotlight</h3>
+                    <a href="#" target="_parent" title="Spotlighted Member" class="welcome__spotlight">
+                        <img src="https://via.placeholder.com/240x75/1d1d1d/d6d5ce" alt="">
+                    </a>
+                </div>
+                <!-- / Spotlight -->
+
+            </section>
+            <!-- / Welcome Section -->
+
+        {/if}
+
         <!-- Forum Wrapper -->
         <div id="wrapper">
 
@@ -189,39 +266,39 @@ $[tag.html.open]
 
                             <!-- Row 1 -->
                             <!-- Repeat this block to add a new row of affiliates -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                             <!-- Row 2 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                             <!-- Row 3 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                             <!-- Row 4 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                             <!-- Row 5 -->
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                            <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                         </div>
                         <div class="content affiliates__scrolling">
@@ -229,16 +306,16 @@ $[tag.html.open]
                                 <div>
 
                                     <!-- Repeat this line to add a new scrolling affiliate -->
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
-                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/292929/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
+                                    <a href="#" target="_blank" title="Affiliate"><img src="https://via.placeholder.com/88x31/363636/d6d5ce" alt=""></a>
 
                                 </div>
                             </div>
