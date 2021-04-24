@@ -81,13 +81,14 @@
 
 /* --- Colors --- */
 
-@dark_color_1: #1d1d1d;
-@dark_color_2: #363636;
+@dark_color_1: #161f26;
+@dark_color_2: #2d3740;
+@dark_color_3: #1a3954;
 
-@light_color_1: #d6d5ce;
-@light_color_2: #efeeeb;
+@light_color_1: #dedbd3;
+@light_color_2: #f5f3ed;
 
-@accent_color: #505940;
+@accent_color: #a6453c;
 @accent_color_light: lighten(@accent_color, 15%);
 
 @white: #fff;
@@ -102,7 +103,7 @@
  * ====================================================== */
 
 @body_background_color: @dark_color_1;
-@body_background_image: url('https://storage.proboards.com/6250332/images/MyRpaHEPSobKfhkQDLsT.jpg');
+@body_background_image: url('https://storage.proboards.com/6250332/images/dUssHKzeIyQLzEXXyZgp.jpg');
 
 @default_forum_text_color: @dark_color_1;
 @link_color: @accent_color_light;
@@ -113,9 +114,9 @@
 
 @all_gradients: @empty;
 
-@title_bar_background_color: @accent_color;
+@title_bar_background_color: @dark_color_3;
 @title_text_color: @light_color_2;
-@title_buttons_background_color: @accent_color;
+@title_buttons_background_color: @dark_color_3;
 @title_buttons_color: @light_color_2;
 
 @buttons_background_color: @white;
@@ -493,10 +494,10 @@ header > a { width: 100%; height: 100%; display: block; }
 .welcome__content--flex-col { flex-direction: column; flex-wrap: nowrap; }
 .welcome__content--flex-center-space { align-items: center; justify-content: space-between; }
 
-.welcome__content--links { background-image: url('https://storage.proboards.com/6250332/images/yGfKXsNbTcBXmfKKLHNE.jpg'); }
-.welcome__content--updates { background-image: url('https://storage.proboards.com/6250332/images/YAZYOYEvwJbXagaMlVoG.jpg'); }
-.welcome__content--staff { background-image: url('https://storage.proboards.com/6250332/images/LXcSNcxjeIMEPodIGeni.jpg'); }
-.welcome__content--spotlights { background-image: url('https://storage.proboards.com/6250332/images/hcIlFOkwghkrhxahJBFc.jpg'); }
+.welcome__content--links {  }
+.welcome__content--updates {  }
+.welcome__content--staff {  }
+.welcome__content--spotlights {  }
 
 .welcome__title { max-width: 100%; margin-bottom: 22px; font: @bold_weight 1rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.25em; text-transform: uppercase; text-align: center; flex-grow: 1; flex-basis: 100%; }
 .welcome__title--no-flex { flex-grow: 0; flex-basis: auto; }
@@ -595,7 +596,7 @@ header > a { width: 100%; height: 100%; display: block; }
 /* Control Bars
  * ====================================================== */
 
-.container > .control-bar { background-color: @dark_color_2; margin-bottom: 0; padding: 0 20px 0 18px; top: 40px !important; .box-sizing(content-box); }
+.container > .control-bar { background-color: @dark_color_1; margin-bottom: 0; padding: 0 20px 0 18px; top: 40px !important; .box-sizing(content-box); }
 .container > .control-bar > .controls { padding: 7px 5px; color: #000; float: right; .box-sizing(); }
 .control-bar .control-icons { padding-top: 9px; padding-left: 5px; display: block; }
 .control-bar .control-icons > span[class*="_icon"] { margin-right: 12px; color: @container_outer_border_color; }
@@ -610,7 +611,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .ui-selectMenu-box { background-color: @forms_field_background_color; height: 26px; border: 0; border-radius: 0; font: @forms_field_text_font; letter-spacing: 0.025em; text-transform: none; color: @forms_field_text_color; }
 .ui-selectMenu-box .status { margin-left: 10px; margin-right: 12px; line-height: 26px; }
 .ui-selectMenu-box .arrow { background-color: @light_color_1; width: 22px; height: 26px; border: 0; border-radius: 0; .transition(background-color 0.3s ease); }
-.ui-selectMenu-box .arrow.down > span { border-top-color: @dark_color_2; .transition(border-color 0.3s ease); }
+.ui-selectMenu-box .arrow.down > span { border-top-color: @dark_color_1; .transition(border-color 0.3s ease); }
 .ui-selectMenu-box:hover .arrow,
 .ui-selectMenu-box:focus .arrow { background: none; background-color: @accent_color_light; border: 0; }
 .ui-selectMenu-box:hover .arrow > span,
@@ -744,7 +745,7 @@ header > a { width: 100%; height: 100%; display: block; }
  * easier to keep the two styles consistent.
  */
 
-@tabs_background_color: @dark_color_2;
+@tabs_background_color: @dark_color_1;
 @tabs_unselected_background_color: @light_color_1;
 @tabs_unselected_border: 1px solid @container_outer_border_color;
 @tabs_unselected_text_font: 1.2rem @default_forum_text_font_family;
@@ -1808,7 +1809,7 @@ input[type="submit"]:active, input[type="button"]:active, button:active { font-w
 @forms_field_text_color: @buttons_text_color;
 @forms_area_background_color: @forms_field_background_color;
 @forms_area_border: @forms_field_border;
-@forms_area_text_font: 1.6rem monospace;
+@forms_area_text_font: 1.4rem monospace, monospace;
 @forms_area_text_color: @forms_field_text_color;
 @forms_select_background_color: @forms_field_background_color;
 @forms_select_border: @forms_field_border;
@@ -1823,7 +1824,7 @@ input[type="text"].search-input { width: inherit; }
 input.date { width: 100px; }
 input.time { width: 85px; }
 
-textarea { background: none; background-color: @forms_area_background_color; border: @forms_area_border; padding: 14px 20px; font: @forms_area_text_font; line-height: 1.8; letter-spacing: 0.025em; color: @forms_area_text_color; resize: none; }
+textarea { background: none; background-color: @forms_area_background_color; border: @forms_area_border; padding: 14px 20px; font: @forms_area_text_font !important; line-height: 1.6 !important; letter-spacing: 0.025em; color: @forms_area_text_color; resize: none; }
 textarea::-webkit-scrollbar { width: 16px; height: 16px; cursor: pointer; }
 textarea::-webkit-scrollbar-track { background-color: @content_area_background_color; }
 textarea::-webkit-scrollbar-thumb { background-color: @accent_color_light; border: 6px solid @content_area_background_color; }
@@ -1882,9 +1883,9 @@ select { background-color: @forms_select_background_color; height: 30px; border:
 
 .social .affiliates { max-width: 50%; display: flex; flex-direction: column; flex-basis: 50%; }
 .social .affiliates a { margin: 5px; display: inline-block; vertical-align: top; }
-.social .affiliates a img { width: 88px; height: 31px; display: block; opacity: 0.75; mix-blend-mode: luminosity; .transition(all 0.3s ease);  }
+.social .affiliates a img { width: 88px; height: 31px; display: block; opacity: 0.75; .transition(all 0.3s ease);  }
 .social .affiliates a:hover > img,
-.social .affiliates a:focus > img { opacity: 1; mix-blend-mode: normal; }
+.social .affiliates a:focus > img { opacity: 1; }
 
 .social .affiliates__static { padding: 15px; display: flex; flex-wrap: wrap; justify-content: space-between; }
 
