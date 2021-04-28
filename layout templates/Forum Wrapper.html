@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 $[tag.html.open]
     <head>
 
@@ -76,7 +76,7 @@ $[tag.html.open]
                 onDialogOpen('#confirmation', { width: 350 });
                 onDialogOpen('#board_listing', { height: 500 });
                 onDialogOpen('#captcha-container', { width: 475 });
-                //onDialogOpen('#edit_money', { width: 500, height: 375, draggable: true });
+                onDialogOpen('#edit_money', { width: 500, height: 425, draggable: true });
             })();
         });
         </script>
@@ -154,6 +154,10 @@ $[tag.html.open]
                 <h2 id="welcome" class="visually-hidden">Welcome to $[forum.name].</h2>
 
                 <!-- Resources / Links -->
+                <!--
+                  NOTE: This section supports as many or as few links as are desired,
+                        but given the current layout, at least six is the ideal number.
+                -->
                 <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--links">
                     <h3 id="welcome-links" class="welcome__title welcome__title--no-flex">Links</h3>
                     <nav class="welcome__links" aria-labelledby="welcome-links">
@@ -171,7 +175,11 @@ $[tag.html.open]
 
                 <!-- Updates -->
                 <!--
-                  NOTE: `aria-label`, `role`, and `tabindex` attributes are required to make
+                  NOTE: To create new events, add a new paragraph element with the class
+                        `welcome__updates-item`, where the date is wrapped in `<strong>`
+                        tags for visual and semantic purposes.
+
+                        `aria-label`, `role`, and `tabindex` attributes are required to make
                         scrollable content focusable with keyboard navigation.
                   -->
                 <div class="welcome__content welcome__content--row-span welcome__content--flex-col welcome__content--updates">
@@ -187,14 +195,26 @@ $[tag.html.open]
                     <div class="welcome__status ui-helper-clearfix">
                         <img src="https://via.placeholder.com/50x50/161f26/dedbd3" alt="" aria-hidden="true">
                         <p><strong>Season:</strong> Winter (January)</p>
-                        <p>Mating <span class="separator">|</span> <span class="strike">Birthing</span></p>
+                        <p>Yes <span class="separator">|</span> <span class="strike">No</span></p>
                     </div>
                 </div>
                 <!-- / Updates -->
 
                 <!-- Staff -->
+                <!--
+                  NOTE: This section supports as many as five avatars, or as few as one.
+
+                        Replace the text "Staff Member" in both the `title` attribute of
+                        the anchor element and the `alt` attribute of the image element.
+                  -->
                 <div class="welcome__content welcome__content--flex-center-space welcome__content--staff">
                     <h3 class="welcome__title">Staff</h3>
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/75x75/161f26/dedbd3" alt="Staff Member Avatar">
+                    </a>
+                    <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
+                        <img src="https://via.placeholder.com/75x75/161f26/dedbd3" alt="Staff Member Avatar">
+                    </a>
                     <a href="#" target="_parent" title="Staff Member" class="welcome__flex-image">
                         <img src="https://via.placeholder.com/75x75/161f26/dedbd3" alt="Staff Member Avatar">
                     </a>
@@ -208,6 +228,12 @@ $[tag.html.open]
                 <!-- / Staff -->
 
                 <!-- Spotlight -->
+                <!--
+                  NOTE: Thie section supports as many as five images, or as few as one.
+
+                        Replace the text "Spotlighted Member" in both the `title` attribute
+                        of the anchor element and the `alt` attribute of the image element.
+                  -->
                 <div class="welcome__content welcome__content--flex-center-space welcome__content--spotlights">
                     <h3 class="welcome__title">Spotlight</h3>
                     <a href="#" target="_parent" title="Spotlighted Member" class="welcome__flex-image">
@@ -323,7 +349,7 @@ $[tag.html.open]
 
                         <!--
                           NOTE: To use the Shoutbox, enable it from your forum settings.
-                          Otherwise, insert your cbox.ws code here.
+                                Otherwise, insert your cbox.ws code here.
                           -->
                         $[shoutbox]
 

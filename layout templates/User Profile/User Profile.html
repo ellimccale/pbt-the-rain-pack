@@ -47,12 +47,9 @@
                                     <i class="fas fa-envelope" aria-hidden="true"></i>
                                 </a>
                             {/if}
-                            <!--
-                              NOTE: Uncomment this block to add the donation button for the Monetary System plugin.
-                              -->
-                            <!-- <a href="/user/$[user.id]?monetarydonation&view=1" class="button" title="Send Donation">
+                            <a href="/user/$[user.id]?monetarydonation&view=1" class="button" title="Send Donation">
                                 <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
-                            </a> -->
+                            </a>
                         {/if}
                         {if $[edit_profile_button]}
                             <a href="$[edit_profile_button.href]" class="$[edit_profile_button.class]" title="Edit Profile">

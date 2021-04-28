@@ -1,9 +1,9 @@
 /*!
- * Theme Name: The Rain Pack
+ * Theme Name: Rae (The Rainpack Recolor)
  * Theme URI:  https://rainpack-skin.proboards.com/
  * Author:     Elli
  * Author URI: https://ellimccale.com/
- * Version:    2.0.0
+ * Version:    1.0.0
  */
 
 /* ======================================================
@@ -82,11 +82,11 @@
 /* --- Colors --- */
 
 @dark_color_1: #161f26;
-@dark_color_2: #2d3740;
+@dark_color_2: #2b3640;
 @dark_color_3: #1a3954;
 
-@light_color_1: #dedbd3;
-@light_color_2: #f5f3ed;
+@light_color_1: #d9d5ce;
+@light_color_2: #f2f1ed;
 
 @accent_color: #a6453c;
 @accent_color_light: lighten(@accent_color, 15%);
@@ -484,8 +484,8 @@ header > a { width: 100%; height: 100%; display: block; }
         "links updates staff" auto
         ". . spotlights" auto
         ~"/" ~"1fr" ~"2fr" ~"1fr";
-    row-gap: 10px;
-    column-gap: 10px;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
     align-items: center;
 }
 
@@ -494,10 +494,10 @@ header > a { width: 100%; height: 100%; display: block; }
 .welcome__content--flex-col { flex-direction: column; flex-wrap: nowrap; }
 .welcome__content--flex-center-space { align-items: center; justify-content: space-between; }
 
-.welcome__content--links {  }
-.welcome__content--updates {  }
-.welcome__content--staff {  }
-.welcome__content--spotlights {  }
+.welcome__content--links { background-image: url('https://storage.proboards.com/6250332/images/XbqVtzvxwbiMrdsgTutb.jpg'); }
+.welcome__content--updates { background-image: url('https://storage.proboards.com/6250332/images/0tjZYdcJtAGKNUlhHSua.jpg'); }
+.welcome__content--staff { background-image: url('https://storage.proboards.com/6250332/images/BIwiHsmOtvIgfvzLfeYe.jpg'); }
+.welcome__content--spotlights { background-image: url('https://storage.proboards.com/6250332/images/zXvFRowtSMDGzqkYlucL.jpg'); }
 
 .welcome__title { max-width: 100%; margin-bottom: 22px; font: @bold_weight 1rem @default_forum_text_font_family; line-height: 1; letter-spacing: 0.25em; text-transform: uppercase; text-align: center; flex-grow: 1; flex-basis: 100%; }
 .welcome__title--no-flex { flex-grow: 0; flex-basis: auto; }
@@ -572,12 +572,12 @@ header > a { width: 100%; height: 100%; display: block; }
 @title_text_font: 1rem @default_forum_text_font_family;
 @title_text_case: uppercase;
 @title_text_spacing: 0.25em;
-@title_buttons_border: 1px solid mix(@container_inner_border_color, @accent_color, 25%);
+@title_buttons_border: 1px solid @container_outer_border_color;
 @title_buttons_font: 1rem @default_forum_text_font_family;
 @title_buttons_case: uppercase;
 @title_buttons_spacing: 0.15em;
 @title_buttons_hover_background_color: mix(@container_inner_border_color, @accent_color, 25%);
-@title_buttons_hover_border: @title_buttons_border;
+@title_buttons_hover_border: 1px solid mix(@container_inner_border_color, @accent_color, 25%);
 @title_buttons_hover_color: @title_buttons_color;
 
 .container .title-bar { background-color: @title_bar_background_color; min-height: 50px; padding: 0 20px; overflow: hidden; position: relative; }
@@ -715,7 +715,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .ui-pagination { overflow: hidden; display: inline-block; vertical-align: top; }
 .ui-pagination li { cursor: pointer; list-style: none; float: left; }
 .ui-pagination li + li { margin-left: 3px; }
-.ui-pagination li > a { background-color: @pagination_background_color; padding: 6px 5px 6px 6px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @pagination_text_color; display: inline-block; opacity: 0.8; .transition(all 0.3s ease); }
+.ui-pagination li > a { background-color: @pagination_background_color; padding: 6px 5px 6px 6px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; text-transform: uppercase; color: @dark_color_2; display: inline-block; opacity: 0.8; .transition(all 0.3s ease); }
 .ui-pagination li > a:hover,
 .ui-pagination li > a:focus { background-color: @pagination_text_color; text-decoration: none; color: @pagination_background_color; opacity: 1; }
 .ui-pagination li.ui-pagination-prev { margin-right: 3px; }
@@ -730,7 +730,7 @@ header > a { width: 100%; height: 100%; display: block; }
 .ui-micro-pagination { margin-left: 12px; overflow: hidden; display: inline-block; vertical-align: middle; }
 .ui-micro-pagination li { cursor: pointer; float: left; }
 .ui-micro-pagination li + li { margin-left: 2px; }
-.ui-micro-pagination li > a { background-color: transparent; border: 1px solid @container_outer_border_color; padding: 5px 4px 5px 5px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; color: @pagination_text_color; display: inline-block; .transition(all 0.3s ease); }
+.ui-micro-pagination li > a { background-color: transparent; border: 1px solid @container_outer_border_color; padding: 5px 4px 5px 5px; font: @bold_weight 1rem @default_forum_text_font_family; letter-spacing: 0.25em; text-decoration: none; color: @dark_color_2; display: inline-block; .transition(all 0.3s ease); }
 .ui-micro-pagination li > a:hover,
 .ui-micro-pagination li > a:focus { background-color: @pagination_text_color; border-color: @pagination_text_color; color: @pagination_background_color; }
 
@@ -1684,11 +1684,11 @@ img.smile { width: 18px; height: 18px; margin: 0 0.05em 0 0.1em; vertical-align:
 .mini-profile__gif { background: url('https://via.placeholder.com/190x115/b3b3ad') left top no-repeat; width: 190px; height: 115px; overflow: hidden; }
 .mini-profile__gif > img { width: 100%; height: 100%; object-fit: cover; }
 
-.mini-profile__user-name { background-color: @title_bar_background_color; margin-top: 5px; padding: 22px 25px; font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 0 fade(@dark_color_2, 50%); color: @title_text_color; }
-.mini-profile__user-name--small { font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-transform: uppercase; color: @title_text_color; text-shadow: none; }
-.mini-profile__user-name a { font: inherit; color: inherit; }
+.mini-profile__user-name { background-color: @title_bar_background_color; margin-top: 5px; padding: 22px 25px; font: 1.2rem @default_forum_text_font_family; line-height: 1.6; letter-spacing: 0.15em; text-decoration: none; text-transform: uppercase; text-align: center; text-shadow: 1px 1px 0 fade(@dark_color_2, 50%); color: @title_text_color !important; }
+.mini-profile__user-name--small { font: 1rem @default_forum_text_font_family; letter-spacing: 0.15em; text-transform: uppercase; color: @title_text_color !important; text-shadow: none; }
+.mini-profile__user-name a { font: inherit; color: inherit !important; }
 .mini-profile__user-name a:hover,
-.mini-profile__user-name a:focus { color: @title_text_color; }
+.mini-profile__user-name a:focus { color: @title_text_color !important; }
 
 /* --- Avatars --- */
 

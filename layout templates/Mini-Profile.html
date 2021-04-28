@@ -56,7 +56,7 @@
             <div class="mini-profile__avatar">$[user.avatar]</div>
         {/if}
     {/if}
-    <p class="mini-profile__user-name">
+    <p class="mini-profile__user-name" style="background-color: $[user.color];">
         $[user]
         {if $[user.is_guest]}
             <br><span class="mini-profile__user-name--small">Guest</span>
