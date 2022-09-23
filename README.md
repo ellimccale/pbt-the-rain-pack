@@ -1,7 +1,7 @@
 # The Rainpack 2.0.0
 [Preview](https://rainpack-skin.proboards.com/)
 
-*The Rainpack* is a dark gray and beige theme with forest green accents, built on commission for use with the free forum software [ProBoards](https://proboards.com/). It features a sticky navigation menu, custom welcome table, sliding image boards, and support for a number of plugins. Built using my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
+*The Rainpack* is a dark gray and beige theme with forest green accents, built on commission for use with the free forum software [ProBoards](https://proboards.com/). It features a sticky navigation menu, custom welcome table, sliding image boards, and support for a number of plugins. Developed using my v5 theme base, [*cast*](https://github.com/elli-mccale/pbt-cast).
 
 ## Use
 This theme is intended for private use and may not be used in any other respect without my express written permission. You are free to view the code, however.
